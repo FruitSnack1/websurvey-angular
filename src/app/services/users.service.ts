@@ -7,10 +7,13 @@ import {HttpClient} from '@angular/common/http'
 export class UsersService {
   url:string = 'http://localhost:3001/api/users'
   constructor(private httpClient:HttpClient){
-
   }
 
   getUsers(){
     return this.httpClient.get(this.url)  
+  }
+
+  registerUser(user: object){
+    return this.httpClient.post(this.url, user);
   }
 }
