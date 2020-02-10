@@ -10,17 +10,17 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form (ngSubmit)='loginUser()'>
                                 <div class="form-group">
                                     <label>Uživatel</label>
-                                    <select name="username" class="form-control">
+                                    <select [(ngModel)]='user.id' name="username" class="form-control">
                                         <option selected disabled>Vyberte uživatele</option>
                                     <option *ngFor='let user of users' value="{{user._id}}">{{user.username}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Heslo</label>
-                                    <input class="form-control" type="password" name="password" placeholder="Heslo">
+                                    <input [(ngModel)]='user.password' class="form-control" type="password" name="password" placeholder="Heslo">
                                 </div>
 
                                 <button class="au-btn au-btn--block au-btn--skoda m-b-20" type="submit">Přihlásit se</button>

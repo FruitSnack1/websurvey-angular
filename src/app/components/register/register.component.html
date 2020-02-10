@@ -10,20 +10,20 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form (submit)='registerUser()'>
+                            <form #userForm='ngForm' (ngSubmit)='registerUser()'>
                                 <div class="form-group">
                                     <label>Uživatelské jméno</label>
-                                    <input class="au-input au-input--full" type="text" name="username"
+                                    <input [(ngModel)]='model.username' required class="au-input au-input--full" type="text" name="username"
                                         placeholder="Uživatelské jméno">
                                 </div>
                                 <div class="form-group">
                                     <label>Heslo </label>
-                                    <input class="au-input au-input--full" type="password" name="password"
+                                    <input [(ngModel)]='model.password' required class="au-input au-input--full" type="password" name="password"
                                         placeholder="Heslo">
                                 </div>
                                 <div class="form-group">
                                     <label>Ověření hesla</label>
-                                    <input class="au-input au-input--full" type="password" name="confirmed_password"
+                                    <input [(ngModel)]='model.confimred_password'  required class="au-input au-input--full" type="password" name="confirmed_password"
                                         placeholder="Heslo znovu">
                                 </div>
 
