@@ -8,6 +8,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormBuilder, FormsModule } from '@angular/forms';
 import { AdminComponent } from './components/admin/admin.component';
+import { AnketyComponent } from './components/ankety/ankety.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { AdminComponent } from './components/admin/admin.component';
     LoginComponent,
     RegisterComponent,
     AdminComponent,
+    AnketyComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

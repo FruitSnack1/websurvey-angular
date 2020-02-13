@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   loginUser(){
     this.userService.loginUser(this.user).subscribe(data =>{
-      this.router.navigateByUrl('/admin')
+      this.router.navigateByUrl('/admin',{state:data})
     })
   }
 

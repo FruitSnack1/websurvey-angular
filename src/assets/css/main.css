@@ -77,3 +77,7 @@ textarea{
 .tr-shadow:hover{
   cursor: pointer;
 }
+
+.table-data-feature .item i {
+  font-size: 10px;
+}

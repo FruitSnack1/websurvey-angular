@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-12">
+    <button type="button" name="button" class="m-b-40 au-btn au-btn-icon au-btn--skoda btn-block"><i
+        class="zmdi zmdi-plus"></i>Přidat novou anketu</button>
+  </div>
+</div>
+
+<div class="row m-b-40">
+  <div class="col-lg-12">
+    <div class="table-responsive table-responsive-data2">
+      <table class="table table-data2">
+        <thead>
+          <tr>
+            <th>Název</th>
+            <th>Datum</th>
+            <th class="text-right">Počet otázek</th>
+            <th class="text-right">Vyplněné</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody *ngFor='let anketa of ankety'>
+          <tr class="tr-shadow">
+            <td class="font-weight-bold">{{anketa.name}}</td>
+            <td>{{anketa.date | date:'dd.M.yyyy'}}</td>
+            <td class="text-right">{{anketa.questions.length}}</td>
+            <td class="text-right">to do</td>
+            <td>
+              <div class="table-data-feature">
+                <button class="item" type="button" name="button"><i class="fas fa-play"></i></button>
+                <button class="item" type="button" name="button"><i class="fas fa-edit"></i></button>
+                <button class="item" type="button" name="button"><i class="fas fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr class="spacer">
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

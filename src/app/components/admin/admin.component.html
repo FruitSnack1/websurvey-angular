@@ -128,15 +128,15 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="active">
-                            <a href="quiz-main.html">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                            <a skipLocationChange routerLink='/admin/dashboard'>
+                                <i class="fas fa-tachometer-alt" ></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="quiz-ankety.html">
+                            <a skipLocationChange routerLink='/admin/ankety'>
                                 <i class="fas fa-chart-bar"></i>Moje ankety</a>
                         </li>
                         <li>
-                            <a href="table.html">
+                            <a skipLocationChange href="table.html">
                                 <i class="fas fa-cog"></i>Nastavení</a>
                         </li>
                     </ul>
@@ -158,10 +158,10 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                            <img src="assets/images/avatar.png" alt="John Doe" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn">{{username}}</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -172,7 +172,7 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">john doe</a>
+                                                        <a >{{username}}</a>
                                                     </h5>
                                                     <span class="email">johndoe@example.com</span>
                                                 </div>
@@ -197,6 +197,7 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
 
+                        <router-outlet></router-outlet>
                     </div>
                 </div>
             </div>

@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  username: string
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.username = history.state.username
+    console.log(this.username);
+    
   }
 
 }

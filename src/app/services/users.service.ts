@@ -15,13 +15,10 @@ export class UsersService {
   }
 
   registerUser(user: User) {
-    console.log(user);
     return this.httpClient.post(`${this.url}/register`, user);
   }
 
   loginUser(user: object) {
-    console.log(user);
-    // return this.httpClient.post(`${this.url}/login`, user);
     return this.httpClient.post(`${this.url}/login`, user, { withCredentials: true });
   }
 }
