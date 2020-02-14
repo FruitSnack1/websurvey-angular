@@ -10,6 +10,7 @@ import { FormBuilder, FormsModule } from '@angular/forms';
 import { AdminComponent } from './components/admin/admin.component';
 import { AnketyComponent } from './components/ankety/ankety.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PlayComponent } from './components/play/play.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AdminComponent,
     AnketyComponent,
     DashboardComponent,
+    PlayComponent,
   ],
   imports: [
     BrowserModule,
