@@ -11,6 +11,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AnketyComponent } from './components/ankety/ankety.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PlayComponent } from './components/play/play.component';
+import { FormAnketaComponent } from './components/form-anketa/form-anketa.component';
+import { QuestionComponent } from './components/question/question.component';
+import { AnketaDetailComponent } from './components/anketa-detail/anketa-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { PlayComponent } from './components/play/play.component';
     AnketyComponent,
     DashboardComponent,
     PlayComponent,
+    FormAnketaComponent,
+    QuestionComponent,
+    AnketaDetailComponent,
   ],
   imports: [
     BrowserModule,

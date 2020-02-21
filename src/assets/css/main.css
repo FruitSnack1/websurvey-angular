@@ -81,3 +81,7 @@ textarea{
 .table-data-feature .item i {
   font-size: 10px;
 }
+
+.min-vh-100{
+  min-height: 100vh;
+}

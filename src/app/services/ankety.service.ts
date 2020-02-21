@@ -8,10 +8,14 @@ import { GlobalVariables } from 'src/global';
 export class AnketyService {
   url: string = `${GlobalVariables.API_URL}/ankety`
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  getAnkety(){
-    return this.httpClient.get(`${this.url}`, {withCredentials:true})
+  getAnkety() {
+    return this.httpClient.get(`${this.url}`, { withCredentials: true })
+  }
+
+  deleteAnketa(id: string) {
+    return this.httpClient.delete(`${this.url}/${id}`, { withCredentials: true })
   }
 
 }

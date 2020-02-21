@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { User } from '../models/user';
+import { User } from '../models/user.model';
+import { GlobalVariables } from 'src/global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  url: string = 'http://localhost:3001/api/users'
+  url: string = `${GlobalVariables.API_URL}/users`
   constructor(private httpClient: HttpClient) {
   }
 

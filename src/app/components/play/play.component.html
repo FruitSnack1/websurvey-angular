@@ -8,11 +8,11 @@
     <div *ngIf='stage == 1' class="p-4 min-vh-100 d-flex flex-column justify-content-around hide" id="play">
         <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question}}</h3>
         <img class="rounded mx-auto" src="assets/images/avatar.png" style="height: 200px; width : 200px">
-        <button class="au-btn au-btn--skoda btn-block" value="1" (click)='answer()'>{{anketa.answers[0].name}} </button>
-        <button class="au-btn au-btn--skoda btn-block" value="2" (click)='answer()'>{{anketa.answers[1].name}} </button>
-        <button class="au-btn au-btn--skoda btn-block" value="3" (click)='answer()'>{{anketa.answers[2].name}} </button>
-        <button class="au-btn au-btn--skoda btn-block" value="4" (click)='answer()'>{{anketa.answers[3].name}} </button>
-        <button class="au-btn au-btn--skoda btn-block" (click)='answer()'>{{anketa.answers[4].name}} </button>
+        <button class="au-btn au-btn--skoda btn-block" (click)='answer(anketa.answers[0].value)'>{{anketa.answers[0].name}} </button>
+        <button class="au-btn au-btn--skoda btn-block" (click)='answer(anketa.answers[1].value)'>{{anketa.answers[1].name}} </button>
+        <button class="au-btn au-btn--skoda btn-block" (click)='answer(anketa.answers[2].value)'>{{anketa.answers[2].name}} </button>
+        <button class="au-btn au-btn--skoda btn-block" (click)='answer(anketa.answers[3].value)'>{{anketa.answers[3].name}} </button>
+        <button class="au-btn au-btn--skoda btn-block" (click)='answer(anketa.answers[4].value)'>{{anketa.answers[4].name}} </button>
         <div class="progress-bar" id="progress-bar"></div>
     </div>
 

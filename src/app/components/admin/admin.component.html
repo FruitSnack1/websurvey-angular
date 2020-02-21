@@ -127,15 +127,15 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li [class.active]='router.url == "/admin/dashboard"'>
+                        <li routerLinkActive='active'>
                             <a skipLocationChange routerLink='/admin/dashboard'>
                                 <i class="fas fa-tachometer-alt" ></i>Dashboard</a>
                         </li>
-                        <li [class.active]='router.url == "/admin/ankety"'>
+                        <li routerLinkActive='active'>
                             <a skipLocationChange routerLink='/admin/ankety'>
                                 <i class="fas fa-chart-bar"></i>Moje ankety</a>
                         </li>
-                        <li [class.active]='router.url == "/admin/settings"'>
+                        <li routerLinkActive='active'>
                             <a skipLocationChange href="table.html">
                                 <i class="fas fa-cog"></i>Nastavení</a>
                         </li>

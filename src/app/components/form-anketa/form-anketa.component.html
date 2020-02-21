@@ -1,0 +1,54 @@
+{{anketa | json}}
+<form >
+    <div class="row">
+        <div class="col-lg-6 m-b-40">
+            <div class="au-card au-card--no-pad">
+                <div class="au-card-title">
+                    <h3>Nová anketa</h3>
+                    <div class="bg-overlay bg-overlay--skoda"></div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Název ankety</label>
+                        <input [(ngModel)]='anketa.name' class="form-control" type="text" name="name" value="" placeholder="" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Popis ankety</label>
+                        <textarea [(ngModel)]='anketa.description' class="form-control" name="description" rows="3" cols="80"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 m-b-40">
+            <div class="au-card au-card--no-pad">
+                <div class="au-card-title">
+                    <h3>Možnosti</h3>
+                    <div class="bg-overlay bg-overlay--skoda"></div>
+                </div>
+                <div class="card-body">
+                    <label class="switch switch-3d switch-skoda mr-3">
+                        <input [(ngModel)]= 'anketa.random_order' class="switch-input" type="checkbox" name="random_order" /><span
+                            class="switch-label"></span><span class="switch-handle"></span>
+                    </label><span>Náhodné pořadí otázek</span><br />
+                    <label class="switch switch-3d switch-skoda mr-3">
+                        <input [(ngModel)]= 'anketa.user_data' class="switch-input" type="checkbox" name="user_data" /><span
+                            class="switch-label"></span><span class="switch-handle"></span>
+                    </label><span>Přidat identifikaci</span><br />
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Odpovědi</label>
+                        <input [(ngModel)]= 'anketa.answers[0].name' class="form-control mb-3" type="text" name="answer1" value="Určitě ano" placeholder="" /> 
+                        <input [(ngModel)]= 'anketa.answers[1].name' class="form-control mb-3" type="text" name="answer2" value="Spíše ano" placeholder="" />
+                        <input [(ngModel)]= 'anketa.answers[2].name' class="form-control mb-3" type="text" name="answer3" value="Nutrální postoj" placeholder="" />
+                        <input [(ngModel)]= 'anketa.answers[3].name' class="form-control mb-3" type="text" name="answer4" value="Spíše ne" placeholder="" />
+                        <input [(ngModel)]= 'anketa.answers[4].name' class="form-control" type="text" name="answer5" value="Určitě ne" placeholder="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-question *ngFor='let q of anketa.questions' [questionNumber]='anketa.questions.length'></app-question>
+    <button class="au-btn au-btn-icon btn-block au-btn--secondary m-b-10" type="button" (click)='addQuestion()'><i
+            class="zmdi zmdi-plus"></i>Přidat otázku</button>
+    <button class="au-btn au-btn--skoda btn-block m-b-40" type="button" onclick="createAnketa()">Vytvořit
+        anketu</button>
+</form>

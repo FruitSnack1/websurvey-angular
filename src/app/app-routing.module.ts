@@ -6,17 +6,21 @@ import { AdminComponent } from './components/admin/admin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AnketyComponent } from './components/ankety/ankety.component';
 import { PlayComponent } from './components/play/play.component';
+import { FormAnketaComponent } from './components/form-anketa/form-anketa.component';
+import { AnketaDetailComponent } from './components/anketa-detail/anketa-detail.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  {path:'play/:id', component: PlayComponent},
+  { path: 'play/:id', component: PlayComponent },
   {
     path: 'admin', component: AdminComponent, children: [
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'ankety', component: AnketyComponent }
+      { path: 'ankety', component: AnketyComponent },
+      { path: 'create', component: FormAnketaComponent },
+      { path: 'ankety/:id', component: AnketaDetailComponent }
     ]
   },
 

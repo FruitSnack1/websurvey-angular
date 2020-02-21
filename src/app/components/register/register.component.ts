@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 
 export class RegisterComponent implements OnInit {
-  model = new User('','','')
+  model = new User()
   
   constructor(private usersService: UsersService, private router:Router) { 
     

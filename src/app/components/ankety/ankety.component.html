@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12">
-    <button type="button" name="button" class="m-b-40 au-btn au-btn-icon au-btn--skoda btn-block"><i
+    <button type="button" name="button" class="m-b-40 au-btn au-btn-icon au-btn--skoda btn-block" skipLocationChange routerLink='../create'><i
         class="zmdi zmdi-plus"></i>Přidat novou anketu</button>
   </div>
 </div>
@@ -18,7 +18,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody *ngFor='let anketa of ankety'>
+        <tbody *ngFor='let anketa of ankety' skipLocationChange [routerLink]='anketa._id'>
           <tr class="tr-shadow">
             <td class="font-weight-bold">{{anketa.name}}</td>
             <td>{{anketa.date | date:'dd.M.yyyy'}}</td>
@@ -26,9 +26,9 @@
             <td class="text-right">to do</td>
             <td>
               <div class="table-data-feature">
-                <button class="item" type="button" name="button"><i class="fas fa-play"></i></button>
+                <button class="item" type="button" name="button" (click)='playAnketa(anketa._id)'><i class="fas fa-play"></i></button>
                 <button class="item" type="button" name="button"><i class="fas fa-edit"></i></button>
-                <button class="item" type="button" name="button"><i class="fas fa-trash"></i></button>
+                <button class="item" type="button" name="button" (click)='deleteAnketa(anketa._id)'><i class="fas fa-trash"></i></button>
               </div>
             </td>
           </tr>
