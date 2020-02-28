@@ -18,4 +18,8 @@ export class AnketyService {
     return this.httpClient.delete(`${this.url}/${id}`, { withCredentials: true })
   }
 
+  createAnketa(anketa){
+    return this.httpClient.post(`${this.url}`, anketa, {withCredentials: true})
+  }
+
 }
