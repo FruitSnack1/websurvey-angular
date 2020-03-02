@@ -30,4 +30,9 @@ export class AnketyComponent implements OnInit {
       this.ankety = data
     })
   }
+
+  showAnketaDetail(id){
+    console.log(id)
+    this.router.navigateByUrl(`/admin/detail/${id}`, { skipLocationChange: true })
+  }
 }

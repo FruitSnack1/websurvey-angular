@@ -85,3 +85,27 @@ textarea{
 .min-vh-100{
   min-height: 100vh;
 }
+
+.question-delete{
+  color: white;
+  position: absolute;
+  right: 40px;
+  z-index: 100;
+  font-size: 28px;
+}
+
+.table tbody tr:first-child td{
+  border-top: none ;
+}
+
+.progress-td{
+  width: 30%;
+}
+
+.progress{
+  height: 24px;
+}
+
+.bg-skoda{
+  background: #4ba82e;
+}

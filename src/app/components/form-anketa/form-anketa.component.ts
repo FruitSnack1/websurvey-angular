@@ -19,7 +19,6 @@ export class FormAnketaComponent implements OnInit {
 
   ngOnInit() {
     
-
     this.anketaForm = this.fb.group({
       name: '',
       description: '',
@@ -29,13 +28,13 @@ export class FormAnketaComponent implements OnInit {
       questions: this.fb.array([])
     })
 
-    
-    for (let i = 1; i <= 5; i++) {
-      const answer = this.fb.group({
-        name: [],
-        value: [i]
+    const defaultAnswers = ['Určitě ano', 'Spíše ano', 'Nevím', 'Spíše ne', 'Určitě ne']
+    for (let i = 0; i < defaultAnswers.length; i++) {
+      const obj = this.fb.group({
+        name: [defaultAnswers[i]],
+        value: [i+1]
       })
-      this.answerForms.push(answer);
+      this.answerForms.push(obj)
     }
 
     this.addQuestion()
@@ -55,12 +54,16 @@ export class FormAnketaComponent implements OnInit {
       img: []
     })
 
-    this.questionForms.push(question);
+    this.questionForms.push(question)
+  }
+
+  deleteQuestion(i){
+    this.questionForms.removeAt(i)
   }
 
   submitAnketa(){
     this.anketyService.createAnketa(this.anketaForm.value).subscribe(data =>{
-      this.router.navigateByUrl('/adnkety')
+      this.router.navigateByUrl('/admin/ankety')
     })
   }
 

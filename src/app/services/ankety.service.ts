@@ -22,4 +22,8 @@ export class AnketyService {
     return this.httpClient.post(`${this.url}`, anketa, {withCredentials: true})
   }
 
+  getAnketa(id: string){
+    return this.httpClient.get(`${this.url}/${id}`, {withCredentials:true})
+  }
+
 }

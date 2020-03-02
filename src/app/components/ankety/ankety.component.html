@@ -18,10 +18,11 @@
             <th></th>
           </tr>
         </thead>
-        <tbody *ngFor='let anketa of ankety' skipLocationChange [routerLink]='anketa._id'>
+        <!-- <tbody *ngFor='let anketa of ankety' skipLocationChange [routerLink]='anketa._id'> -->
+          <tbody *ngFor='let anketa of ankety' (click)='showAnketaDetail(anketa._id)'>
           <tr class="tr-shadow">
             <td class="font-weight-bold">{{anketa.name}}</td>
-            <td>{{anketa.date | date:'dd.M.yyyy'}}</td>
+            <td>{{anketa.date | date:'d.M.yyyy'}}</td>
             <td class="text-right">{{anketa.questions.length}}</td>
             <td class="text-right">to do</td>
             <td>

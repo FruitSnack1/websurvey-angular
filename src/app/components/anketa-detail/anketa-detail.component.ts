@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AnketyService } from 'src/app/services/ankety.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-anketa-detail',
@@ -7,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnketaDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private anketyService:AnketyService, private route: ActivatedRoute) { }
 
+  anketa
   ngOnInit(){
-    console.log(history.state)
+    const id = this.route.snapshot.paramMap.get('id')
+    this.anketyService.getAnketa(id).subscribe(data=>{
+      this.anketa =data
+    })    
   }
 
 }

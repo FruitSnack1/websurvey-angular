@@ -20,7 +20,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'ankety', component: AnketyComponent },
       { path: 'create', component: FormAnketaComponent },
-      { path: 'ankety/:id', component: AnketaDetailComponent }
+      { path: 'detail/:id', component: AnketaDetailComponent }
     ]
   },
 
