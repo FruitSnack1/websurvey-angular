@@ -12,4 +12,8 @@ export class ResultsService {
   postResults(result: object){
     return this.httpClient.post(`${this.url}`, result)
   }
+
+  getResults(id:string){
+    return this.httpClient.get(`${this.url}/${id}`, {withCredentials:true})
+  }
 }

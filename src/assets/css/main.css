@@ -109,3 +109,18 @@ textarea{
 .bg-skoda{
   background: #4ba82e;
 }
+
+.number-of-users{
+  color: white;
+  position: absolute;
+  right: 40px;
+  z-index: 100;
+  font-size: 28px;
+}
+
+.number-of-users span{
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  padding-left: 10px;
+}
