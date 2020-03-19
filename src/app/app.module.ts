@@ -13,6 +13,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PlayComponent } from './components/play/play.component';
 import { FormAnketaComponent } from './components/form-anketa/form-anketa.component';
 import { AnketaDetailComponent } from './components/anketa-detail/anketa-detail.component';
+import { QuestionComponent } from './components/question/question.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AnketaDetailComponent } from './components/anketa-detail/anketa-detail.
     PlayComponent,
     FormAnketaComponent,
     AnketaDetailComponent,
+    QuestionComponent,
   ],
   imports: [
     BrowserModule,
