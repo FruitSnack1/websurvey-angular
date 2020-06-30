@@ -19,6 +19,7 @@ const routes: Routes = [
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'ankety', component: AnketyComponent },
+      { path: 'ankety/new', component: AnketyComponent },
       { path: 'create', component: FormAnketaComponent },
       { path: 'detail/:id', component: AnketaDetailComponent }
     ]

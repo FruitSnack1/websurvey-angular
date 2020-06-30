@@ -18,7 +18,7 @@ export class AnketaDetailComponent implements OnInit {
   questionResults = []
   chartDonut = []
   chartRadar = []
-  questionsChars = []
+  questionsCharts = []
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id')
@@ -28,7 +28,6 @@ export class AnketaDetailComponent implements OnInit {
 
     this.resultsService.getResults(id).subscribe(data => {
       this.results = data
-      console.log(data)
       for (let i = 0; i < this.results[0].answers.length; i++) {
         let count = 0
         for (let j = 0; j < this.results.length; j++) {
@@ -85,7 +84,7 @@ export class AnketaDetailComponent implements OnInit {
         for (let j = 0; j < this.results.length; j++) {
           questionData[this.results[j].answers[i]-1]++
         }
-        this.questionsChars.push(
+        this.questionsCharts.push(
           new Chart(`questionChart${i}`,{
             type: 'bar',
             data: {
@@ -104,11 +103,9 @@ export class AnketaDetailComponent implements OnInit {
         )
         
       }
-      console.log(this.questionsChars)
-      console.log(this.chartDonut)
     })
 
-
+    console.log(this.questionsCharts)
   }
 
   map_range(value, low1, high1, low2, high2) {

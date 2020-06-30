@@ -14,6 +14,7 @@ import { PlayComponent } from './components/play/play.component';
 import { FormAnketaComponent } from './components/form-anketa/form-anketa.component';
 import { AnketaDetailComponent } from './components/anketa-detail/anketa-detail.component';
 import { QuestionComponent } from './components/question/question.component';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { QuestionComponent } from './components/question/question.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

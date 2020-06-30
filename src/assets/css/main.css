@@ -1,126 +1,151 @@
-.header-wrap{
-  justify-content: flex-end;
+@font-face {
+    font-family: SkodaNext;
+    src: url(../webfonts/SKODANext-Regular.woff2);
 }
 
-.navbar-sidebar .navbar__list li.active > a{
-  color: #4ba82e;
+body {
+    font-family: SkodaNext;
 }
 
-.navbar-sidebar .navbar__list li a:hover{
-  color: #4ba82e;
+.header-wrap {
+    justify-content: flex-end;
 }
 
-.au-btn--blue{
-  background: #4ba82e;
-}
-.au-btn--skoda{
-  background: #4ba82e;
+.navbar-sidebar .navbar__list li.active>a {
+    color: #4ba82e;
 }
 
-.au-btn--skoda:hover{
-  background: #398022;
+.navbar-sidebar .navbar__list li a:hover {
+    color: #4ba82e;
 }
 
-.au-btn--secondary{
-  background: #6c757d;
+.au-btn--blue {
+    background: #4ba82e;
 }
 
-.au-btn--secondary:hover{
-  background: #5a6268;
+.au-btn--skoda {
+    background: #4ba82e;
 }
 
-.au-btn--danger{
-  background: #dc3545;
+.au-btn--skoda:hover {
+    background: #398022;
 }
 
-.au-btn--danger:hover{
-  background: #c82333;
+.au-btn--secondary {
+    background: #6c757d;
 }
 
-.au-btn{
-  border-radius: 50px;
+.au-btn--secondary:hover {
+    background: #5a6268;
 }
 
-.bg-overlay--skoda{
-  background: #4ba82e;
+.au-btn--danger {
+    background: #dc3545;
 }
 
-.ankta-date{
-  position: relative;
-  color: white;
-  font-weight: 500;
+.au-btn--danger:hover {
+    background: #c82333;
 }
 
-.badge-success{
-  background: #4ba82e;
-}
-.page-wrapper{
-  padding-bottom: 0 !important;
-}
-.switch-skoda > .switch-input:checked ~ .switch-label{
-  background: #4ba82e !important;
-  border-color: #4ba82e;
+.au-btn {
+    border-radius: 50px;
 }
 
-.bg-overlay--secondary{
-  background: #6c757d;
+.bg-overlay--skoda {
+    background: #4ba82e;
 }
 
-textarea{
-  resize: none;
+.ankta-date {
+    position: relative;
+    color: white;
+    font-weight: 500;
 }
 
-.table-data2.table tbody tr td:first-child{
-  vertical-align: middle;
+.badge-success {
+    background: #4ba82e;
 }
 
-.tr-shadow:hover{
-  cursor: pointer;
+.page-wrapper {
+    padding-bottom: 0 !important;
+}
+
+.switch-skoda>.switch-input:checked~.switch-label {
+    background: #4ba82e !important;
+    border-color: #4ba82e;
+}
+
+.bg-overlay--secondary {
+    background: #6c757d;
+}
+
+textarea {
+    resize: none;
+}
+
+.table-data2.table tbody tr td:first-child {
+    vertical-align: middle;
+}
+
+.tr-shadow:hover {
+    cursor: pointer;
 }
 
 .table-data-feature .item i {
-  font-size: 10px;
+    font-size: 10px;
 }
 
-.min-vh-100{
-  min-height: 100vh;
+.min-vh-100 {
+    min-height: 100vh;
 }
 
-.question-delete{
-  color: white;
-  position: absolute;
-  right: 40px;
-  z-index: 100;
-  font-size: 28px;
+.question-delete {
+    color: white;
+    position: absolute;
+    right: 40px;
+    z-index: 100;
+    font-size: 28px;
 }
 
-.table tbody tr:first-child td{
-  border-top: none ;
+.table tbody tr:first-child td {
+    border-top: none;
 }
 
-.progress-td{
-  width: 30%;
+.progress-td {
+    width: 30%;
 }
 
-.progress{
-  height: 24px;
+.progress {
+    height: 24px;
 }
 
-.bg-skoda{
-  background: #4ba82e;
+.bg-skoda {
+    background: #4ba82e;
 }
 
-.number-of-users{
-  color: white;
-  position: absolute;
-  right: 40px;
-  z-index: 100;
-  font-size: 28px;
+.number-of-users {
+    color: white;
+    position: absolute;
+    right: 40px;
+    z-index: 100;
+    font-size: 28px;
 }
 
-.number-of-users span{
-  font-family: "Poppins", sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-  padding-left: 10px;
+.number-of-users span {
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+@keyframes newAnketa {
+    from {
+        background-color: #4ba82e;
+    }
+    to {
+        background-color: white;
+    }
+}
+
+.new-anketa:last-child {
+    animation: newAnketa 2s ease-in;
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core'
-import {Chart} from 'chart.js'
+import { Chart } from 'chart.js'
 
 @Component({
   selector: 'app-question',
@@ -7,17 +7,18 @@ import {Chart} from 'chart.js'
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
+  @Input() name: string
+  @Input() results
 
   constructor() { }
-  @Input('question') question:string
   chart
-  ngOnInit(){
-    this.chart = new Chart('chart',{
+  ngOnInit() {
+    this.chart = new Chart('chart', {
       type: 'bar',
       data: {
-        labels: ['1','5','2','5',','],
+        labels: ['1', '5', '2', '5', ','],
         datasets: [{
-          data: [2,5,8,6,4],
+          data: [2, 5, 8, 6, 4],
           backgroundColor: [
             'rgb(255, 99, 132)',
             'rgb(54, 162, 235)',
@@ -28,7 +29,7 @@ export class QuestionComponent implements OnInit {
         }]
       }
     })
-    console.log(this.question)
+    console.log(this.results)
   }
 
 }

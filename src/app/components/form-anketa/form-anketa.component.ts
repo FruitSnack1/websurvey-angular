@@ -63,9 +63,9 @@ export class FormAnketaComponent implements OnInit {
 
   submitAnketa(){
     this.anketyService.createAnketa(this.anketaForm.value).subscribe(data =>{
-      this.router.navigateByUrl('/admin/ankety')
+      this.router.navigateByUrl('/admin/ankety/new')
     })
   }
-
+  
 
 }
