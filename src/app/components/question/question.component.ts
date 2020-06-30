@@ -16,18 +16,30 @@ export class QuestionComponent implements OnInit {
     this.chart = new Chart('chart', {
       type: 'bar',
       data: {
-        labels: ['1', '5', '2', '5', ','],
+        labels: ['Určitě ano', 'Spíše ano', 'Nevím', 'Spíše ne', 'Určitě ne'],
         datasets: [{
-          data: [2, 5, 8, 6, 4],
+          data: [2, 3, 7, 6, 4],
           backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 206, 86)',
-            'rgb(75, 192, 192)',
-            'rgb(153, 102, 255)'
+            'rgb(75, 168, 46)',
+            'rgb(129, 194, 109)',
+            'rgb(219, 238, 213)',
+            'rgb(234, 81, 103)',
+            'rgb(210, 38, 48)'
           ]
         }]
-      }
+      },
+      options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        legend:{
+          display:false
+        }
+    }
     })
     console.log(this.results)
   }

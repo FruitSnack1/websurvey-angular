@@ -53,11 +53,11 @@ export class AnketaDetailComponent implements OnInit {
           datasets: [{
             data: chartData,
             backgroundColor: [
-              'rgb(255, 99, 132)',
-              'rgb(54, 162, 235)',
-              'rgb(255, 206, 86)',
-              'rgb(75, 192, 192)',
-              'rgb(153, 102, 255)'
+              'rgb(75, 168, 46)',
+              'rgb(129, 194, 109)',
+              'rgb(219, 238, 213)',
+              'rgb(234, 81, 103)',
+              'rgb(210, 38, 48)'
             ]
           }]
         }
@@ -74,34 +74,34 @@ export class AnketaDetailComponent implements OnInit {
             ]
           }]
         },
-        options:{
-          legend:false
+        options: {
+          legend: false
         }
       })
 
       for (let i = 0; i < this.anketa.questions.length; i++) {
-        let questionData = [0,0,0,0,0]
+        let questionData = [0, 0, 0, 0, 0]
         for (let j = 0; j < this.results.length; j++) {
-          questionData[this.results[j].answers[i]-1]++
+          questionData[this.results[j].answers[i] - 1]++
         }
         this.questionsCharts.push(
-          new Chart(`questionChart${i}`,{
+          new Chart(`questionChart${i}`, {
             type: 'bar',
             data: {
               datasets: [{
                 data: questionData,
                 backgroundColor: [
-                  'rgb(255, 99, 132)',
-                  'rgb(54, 162, 235)',
-                  'rgb(255, 206, 86)',
-                  'rgb(75, 192, 192)',
-                  'rgb(153, 102, 255)'
+                  'rgb(75, 168, 46)',
+                  'rgb(129, 194, 109)',
+                  'rgb(219, 238, 213)',
+                  'rgb(234, 81, 103)',
+                  'rgb(210, 38, 48)'
                 ]
               }]
             }
           })
         )
-        
+
       }
     })
 
