@@ -149,3 +149,19 @@ textarea {
 .new-anketa:last-child {
     animation: newAnketa 2s ease-in;
 }
+
+.header-desktop{
+    z-index: 0;
+}
+
+.modal{
+    background-color: rgba(60, 60, 60, .5);
+}
+
+.modal-content{
+    border: none;
+}
+
+.show{
+    display: block;
+}

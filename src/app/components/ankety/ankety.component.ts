@@ -22,8 +22,11 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 export class AnketyComponent implements OnInit {
+  
   ankety:object
   show: boolean = false
+  anketaId: string
+  deleteModal: boolean = false
   constructor(private anketyService: AnketyService, private router:Router) { }
 
   ngOnInit() {
@@ -34,10 +37,20 @@ export class AnketyComponent implements OnInit {
     this.router.navigateByUrl(`/play/${id}`)
   }
 
-  deleteAnketa(id:string){
-    this.anketyService.deleteAnketa(id).subscribe(data =>{
+  deleteAnketa(){
+    this.anketyService.deleteAnketa(this.anketaId).subscribe(data =>{
+      this.toggleDeleteModal()      
       this.getAnkety()
     })
+  }
+
+  setAnketa(id:string){
+    this.anketaId = id
+    this.toggleDeleteModal()
+  }
+
+  toggleDeleteModal(){
+    this.deleteModal = !this.deleteModal
   }
 
   getAnkety(){
