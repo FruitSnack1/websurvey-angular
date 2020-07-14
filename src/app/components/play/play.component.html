@@ -6,14 +6,36 @@
     </div>
 
     <div *ngIf='stage == 1' class="p-4 min-vh-100 d-flex flex-column justify-content-around hide" id="play">
-        <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question}}</h3>
-        <img class="rounded mx-auto" src="assets/images/avatar.png" style="height: 200px; width : 200px">
-        <button class="au-btn au-btn--skoda btn-block" (click)='answer(anketa.answers[0].value)'>{{anketa.answers[0].name}} </button>
-        <button class="au-btn au-btn--skoda btn-block" (click)='answer(anketa.answers[1].value)'>{{anketa.answers[1].name}} </button>
-        <button class="au-btn au-btn--skoda btn-block" (click)='answer(anketa.answers[2].value)'>{{anketa.answers[2].name}} </button>
-        <button class="au-btn au-btn--skoda btn-block" (click)='answer(anketa.answers[3].value)'>{{anketa.answers[3].name}} </button>
-        <button class="au-btn au-btn--skoda btn-block" (click)='answer(anketa.answers[4].value)'>{{anketa.answers[4].name}} </button>
-        <div class="progress-bar" id="progress-bar"></div>
+        <ng-template [ngIf]='anketa.questions[questionNumber].open' [ngIfElse]='closed'>
+            <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question}}</h3>
+            <img class="rounded mx-auto" src="assets/images/avatar.png" style="height: 200px; width : 200px">
+            <div class="form-group">
+                <textarea name="" id="" cols="30" rows="10" class="form-control" #opentext placeholder="Vaše odpověď..."
+                    [(ngModel)]='textarea_value'></textarea>
+            </div>
+            <button class="au-btn au-btn--skoda btn-block" (click)='answer(opentext.value)'>Pokračovat
+            </button>
+            <div class="progress-bar" id="progress-bar"></div>
+        </ng-template>
+
+
+        <ng-template #closed>
+
+            <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question}}</h3>
+            <img class="rounded mx-auto" src="assets/images/avatar.png" style="height: 200px; width : 200px">
+            <button class="au-btn au-btn--skoda btn-block"
+                (click)='answer(anketa.answers[0].value)'>{{anketa.answers[0].name}} </button>
+            <button class="au-btn au-btn--skoda btn-block"
+                (click)='answer(anketa.answers[1].value)'>{{anketa.answers[1].name}} </button>
+            <button class="au-btn au-btn--skoda btn-block"
+                (click)='answer(anketa.answers[2].value)'>{{anketa.answers[2].name}} </button>
+            <button class="au-btn au-btn--skoda btn-block"
+                (click)='answer(anketa.answers[3].value)'>{{anketa.answers[3].name}} </button>
+            <button class="au-btn au-btn--skoda btn-block"
+                (click)='answer(anketa.answers[4].value)'>{{anketa.answers[4].name}} </button>
+            <div class="progress-bar" id="progress-bar"></div>
+        </ng-template>
+
     </div>
 
     <div *ngIf='stage == 2' class="p-4 min-vh-100 d-flex flex-column justify-content-center hide" id="finish">

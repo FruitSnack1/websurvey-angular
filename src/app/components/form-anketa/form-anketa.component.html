@@ -38,7 +38,7 @@
                     <div formArrayName='answers' class="form-group">
                         <label class="form-control-label" for="name">Odpovědi</label>
                         <div *ngFor='let answer of answerForms.controls; let i=index' [formGroupName]='i'>
-                            <input  formControlName='name' class="form-control mb-3"type="text" />
+                            <input formControlName='name' class="form-control mb-3" type="text" />
                         </div>
                     </div>
                 </div>
@@ -57,6 +57,10 @@
                         <div class="bg-overlay bg-overlay--skoda"></div>
                     </div>
                     <div class="card-body">
+                        <label class="switch switch-3d switch-skoda mr-3">
+                            <input formControlName='open' class="switch-input" type="checkbox" /><span
+                                class="switch-label"></span><span class="switch-handle"></span>
+                        </label><span>Otevřená otázka</span><br />
                         <div class="form-group">
                             <label class="form-control-label" for="name">Otázka</label>
                             <input formControlName='question' class="form-control" type="text" />
