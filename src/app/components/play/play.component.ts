@@ -10,6 +10,7 @@ import { ResultsService } from "src/app/services/results.service";
 })
 export class PlayComponent implements OnInit {
   anketa;
+  progress_bar = 0;
   textarea_value = "";
   stage = 0;
   result = {
@@ -33,13 +34,11 @@ export class PlayComponent implements OnInit {
 
   nextStage() {
     this.stage++;
+    this.updateProgressBar();
   }
 
   answer(answer: number = 1) {
-    console.log(this.result);
     this.textarea_value = "";
-    console.log(this.textarea_value);
-
     this.result.answers.push({
       question: this.anketa.questions[this.questionNumber].question,
       answer,
@@ -50,11 +49,17 @@ export class PlayComponent implements OnInit {
     } else {
       this.questionNumber++;
     }
+    this.updateProgressBar();
+  }
+
+  updateProgressBar() {
+    this.progress_bar =
+      ((this.questionNumber + 1) / this.anketa.questions.length) * 100;
+
+    console.log(this.progress_bar);
   }
 
   postResult() {
-    this.resultsService.postResults(this.result).subscribe((data) => {
-      console.log(data);
-    });
+    this.resultsService.postResults(this.result).subscribe((data) => {});
   }
 }

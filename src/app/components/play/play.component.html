@@ -15,9 +15,7 @@
             </div>
             <button class="au-btn au-btn--skoda btn-block" (click)='answer(opentext.value)'>Pokračovat
             </button>
-            <div class="progress-bar" id="progress-bar"></div>
         </ng-template>
-
 
         <ng-template #closed>
 
@@ -33,10 +31,10 @@
                 (click)='answer(anketa.answers[3].value)'>{{anketa.answers[3].name}} </button>
             <button class="au-btn au-btn--skoda btn-block"
                 (click)='answer(anketa.answers[4].value)'>{{anketa.answers[4].name}} </button>
-            <div class="progress-bar" id="progress-bar"></div>
         </ng-template>
 
     </div>
+    <div class="progress-bar" id="progress-bar" [style.width.%]='progress_bar'></div>
 
     <div *ngIf='stage == 2' class="p-4 min-vh-100 d-flex flex-column justify-content-center hide" id="finish">
         <h1 class="text-center">Děkujeme za Váš čas</h1>

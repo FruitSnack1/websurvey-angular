@@ -1,167 +1,174 @@
 @font-face {
-    font-family: SkodaNext;
-    src: url(../webfonts/SKODANext-Regular.woff2);
+  font-family: SkodaNext;
+  src: url(../webfonts/SKODANext-Regular.woff2);
 }
 
 body {
-    font-family: SkodaNext;
+  font-family: SkodaNext;
 }
 
 .header-wrap {
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 
-.navbar-sidebar .navbar__list li.active>a {
-    color: #4ba82e;
+.navbar-sidebar .navbar__list li.active > a {
+  color: #4ba82e;
 }
 
 .navbar-sidebar .navbar__list li a:hover {
-    color: #4ba82e;
+  color: #4ba82e;
 }
 
 .au-btn--blue {
-    background: #4ba82e;
+  background: #4ba82e;
 }
 
 .au-btn--skoda {
-    background: #4ba82e;
+  background: #4ba82e;
 }
 
 .au-btn--skoda:hover {
-    background: #398022;
+  background: #398022;
 }
 
 .au-btn--secondary {
-    background: #6c757d;
+  background: #6c757d;
 }
 
 .au-btn--secondary:hover {
-    background: #5a6268;
+  background: #5a6268;
 }
 
 .au-btn--danger {
-    background: #dc3545;
+  background: #dc3545;
 }
 
 .au-btn--danger:hover {
-    background: #c82333;
+  background: #c82333;
 }
 
 .au-btn {
-    border-radius: 50px;
+  border-radius: 50px;
 }
 
 .bg-overlay--skoda {
-    background: #4ba82e;
+  background: #4ba82e;
 }
 
 .ankta-date {
-    position: relative;
-    color: white;
-    font-weight: 500;
+  position: relative;
+  color: white;
+  font-weight: 500;
 }
 
 .badge-success {
-    background: #4ba82e;
+  background: #4ba82e;
 }
 
 .page-wrapper {
-    padding-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
-.switch-skoda>.switch-input:checked~.switch-label {
-    background: #4ba82e !important;
-    border-color: #4ba82e;
+.switch-skoda > .switch-input:checked ~ .switch-label {
+  background: #4ba82e !important;
+  border-color: #4ba82e;
 }
 
 .bg-overlay--secondary {
-    background: #6c757d;
+  background: #6c757d;
 }
 
 textarea {
-    resize: none;
+  resize: none;
 }
 
 .table-data2.table tbody tr td:first-child {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .tr-shadow:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .table-data-feature .item i {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 .min-vh-100 {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .question-delete {
-    color: white;
-    position: absolute;
-    right: 40px;
-    z-index: 100;
-    font-size: 28px;
+  color: white;
+  position: absolute;
+  right: 40px;
+  z-index: 100;
+  font-size: 28px;
 }
 
 .table tbody tr:first-child td {
-    border-top: none;
+  border-top: none;
 }
 
 .progress-td {
-    width: 30%;
+  width: 30%;
 }
 
 .progress {
-    height: 24px;
+  height: 24px;
 }
 
 .bg-skoda {
-    background: #4ba82e;
+  background: #4ba82e;
 }
 
 .number-of-users {
-    color: white;
-    position: absolute;
-    right: 40px;
-    z-index: 100;
-    font-size: 28px;
+  color: white;
+  position: absolute;
+  right: 40px;
+  z-index: 100;
+  font-size: 28px;
 }
 
 .number-of-users span {
-    font-family: "Poppins", sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    padding-left: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  padding-left: 10px;
 }
 
 @keyframes newAnketa {
-    from {
-        background-color: #4ba82e;
-    }
-    to {
-        background-color: white;
-    }
+  from {
+    background-color: #4ba82e;
+  }
+  to {
+    background-color: white;
+  }
 }
 
 .new-anketa:last-child {
-    animation: newAnketa 2s ease-in;
+  animation: newAnketa 2s ease-in;
 }
 
-.header-desktop{
-    z-index: 0;
+.header-desktop {
+  z-index: 0;
 }
 
-.modal{
-    background-color: rgba(60, 60, 60, .5);
+.modal {
+  background-color: rgba(60, 60, 60, 0.5);
 }
 
-.modal-content{
-    border: none;
+.modal-content {
+  border: none;
 }
 
-.show{
-    display: block;
+.show {
+  display: block;
+}
+.progress-bar {
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  bottom: 0;
+  background-color: #4ba82e;
 }
