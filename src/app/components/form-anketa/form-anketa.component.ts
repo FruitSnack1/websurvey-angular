@@ -10,13 +10,13 @@ import { Router } from "@angular/router";
 })
 export class FormAnketaComponent implements OnInit {
   anketaForm: FormGroup;
-  @ViewChild('Img') Img;
-  file: File
+  @ViewChild("Img") Img;
+  files: Object = {};
   constructor(
     private fb: FormBuilder,
     private anketyService: AnketyService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.anketaForm = this.fb.group({
@@ -26,7 +26,6 @@ export class FormAnketaComponent implements OnInit {
       user_data: false,
       answers: this.fb.array([]),
       questions: this.fb.array([]),
-      img: null
     });
 
     const defaultAnswers = [
@@ -55,26 +54,15 @@ export class FormAnketaComponent implements OnInit {
     return this.anketaForm.get("answers") as FormArray;
   }
 
-  onFileChange(event) {
-    console.log(event)
+  onFileChange(event, i) {
     if (event.target.files.length > 0) {
-      this.file = event.target.files[0]
-      this.anketaForm.get('img').setValue(this.file)
+      this.files[`img${i}`] = event.target.files[0];
     }
-  }
-
-  uploadFile(event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.anketaForm.patchValue({
-      img: file
-    });
-    this.anketaForm.get('img').updateValueAndValidity()
   }
 
   addQuestion() {
     const question = this.fb.group({
       question: [],
-      img: [],
       open: false,
     });
 
@@ -86,19 +74,11 @@ export class FormAnketaComponent implements OnInit {
   }
 
   submitAnketa() {
-    const formData = new FormData()
-    const formValue = this.anketaForm.value
-
-    console.log(formValue)
-    formData.append('file', this.file)
-    formData.append('name', this.anketaForm.get('name').value)
-    formData.append('description', this.anketaForm.get('description').value)
-    formData.append('questions', JSON.stringify(this.anketaForm.get('questions').value))
-    // formData.append('a', JSON.parse(formValue))
-    // formData.append('answers', formValue.answers)
-    // formData.append('random_order', formValue.random_order)
-    // formData.append('user_data', formValue.user_data)
-    // this.anketyService.createAnketa(formData).subscribe((data) => {
+    const formData = new FormData();
+    for (let key in this.files) {
+      formData.append(key, this.files[key]);
+    }
+    formData.append("anketa", JSON.stringify(this.anketaForm.value));
     this.anketyService.createAnketa(formData).subscribe((data) => {
       this.router.navigateByUrl("/admin/ankety");
     });
