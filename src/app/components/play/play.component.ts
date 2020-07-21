@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { PlayService } from "src/app/services/play.service";
 import { ActivatedRoute } from "@angular/router";
 import { ResultsService } from "src/app/services/results.service";
+import { GlobalVariables } from "src/global";
 
 @Component({
   selector: "app-play",
@@ -35,6 +36,15 @@ export class PlayComponent implements OnInit {
   nextStage() {
     this.stage++;
     this.updateProgressBar();
+  }
+
+  get questionImage() {
+    return this.anketa.questions[this.questionNumber].img
+      ? `${GlobalVariables.API_URL.substring(
+          0,
+          GlobalVariables.API_URL.length - 4
+        )}${this.anketa.questions[this.questionNumber].img}`
+      : "assets/images/avatar.png";
   }
 
   answer(answer: number = 1) {

@@ -66,7 +66,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="name">Obrázek otázky</label>
                             <input formControlName='img' class="form-control-file" type="file"
-                                (change)='onFileChange($event, i)' />
+                                enctype="multipart/form-data" (change)='onFileChange($event, i)' />
                         </div>
                     </div>
                 </div>

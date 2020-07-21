@@ -20,7 +20,7 @@
         <ng-template #closed>
 
             <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question}}</h3>
-            <img class="rounded mx-auto" src="assets/images/avatar.png" style="height: 200px; width : 200px">
+            <img class="rounded mx-auto" [src]='questionImage' style="height: 200px; width : 200px" id="question-image">
             <button class="au-btn au-btn--skoda btn-block"
                 (click)='answer(anketa.answers[0].value)'>{{anketa.answers[0].name}} </button>
             <button class="au-btn au-btn--skoda btn-block"
