@@ -178,3 +178,21 @@ textarea {
 #question-image {
   object-fit: cover;
 }
+
+.nav-tabs .nav-link.active {
+  background-color: #4ba82e;
+  color: #fff;
+}
+
+.nav-tabs .nav-link {
+  border: none;
+  background-color: #fff;
+}
+
+#new-anketa-tab {
+  border-radius: 0 10px 10px 10px;
+}
+
+#new-anketa-tab .bg-overlay {
+  border-top-left-radius: 0;
+}

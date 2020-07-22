@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule, ViewChild } from "@angular/core";
+import { Component, OnInit, NgModule } from "@angular/core";
 import { FormGroup, FormBuilder, FormArray } from "@angular/forms";
 import { AnketyService } from "src/app/services/ankety.service";
 import { Router } from "@angular/router";
@@ -10,8 +10,8 @@ import { Router } from "@angular/router";
 })
 export class FormAnketaComponent implements OnInit {
   anketaForm: FormGroup;
-  @ViewChild("Img") Img;
   files: Object = {};
+  lang = "cs";
   constructor(
     private fb: FormBuilder,
     private anketyService: AnketyService,
@@ -35,15 +35,24 @@ export class FormAnketaComponent implements OnInit {
       "Spíše ne",
       "Určitě ne",
     ];
+    console.log(this.anketaForm);
+    console.log(this.anketaForm.get("answers") as FormGroup);
     for (let i = 0; i < defaultAnswers.length; i++) {
       const obj = this.fb.group({
-        name: [defaultAnswers[i]],
-        value: [i + 1],
+        cs: [defaultAnswers[i]],
+        en: [],
+        de: [],
+        value: i + 1,
       });
+
       this.answerForms.push(obj);
     }
 
     this.addQuestion();
+  }
+
+  changeLang(lang: string) {
+    this.lang = lang;
   }
 
   get questionForms() {
@@ -62,7 +71,9 @@ export class FormAnketaComponent implements OnInit {
 
   addQuestion() {
     const question = this.fb.group({
-      question: [],
+      cs: [],
+      en: [],
+      de: [],
       open: false,
     });
 
@@ -74,13 +85,15 @@ export class FormAnketaComponent implements OnInit {
   }
 
   submitAnketa() {
-    const formData = new FormData();
-    for (let key in this.files) {
-      formData.append(key, this.files[key]);
-    }
-    formData.append("anketa", JSON.stringify(this.anketaForm.value));
-    this.anketyService.createAnketa(formData).subscribe((data) => {
-      this.router.navigateByUrl("/admin/ankety");
-    });
+    console.log(this.questionForms.value);
+    console.log(this.anketaForm.value);
+    // const formData = new FormData();
+    // for (let key in this.files) {
+    //   formData.append(key, this.files[key]);
+    // }
+    // formData.append("anketa", JSON.stringify(this.anketaForm.value));
+    // this.anketyService.createAnketa(formData).subscribe((data) => {
+    //   this.router.navigateByUrl("/admin/ankety");
+    // });
   }
 }

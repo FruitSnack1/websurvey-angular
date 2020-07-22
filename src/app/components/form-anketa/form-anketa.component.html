@@ -1,12 +1,20 @@
 <form [formGroup]='anketaForm' (ngSubmit)='submitAnketa()'>
     <div class="row">
         <div class="col-lg-6 m-b-40">
-            <div class="au-card au-card--no-pad">
+            <nav>
+                <div class="nav nav-tabs">
+                    <a (click)='changeLang("cs")' [ngClass]='{"active": lang=="cs"}' class="nav-item nav-link">Cs</a>
+                    <a (click)='changeLang("en")' [ngClass]='{"active": lang=="en"}' class="nav-item nav-link">En</a>
+                    <a (click)='changeLang("de")' [ngClass]='{"active": lang=="de"}' class="nav-item nav-link">De</a>
+                </div>
+            </nav>
+            <div class="au-card au-card--no-pad" id="new-anketa-tab">
                 <div class="au-card-title">
                     <h3>Nová anketa</h3>
                     <div class="bg-overlay bg-overlay--skoda"></div>
                 </div>
                 <div class="card-body">
+                    <!-- <h3 class="title-2">Nová anketa</h3> -->
                     <div class="form-group">
                         <label class="form-control-label" for="name">Název ankety</label>
                         <input formControlName='name' class="form-control" type="text" placeholder="" />
@@ -33,16 +41,39 @@
                         <input formControlName='user_data' class="switch-input" type="checkbox" /><span
                             class="switch-label"></span><span class="switch-handle"></span>
                     </label><span>Přidat identifikaci</span><br />
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-6 m-b-40">
+            <div class="au-card au-card--no-pad">
+                <div class="card-body">
                     <div formArrayName='answers' class="form-group">
                         <label class="form-control-label" for="name">Odpovědi</label>
                         <div *ngFor='let answer of answerForms.controls; let i=index' [formGroupName]='i'>
-                            <input formControlName='name' class="form-control mb-3" type="text" />
+                            <input *ngIf='lang=="cs"' formControlName='cs' class="form-control mb-3" type="text" />
+                        </div>
+                        <div *ngFor='let answer of answerForms.controls; let i=index' [formGroupName]='i'>
+                            <div *ngIf='lang=="en"'>
+                                <input formControlName='en' class="form-control mb-3" type="text" />
+                                <small>Odpověď v češtině: {{this.answerForms.value[i].cs}}</small>
+                            </div>
+                        </div>
+                        <div *ngFor='let answer of answerForms.controls; let i=index' [formGroupName]='i'>
+                            <div *ngIf='lang=="de"'>
+                                <input formControlName='de' class="form-control mb-3" type="text" />
+                                <small>Odpověď v češtině: {{this.answerForms.value[i].cs}}</small>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+
 
     <!-- QUESTIONS -->
     <div formArrayName='questions'>
@@ -59,9 +90,19 @@
                             <input formControlName='open' class="switch-input" type="checkbox" /><span
                                 class="switch-label"></span><span class="switch-handle"></span>
                         </label><span>Otevřená otázka</span><br />
-                        <div class="form-group">
-                            <label class="form-control-label" for="name">Otázka</label>
-                            <input formControlName='question' class="form-control" type="text" />
+                        <div *ngIf='lang=="cs"' class="form-group">
+                            <label class="form-control-label" for="name">Otázka v češtině</label>
+                            <input formControlName='cs' class="form-control" type="text" />
+                        </div>
+                        <div *ngIf='lang=="en"' class="form-group">
+                            <label class="form-control-label" for="name">Otázka v angličtině</label>
+                            <input formControlName='en' class="form-control" type="text" />
+                            <small>Otázka v češtině: {{this.questionForms.value[i].cs}}</small>
+                        </div>
+                        <div *ngIf='lang=="de"' class="form-group">
+                            <label class="form-control-label" for="name">Otázka v němčině</label>
+                            <input formControlName='de' class="form-control" type="text" />
+                            <small>Otázka v češtině: {{this.questionForms.value[i].cs}}</small>
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="name">Obrázek otázky</label>
