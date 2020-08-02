@@ -20,8 +20,16 @@ export class FormAnketaComponent implements OnInit {
 
   ngOnInit() {
     this.anketaForm = this.fb.group({
-      name: "",
-      description: "",
+      name: this.fb.group({
+        cs: "",
+        en: "",
+        de: "",
+      }),
+      description: this.fb.group({
+        cs: "",
+        en: "",
+        de: "",
+      }),
       random_order: false,
       user_data: false,
       answers: this.fb.array([]),
@@ -61,6 +69,14 @@ export class FormAnketaComponent implements OnInit {
 
   get answerForms() {
     return this.anketaForm.get("answers") as FormArray;
+  }
+
+  get nameForm() {
+    return this.anketaForm.get("name") as FormGroup;
+  }
+
+  get descForm() {
+    return this.anketaForm.get("description") as FormGroup;
   }
 
   onFileChange(event, i) {
