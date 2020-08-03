@@ -103,13 +103,13 @@ export class FormAnketaComponent implements OnInit {
   submitAnketa() {
     console.log(this.questionForms.value);
     console.log(this.anketaForm.value);
-    // const formData = new FormData();
-    // for (let key in this.files) {
-    //   formData.append(key, this.files[key]);
-    // }
-    // formData.append("anketa", JSON.stringify(this.anketaForm.value));
-    // this.anketyService.createAnketa(formData).subscribe((data) => {
-    //   this.router.navigateByUrl("/admin/ankety");
-    // });
+    const formData = new FormData();
+    for (let key in this.files) {
+      formData.append(key, this.files[key]);
+    }
+    formData.append("anketa", JSON.stringify(this.anketaForm.value));
+    this.anketyService.createAnketa(formData).subscribe((data) => {
+      this.router.navigateByUrl("/admin/ankety");
+    });
   }
 }
