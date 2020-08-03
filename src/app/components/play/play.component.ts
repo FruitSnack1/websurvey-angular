@@ -12,6 +12,7 @@ import { GlobalVariables } from "src/global";
 export class PlayComponent implements OnInit {
   anketa;
   progress_bar = 0;
+  questionTime;
   textarea_value = "";
   stage = 0;
   result = {
@@ -36,6 +37,9 @@ export class PlayComponent implements OnInit {
   nextStage() {
     this.stage++;
     this.updateProgressBar();
+    if (this.stage == 1) {
+      this.questionTime = Date.now();
+    }
   }
 
   get questionImage() {
@@ -47,12 +51,14 @@ export class PlayComponent implements OnInit {
       : "assets/images/avatar.png";
   }
 
-  answer(answer: number = 1) {
+  answer(answer) {
     this.textarea_value = "";
     this.result.answers.push({
-      question: this.anketa.questions[this.questionNumber].question,
+      question_id: this.anketa.questions[this.questionNumber].id,
       answer,
+      time: Date.now() - this.questionTime,
     });
+    this.questionTime = Date.now();
     if (this.questionNumber == this.anketa.questions.length - 1) {
       this.nextStage();
       this.postResult();
