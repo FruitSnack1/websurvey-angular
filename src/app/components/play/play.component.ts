@@ -54,7 +54,7 @@ export class PlayComponent implements OnInit {
   answer(answer) {
     this.textarea_value = "";
     this.result.answers.push({
-      question_id: this.anketa.questions[this.questionNumber].id,
+      question_id: this.anketa.questions[this.questionNumber]._id,
       answer,
       time: Date.now() - this.questionTime,
     });

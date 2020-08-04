@@ -216,3 +216,8 @@ textarea {
 .graph-color-5 {
   background-color: #81c26d;
 }
+
+.proggress-bar {
+  width: 0%;
+  transition: width 500ms ease;
+}

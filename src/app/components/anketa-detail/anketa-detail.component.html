@@ -5,7 +5,7 @@
             <div class="au-card au-card--no-pad">
                 <div class="au-card-title">
                     <div class="bg-overlay bg-overlay--skoda"></div>
-                    <i class="fas fa-users number-of-users"><span>{{this.anketa?.questions.length}}</span></i>
+                    <i class="fas fa-users number-of-users"><span>{{this.results?.length}}</span></i>
                     <h3>{{this.anketa?.name.cs}} </h3>
                 </div>
                 <div class="au-card-inner p-5">
@@ -17,18 +17,23 @@
                                         <td>{{question.cs}}</td>
                                         <td class="progress-td">
 
-                                            <ng-template [ngIf]='this.anketa.questions[i].open' [ngIfElse]='closed'>
+                                            <ng-template [ngIf]='!this.anketa.questions[i].open' [ngIfElse]='closed'>
                                                 <div class="progress">
-                                                    <div [style.width]="'20%'" class="progress-bar graph-color-1"
-                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div [style.width]="'20%'" class="progress-bar  graph-color-2"
-                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div [style.width]="'20%'" class="progress-bar  graph-color-3"
-                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div [style.width]="'20%'" class="progress-bar  graph-color-4"
-                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div [style.width]="'20%'" class="progress-bar graph-color-5"
-                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div [style.width]="questionResults[i][0]+'%'"
+                                                        class="progress-bar graph-color-1" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div [style.width]="questionResults[i][1]+'%'"
+                                                        class="progress-bar  graph-color-2" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div [style.width]="questionResults[i][2]+'%'"
+                                                        class="progress-bar  graph-color-3" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div [style.width]="questionResults[i][3]+'%'"
+                                                        class="progress-bar  graph-color-4" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div [style.width]="questionResults[i][4]+'%'"
+                                                        class="progress-bar graph-color-5" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
 
                                             </ng-template>
@@ -49,7 +54,6 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-lg-6 m-b-40">
             <div class="au-card au-card--no-pad">
