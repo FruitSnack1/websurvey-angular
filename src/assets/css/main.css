@@ -196,3 +196,23 @@ textarea {
 #new-anketa-tab .bg-overlay {
   border-top-left-radius: 0;
 }
+
+.graph-color-1 {
+  background-color: #d22630;
+}
+
+.graph-color-2 {
+  background-color: #f4c385;
+}
+
+.graph-color-3 {
+  background-color: #fff374;
+}
+
+.graph-color-4 {
+  background-color: #bfdd92;
+}
+
+.graph-color-5 {
+  background-color: #81c26d;
+}

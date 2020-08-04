@@ -1,4 +1,7 @@
 export class Question {
-    question: string
-    img: string
+  cs: string;
+  en: string;
+  de: string;
+  img: string;
+  open: boolean;
 }

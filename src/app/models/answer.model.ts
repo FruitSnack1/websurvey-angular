@@ -1,4 +1,6 @@
-export class Answer{
-    name:string
-    value:number
+export class Answer {
+  cs: string;
+  en: string;
+  de: string;
+  value: number;
 }
