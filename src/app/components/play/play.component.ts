@@ -19,6 +19,8 @@ export class PlayComponent implements OnInit {
     answers: [],
     anketa_id: "",
   };
+  lang = "cs";
+  langCounter = 0;
   questionNumber: number = 0;
   constructor(
     private playService: PlayService,
@@ -32,6 +34,11 @@ export class PlayComponent implements OnInit {
       this.anketa = data;
       this.result.anketa_id = this.anketa._id;
     });
+  }
+
+  changeLang() {
+    this.langCounter = ++this.langCounter % this.anketa.languages.length;
+    this.lang = this.anketa.languages[this.langCounter];
   }
 
   nextStage() {

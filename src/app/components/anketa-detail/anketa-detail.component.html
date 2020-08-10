@@ -19,19 +19,19 @@
 
                                             <ng-template [ngIf]='!this.anketa.questions[i].open' [ngIfElse]='closed'>
                                                 <div class="progress">
-                                                    <div [style.width]="questionResults[i][0]+'%'"
+                                                    <div [style.width]="getBarWidth(i,4)"
                                                         class="progress-bar graph-color-1" aria-valuenow="25"
                                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div [style.width]="questionResults[i][1]+'%'"
+                                                    <div [style.width]="getBarWidth(i,3)"
                                                         class="progress-bar  graph-color-2" aria-valuenow="25"
                                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div [style.width]="questionResults[i][2]+'%'"
+                                                    <div [style.width]="getBarWidth(i,2)"
                                                         class="progress-bar  graph-color-3" aria-valuenow="25"
                                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div [style.width]="questionResults[i][3]+'%'"
+                                                    <div [style.width]="getBarWidth(i,1)"
                                                         class="progress-bar  graph-color-4" aria-valuenow="25"
                                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div [style.width]="questionResults[i][4]+'%'"
+                                                    <div [style.width]="getBarWidth(i,0)"
                                                         class="progress-bar graph-color-5" aria-valuenow="25"
                                                         aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
@@ -59,7 +59,7 @@
             <div class="au-card au-card--no-pad">
                 <div class="au-card-inner p-5">
                     <div class="row">
-                        <canvas id="donut"></canvas>
+                        <canvas id="bar"></canvas>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,8 @@
         <div class="col-12">
             <h2 class="title-1 m-b-25 m-t-25">Otázky</h2>
         </div>
-        <!-- <app-question [question]=anketa.questions[i] results={{results}}
-            *ngFor='let question of anketa.questions;let i = index' class="col-lg-6"></app-question> -->
+        <app-question [question]=anketa.questions[i] [results]=results [index]=i
+            *ngFor='let question of anketa?.questions;let i = index' class="col-lg-6"></app-question>
     </div>
 </div>
+<script src="node_modules/chart.js/src/chart.js"></script>

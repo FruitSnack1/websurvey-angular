@@ -3,9 +3,12 @@
         <div class="col-lg-6 m-b-40">
             <nav>
                 <div class="nav nav-tabs">
-                    <a (click)='changeLang("cs")' [ngClass]='{"active": lang=="cs"}' class="nav-item nav-link">Cs</a>
-                    <a (click)='changeLang("en")' [ngClass]='{"active": lang=="en"}' class="nav-item nav-link">En</a>
-                    <a (click)='changeLang("de")' [ngClass]='{"active": lang=="de"}' class="nav-item nav-link">De</a>
+                    <a *ngIf='languages.includes("cs")' (click)='changeLang("cs")' [ngClass]='{"active": lang=="cs"}'
+                        class="nav-item nav-link">Cs</a>
+                    <a *ngIf='languages.includes("en")' (click)='changeLang("en")' [ngClass]='{"active": lang=="en"}'
+                        class="nav-item nav-link">En</a>
+                    <a *ngIf='languages.includes("de")' (click)='changeLang("de")' [ngClass]='{"active": lang=="de"}'
+                        class="nav-item nav-link">De</a>
                 </div>
             </nav>
             <div class="au-card au-card--no-pad" id="new-anketa-tab">
@@ -46,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 m-b-40">
+        <div class="col-lg-6 m-b-40 m-t-40">
             <div class="au-card au-card--no-pad">
                 <div class="au-card-title">
                     <h3>Možnosti</h3>
@@ -61,6 +64,14 @@
                         <input formControlName='user_data' class="switch-input" type="checkbox" /><span
                             class="switch-label"></span><span class="switch-handle"></span>
                     </label><span>Přidat identifikaci</span><br />
+                    <label class="switch switch-3d switch-skoda mr-3">
+                        <input (click)='toggleLang("en")' class="switch-input" type="checkbox" /><span
+                            class="switch-label"></span><span class="switch-handle"></span>
+                    </label><span>Otázky v angličtině</span><br />
+                    <label class="switch switch-3d switch-skoda mr-3">
+                        <input (click)='toggleLang("de")' class="switch-input" type="checkbox" /><span
+                            class="switch-label"></span><span class="switch-handle"></span>
+                    </label><span>Otázky v němčině</span><br />
 
                 </div>
             </div>
@@ -126,8 +137,8 @@
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="name">Obrázek otázky</label>
-                            <input formControlName='img' class="form-control-file" type="file"
-                                enctype="multipart/form-data" (change)='onFileChange($event, i)' />
+                            <input class="form-control-file" type="file" enctype="multipart/form-data"
+                                (change)='onFileChange($event, i)' />
                         </div>
                     </div>
                 </div>

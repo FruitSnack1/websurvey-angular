@@ -12,6 +12,7 @@ export class FormAnketaComponent implements OnInit {
   anketaForm: FormGroup;
   files: Object = {};
   lang = "cs";
+  languages = ["cs"];
   constructor(
     private fb: FormBuilder,
     private anketyService: AnketyService,
@@ -85,6 +86,13 @@ export class FormAnketaComponent implements OnInit {
     }
   }
 
+  toggleLang(lang: string) {
+    if (this.languages.includes(lang)) {
+      this.languages.splice(this.languages.indexOf(lang), 1);
+      if (this.lang == lang) this.changeLang("cs");
+    } else this.languages.push(lang);
+  }
+
   addQuestion() {
     const question = this.fb.group({
       cs: [],
@@ -101,13 +109,14 @@ export class FormAnketaComponent implements OnInit {
   }
 
   submitAnketa() {
-    console.log(this.questionForms.value);
-    console.log(this.anketaForm.value);
+    let anketaFormValue = this.anketaForm.value;
+    anketaFormValue.languages = this.languages;
+    console.log(anketaFormValue);
     const formData = new FormData();
     for (let key in this.files) {
       formData.append(key, this.files[key]);
     }
-    formData.append("anketa", JSON.stringify(this.anketaForm.value));
+    formData.append("anketa", JSON.stringify(anketaFormValue));
     this.anketyService.createAnketa(formData).subscribe((data) => {
       this.router.navigateByUrl("/admin/ankety");
     });

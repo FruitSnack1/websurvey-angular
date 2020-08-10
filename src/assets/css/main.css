@@ -217,7 +217,15 @@ textarea {
   background-color: #81c26d;
 }
 
-.proggress-bar {
+.progress-bar {
+  /* min-width: 1px; */
   width: 0%;
   transition: width 500ms ease;
+}
+
+.lang-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
 }

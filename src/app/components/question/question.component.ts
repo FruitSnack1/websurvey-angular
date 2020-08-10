@@ -9,25 +9,27 @@ import { Chart } from "chart.js";
 export class QuestionComponent implements OnInit {
   @Input() question: any;
   @Input() results;
+  @Input() index;
 
   constructor(private elementRef: ElementRef) {}
   chart;
   ngOnInit() {
-    console.log(this.question);
-    let htmlRef = this.elementRef.nativeElement.querySelector(`#chart`);
-    this.chart = new Chart(htmlRef, {
+    let id = `chart${this.index + 1}`;
+    console.log(this.results);
+
+    this.chart = new Chart("chart0", {
       type: "bar",
       data: {
         labels: ["Určitě ano", "Spíše ano", "Nevím", "Spíše ne", "Určitě ne"],
         datasets: [
           {
-            data: [2, 3, 7, 6, 4],
+            data: this.questionResults,
             backgroundColor: [
-              "rgb(75, 168, 46)",
-              "rgb(129, 194, 109)",
-              "rgb(219, 238, 213)",
-              "rgb(234, 81, 103)",
-              "rgb(210, 38, 48)",
+              "#81c26d",
+              "#bfdd92",
+              "#fff374",
+              "#f4c385",
+              "#d22630",
             ],
           },
         ],
@@ -38,6 +40,7 @@ export class QuestionComponent implements OnInit {
             {
               ticks: {
                 beginAtZero: true,
+                stepSize: 1,
               },
             },
           ],
@@ -48,5 +51,13 @@ export class QuestionComponent implements OnInit {
       },
     });
     console.log(this.chart);
+  }
+
+  get questionResults() {
+    let arr = [0, 0, 0, 0, 0];
+    for (let i = 0; i < this.results.length; i++) {
+      arr[this.results[i].answers[this.index].answer - 1]++;
+    }
+    return arr;
   }
 }
