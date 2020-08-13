@@ -3,9 +3,7 @@ import { AnketyService } from "src/app/services/ankety.service";
 import { ActivatedRoute } from "@angular/router";
 import { ResultsService } from "src/app/services/results.service";
 import { Chart } from "chart.js";
-import { Anketa } from "../../models/anketa.model";
-import { Result } from "../../models/result.model";
-import { LoginComponent } from "../login/login.component";
+import { GlobalVariables } from 'src/global';
 
 @Component({
   selector: "app-anketa-detail",
@@ -17,15 +15,17 @@ export class AnketaDetailComponent implements OnInit {
     private anketyService: AnketyService,
     private route: ActivatedRoute,
     private resultsService: ResultsService
-  ) {}
+  ) { }
 
   anketa: any;
   results: any;
+  anketa_qr:string
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get("id");
     this.anketyService.getAnketa(id).subscribe((data) => {
       this.anketa = data;
+      this.anketa_qr = `${GlobalVariables.QR_URL}/${this.anketa._id}.png`
     });
 
     this.resultsService.getResults(id).subscribe((data) => {
@@ -69,19 +69,19 @@ export class AnketaDetailComponent implements OnInit {
         labels: this.labels,
         datasets: [
           {
-            label: "# of Votes",
+            label: "Počet hlasů",
             data: this.chartResults,
             backgroundColor: ["rgba(129,194,107,.5)"],
             borderWidth: 0,
           },
         ],
-        options: {
-          scale: {
-            ticks: {
-              beginAtZero: true,
-              min: 0,
-              stepSize: 1,
-            },
+      }, 
+      options: {
+        scale: {
+          ticks: {
+            beginAtZero: true,
+            min: 0,
+            stepSize: 1
           },
         },
       },
