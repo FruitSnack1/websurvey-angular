@@ -15,6 +15,7 @@ import { FormAnketaComponent } from './components/form-anketa/form-anketa.compon
 import { AnketaDetailComponent } from './components/anketa-detail/anketa-detail.component';
 import { QuestionComponent } from './components/question/question.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

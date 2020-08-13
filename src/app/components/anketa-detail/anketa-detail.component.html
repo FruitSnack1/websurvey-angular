@@ -1,6 +1,8 @@
 <div>
     <div class="row">
-        <h2 class="title-1 m-b-25">Anketa</h2>
+        <div class="col-lg-12">
+            <h2 class="title-1 m-b-25">Anketa</h2>
+        </div>
     </div>
     <div class="row">
         <div class="col-lg-9 m-b-40">
@@ -87,11 +89,11 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf='results'>
         <div class="col-12">
             <h2 class="title-1 m-b-25 m-t-25">Otázky</h2>
         </div>
-        <app-question [question]=anketa.questions[i] [results]=results [index]=i
+        <app-question  [question]=anketa.questions[i] [results]=results [index]=i
             *ngFor='let question of anketa?.questions;let i = index' class="col-lg-6"></app-question>
     </div>
 </div>

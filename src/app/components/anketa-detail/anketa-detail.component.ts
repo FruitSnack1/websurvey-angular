@@ -55,11 +55,19 @@ export class AnketaDetailComponent implements OnInit {
               "#f4c385",
               "#d22630",
             ],
+            hoverBackgroundColor: [
+              "#81c26d",
+              "#bfdd92",
+              "#fff374",
+              "#f4c385",
+              "#d22630",
+            ],
             borderWidth: 0,
           },
         ],
       },
     });
+    console.log(myChart)
   }
 
   setRadarChart() {
