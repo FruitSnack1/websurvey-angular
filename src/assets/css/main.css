@@ -187,6 +187,7 @@ textarea {
 .nav-tabs .nav-link {
   border: none;
   background-color: #fff;
+  border-right: 2px solid #e5e5e5;
 }
 
 #new-anketa-tab {

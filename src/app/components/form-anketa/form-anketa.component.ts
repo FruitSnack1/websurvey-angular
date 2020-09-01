@@ -1,5 +1,10 @@
 import { Component, OnInit, NgModule } from "@angular/core";
-import { FormGroup, FormBuilder, FormArray } from "@angular/forms";
+import {
+  FormGroup,
+  FormBuilder,
+  FormArray,
+  AbstractControl,
+} from "@angular/forms";
 import { AnketyService } from "src/app/services/ankety.service";
 import { Router } from "@angular/router";
 
@@ -13,6 +18,7 @@ export class FormAnketaComponent implements OnInit {
   files: Object = {};
   lang = "cs";
   languages = ["cs"];
+  addLangModal = false;
   constructor(
     private fb: FormBuilder,
     private anketyService: AnketyService,
@@ -40,17 +46,29 @@ export class FormAnketaComponent implements OnInit {
     const defaultAnswers = [
       "Určitě ano",
       "Spíše ano",
-      "Nevím",
+      "Nemohu rozhodnout",
       "Spíše ne",
       "Určitě ne",
+
+      "Definitely yes",
+      "Rather yes",
+      "Cannot decide",
+      "Rather not",
+      "Definitely not",
+
+      "Sicherlich ja",
+      "Eher ja",
+      "Kann nicht entscheinden",
+      "Lieber nicht",
+      "Eher nicht",
     ];
-    console.log(this.anketaForm);
-    console.log(this.anketaForm.get("answers") as FormGroup);
-    for (let i = 0; i < defaultAnswers.length; i++) {
+    for (let i = 0; i < 5; i++) {
       const obj = this.fb.group({
-        cs: [defaultAnswers[i]],
-        en: [],
-        de: [],
+        answer: this.fb.group({
+          cs: defaultAnswers[i],
+          en: defaultAnswers[i + 5],
+          de: defaultAnswers[i + 10],
+        }),
         value: i + 1,
       });
 
@@ -90,22 +108,40 @@ export class FormAnketaComponent implements OnInit {
     if (this.languages.includes(lang)) {
       this.languages.splice(this.languages.indexOf(lang), 1);
       if (this.lang == lang) this.changeLang("cs");
-    } else this.languages.push(lang);
+    } else {
+      this.languages.push(lang);
+      let name = this.anketaForm.get("name") as FormGroup;
+    }
   }
 
   addQuestion() {
     const question = this.fb.group({
-      cs: [],
-      en: [],
-      de: [],
+      question: this.fb.group({
+        cs: "",
+        en: "",
+        de: "",
+      }),
       open: false,
     });
 
     this.questionForms.push(question);
   }
 
+  getQuestionText(lang) {
+    const langs = {
+      cs: "češtině",
+      en: "angličtině",
+      de: "němčině",
+    };
+    return langs[lang];
+  }
+
   deleteQuestion(i) {
     this.questionForms.removeAt(i);
+  }
+
+  toggleAddLang() {
+    this.addLangModal = !this.addLangModal;
   }
 
   submitAnketa() {
