@@ -1,82 +1,97 @@
-import { Component, OnInit } from '@angular/core';
-import { AnketyService } from 'src/app/services/ankety.service';
-import { Router } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Component, OnInit } from "@angular/core";
+import { AnketyService } from "src/app/services/ankety.service";
+import { Router } from "@angular/router";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from "@angular/animations";
 
 @Component({
-  selector: 'app-ankety',
-  templateUrl: './ankety.component.html',
-  styleUrls: ['./ankety.component.css'],
+  selector: "app-ankety",
+  templateUrl: "./ankety.component.html",
+  styleUrls: ["./ankety.component.css"],
   animations: [
-    trigger('displayState',[
-      state('show', style({
-        opacity:1
-      })),
-      state('hide', style({
-        opacity:0
-      })),
-      transition('show => hide', animate('600ms ease-out')),
-      transition('hide => show', animate('600ms ease-out'))
-    ])
-  ]
+    trigger("displayState", [
+      state(
+        "show",
+        style({
+          opacity: 1,
+        })
+      ),
+      state(
+        "hide",
+        style({
+          opacity: 0,
+        })
+      ),
+      transition("show => hide", animate("600ms ease-out")),
+      transition("hide => show", animate("600ms ease-out")),
+    ]),
+  ],
 })
 export class AnketyComponent implements OnInit {
-  
-  ankety:object
-  show: boolean = false
-  anketaId: string
-  deleteModal: boolean = false
-  constructor(private anketyService: AnketyService, private router:Router) { }
+  ankety: object;
+  show: boolean = false;
+  anketaId: string;
+  deleteModal: boolean = false;
+  constructor(private anketyService: AnketyService, private router: Router) {}
 
   ngOnInit() {
-   this.getAnkety() 
+    this.getAnkety();
   }
 
-  playAnketa(id:string){
-    this.router.navigateByUrl(`/play/${id}`)
+  playAnketa(id: string) {
+    this.router.navigateByUrl(`/play/${id}`);
   }
 
-  deleteAnketa(){
-    this.anketyService.deleteAnketa(this.anketaId).subscribe(data =>{
-      this.toggleDeleteModal()      
-      this.getAnkety()
-    })
+  editAnketa(id) {
+    this.router.navigateByUrl(`/admin/edit/${id}`);
   }
 
-  setAnketa(id:string){
-    this.anketaId = id
-    this.toggleDeleteModal()
+  deleteAnketa() {
+    this.anketyService.deleteAnketa(this.anketaId).subscribe((data) => {
+      this.toggleDeleteModal();
+      this.getAnkety();
+    });
   }
 
-  toggleDeleteModal(){
-    this.deleteModal = !this.deleteModal
+  setAnketa(id: string) {
+    this.anketaId = id;
+    this.toggleDeleteModal();
   }
 
-  getAnkety(){
-    this.anketyService.getAnkety().subscribe(data => {
-      this.ankety = data
-    })
+  toggleDeleteModal() {
+    this.deleteModal = !this.deleteModal;
   }
 
-  showAnketaDetail(id){
-    console.log(id)
-    this.router.navigateByUrl(`/admin/detail/${id}`, { skipLocationChange: true })
+  getAnkety() {
+    this.anketyService.getAnkety().subscribe((data) => {
+      this.ankety = data;
+    });
   }
 
-  get animationState(){
-    return this.show ? 'show' : 'hide'
+  showAnketaDetail(id) {
+    console.log(id);
+    this.router.navigateByUrl(`/admin/detail/${id}`, {
+      skipLocationChange: true,
+    });
   }
 
-  get isAdded(){
-    console.log(this.router.url)
-    return this.router.url == '/admin/ankety/new' ? true : false
+  get animationState() {
+    return this.show ? "show" : "hide";
   }
 
-  animateElement(){
-    this.show = !this.show
-    console.log(this.show)
+  get isAdded() {
+    console.log(this.router.url);
+    return this.router.url == "/admin/ankety/new" ? true : false;
   }
 
-  
+  animateElement() {
+    this.show = !this.show;
+    console.log(this.show);
+  }
 }

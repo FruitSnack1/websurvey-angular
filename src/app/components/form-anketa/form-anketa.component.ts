@@ -6,7 +6,8 @@ import {
   AbstractControl,
 } from "@angular/forms";
 import { AnketyService } from "src/app/services/ankety.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: "app-form-anketa",
@@ -19,13 +20,24 @@ export class FormAnketaComponent implements OnInit {
   lang = "cs";
   languages = ["cs"];
   addLangModal = false;
+  editSurvey: any;
+  editMode = false;
+  editId: string;
   constructor(
     private fb: FormBuilder,
     private anketyService: AnketyService,
-    private router: Router
+    private route: ActivatedRoute,
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get("id");
+    if (id) {
+      this.editMode = true;
+      this.editId = id;
+      this.fetchSurvey(id);
+    }
     this.anketaForm = this.fb.group({
       name: this.fb.group({
         cs: "",
@@ -74,8 +86,7 @@ export class FormAnketaComponent implements OnInit {
 
       this.answerForms.push(obj);
     }
-
-    this.addQuestion();
+    if (!this.editMode) this.addQuestion();
   }
 
   changeLang(lang: string) {
@@ -127,6 +138,42 @@ export class FormAnketaComponent implements OnInit {
     this.questionForms.push(question);
   }
 
+  fetchSurvey(id) {
+    this.anketyService.getAnketa(id).subscribe((data) => {
+      let survey: any = data;
+      this.editSurvey = data;
+      this.anketaForm.get("random_order").setValue(survey.random_order);
+      this.anketaForm.get("user_data").setValue(survey.user_data);
+      this.languages = survey.languages;
+
+      for (let lan of survey.languages) {
+        this.nameForm.get(lan).setValue(survey.name[lan]);
+        this.descForm.get(lan).setValue(survey.description[lan]);
+
+        for (let i = 0; i < 5; i++) {
+          this.answerForms
+            .at(i)
+            .get("answer")
+            .get(lan)
+            .setValue(survey.answers[i].answer[lan]);
+        }
+
+        for (let i = 0; i < survey.questions.length; i++) {
+          if (lan == "cs") this.addQuestion();
+          this.questionForms
+            .at(i)
+            .get("question")
+            .get(lan)
+            .setValue(survey.questions[i].question[lan]);
+        }
+      }
+
+      for (let i = 0; i < survey.questions.length; i++) {
+        this.questionForms.at(i).get("open").setValue(survey.questions[i].open);
+      }
+    });
+  }
+
   getQuestionText(lang) {
     const langs = {
       cs: "češtině",
@@ -134,6 +181,15 @@ export class FormAnketaComponent implements OnInit {
       de: "němčině",
     };
     return langs[lang];
+  }
+
+  getImageSrc(index) {
+    if (this.editSurvey) {
+      if (this.editSurvey.questions[index].img)
+        return this.sanitizer.bypassSecurityTrustUrl(
+          `http://localhost:3001${this.editSurvey.questions[index].img}`
+        );
+    } else return "assets/images/no-image.png";
   }
 
   deleteQuestion(i) {
@@ -145,16 +201,31 @@ export class FormAnketaComponent implements OnInit {
   }
 
   submitAnketa() {
-    let anketaFormValue = this.anketaForm.value;
-    anketaFormValue.languages = this.languages;
-    console.log(anketaFormValue);
-    const formData = new FormData();
-    for (let key in this.files) {
-      formData.append(key, this.files[key]);
+    if (this.editMode) {
+      let anketaFormValue = this.anketaForm.value;
+      anketaFormValue.languages = this.languages;
+      const formData = new FormData();
+      for (let key in this.files) {
+        formData.append(key, this.files[key]);
+      }
+      formData.append("anketa", JSON.stringify(anketaFormValue));
+      this.anketyService
+        .updateSurvey(this.editId, formData)
+        .subscribe((data) => {
+          this.router.navigateByUrl("/admin/ankety");
+        });
+    } else {
+      let anketaFormValue = this.anketaForm.value;
+      anketaFormValue.languages = this.languages;
+      console.log(anketaFormValue);
+      const formData = new FormData();
+      for (let key in this.files) {
+        formData.append(key, this.files[key]);
+      }
+      formData.append("anketa", JSON.stringify(anketaFormValue));
+      this.anketyService.createAnketa(formData).subscribe((data) => {
+        this.router.navigateByUrl("/admin/ankety");
+      });
     }
-    formData.append("anketa", JSON.stringify(anketaFormValue));
-    this.anketyService.createAnketa(formData).subscribe((data) => {
-      this.router.navigateByUrl("/admin/ankety");
-    });
   }
 }
