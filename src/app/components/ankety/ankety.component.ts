@@ -75,7 +75,6 @@ export class AnketyComponent implements OnInit {
   }
 
   showAnketaDetail(id) {
-    console.log(id);
     this.router.navigateByUrl(`/admin/detail/${id}`, {
       skipLocationChange: true,
     });
@@ -86,12 +85,10 @@ export class AnketyComponent implements OnInit {
   }
 
   get isAdded() {
-    console.log(this.router.url);
     return this.router.url == "/admin/ankety/new" ? true : false;
   }
 
   animateElement() {
     this.show = !this.show;
-    console.log(this.show);
   }
 }

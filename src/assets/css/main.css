@@ -230,3 +230,8 @@ textarea {
   right: 20px;
   font-size: 24px;
 }
+
+.form-anketa-img {
+  object-fit: cover;
+  object-position: center center;
+}

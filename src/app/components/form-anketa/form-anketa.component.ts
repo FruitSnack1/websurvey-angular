@@ -17,6 +17,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 export class FormAnketaComponent implements OnInit {
   anketaForm: FormGroup;
   files: Object = {};
+  imagesPreviews = [];
   lang = "cs";
   languages = ["cs"];
   addLangModal = false;
@@ -110,9 +111,13 @@ export class FormAnketaComponent implements OnInit {
   }
 
   onFileChange(event, i) {
-    if (event.target.files.length > 0) {
-      this.files[`img${i}`] = event.target.files[0];
-    }
+    if (!event.target.files) return;
+    this.files[`img${i}`] = event.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (event: any) => {
+      this.imagesPreviews[i] = event.target.result;
+    };
   }
 
   toggleLang(lang: string) {
@@ -184,11 +189,13 @@ export class FormAnketaComponent implements OnInit {
   }
 
   getImageSrc(index) {
-    if (this.editSurvey) {
+    if (this.imagesPreviews[index]) return this.imagesPreviews[index];
+    else if (this.editSurvey) {
       if (this.editSurvey.questions[index].img)
         return this.sanitizer.bypassSecurityTrustUrl(
           `http://localhost:3001${this.editSurvey.questions[index].img}`
         );
+      else return "assets/images/no-image.png";
     } else return "assets/images/no-image.png";
   }
 
