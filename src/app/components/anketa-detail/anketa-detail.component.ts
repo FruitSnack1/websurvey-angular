@@ -3,7 +3,7 @@ import { AnketyService } from "src/app/services/ankety.service";
 import { ActivatedRoute } from "@angular/router";
 import { ResultsService } from "src/app/services/results.service";
 import { Chart } from "chart.js";
-import { GlobalVariables } from 'src/global';
+import { GlobalVariables } from "src/global";
 
 @Component({
   selector: "app-anketa-detail",
@@ -15,17 +15,17 @@ export class AnketaDetailComponent implements OnInit {
     private anketyService: AnketyService,
     private route: ActivatedRoute,
     private resultsService: ResultsService
-  ) { }
+  ) {}
 
   anketa: any;
   results: any;
-  anketa_qr:string
+  anketa_qr: string;
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get("id");
     this.anketyService.getAnketa(id).subscribe((data) => {
       this.anketa = data;
-      this.anketa_qr = `${GlobalVariables.QR_URL}/${this.anketa._id}.png`
+      this.anketa_qr = `${GlobalVariables.QR_URL}/${this.anketa._id}.png`;
     });
 
     this.resultsService.getResults(id).subscribe((data) => {
@@ -67,7 +67,7 @@ export class AnketaDetailComponent implements OnInit {
         ],
       },
     });
-    console.log(myChart)
+    console.log(myChart);
   }
 
   setRadarChart() {
@@ -83,13 +83,13 @@ export class AnketaDetailComponent implements OnInit {
             borderWidth: 0,
           },
         ],
-      }, 
+      },
       options: {
         scale: {
           ticks: {
             beginAtZero: true,
             min: 0,
-            stepSize: 1
+            stepSize: 1,
           },
         },
       },
@@ -100,7 +100,7 @@ export class AnketaDetailComponent implements OnInit {
     if (!this.anketa) return [];
     let answers = [];
     for (let answer of this.anketa.answers) {
-      answers.push(answer.cs);
+      answers.push(answer.answer.cs);
     }
     return answers;
   }

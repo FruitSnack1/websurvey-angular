@@ -18,7 +18,7 @@
                             <table class="table">
                                 <tbody>
                                     <tr *ngFor='let question of this.anketa?.questions; let i=index'>
-                                        <td>{{question.cs}}</td>
+                                        <td>{{question.question.cs}}</td>
                                         <td class="progress-td">
 
                                             <ng-template [ngIf]='!this.anketa.questions[i].open' [ngIfElse]='closed'>
@@ -61,7 +61,7 @@
             <div class="au-card au-card--no-pad w-100 d-flex justify-content-center align-items-center">
                 <div class="au-card-inner p-4">
                     <div class="row">
-                        <img  class="m-auto w-100" [src]='anketa_qr' >
+                        <img class="m-auto w-100" [src]='anketa_qr'>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
         <div class="col-12">
             <h2 class="title-1 m-b-25 m-t-25">Otázky</h2>
         </div>
-        <app-question  [question]=anketa.questions[i] [results]=results [index]=i
+        <app-question [question]=anketa.questions[i] [results]=results [index]=i
             *ngFor='let question of anketa?.questions;let i = index' class="col-lg-6"></app-question>
     </div>
 </div>

@@ -11,7 +11,7 @@ export class QuestionComponent implements OnInit {
   @Input() results;
   @Input() index;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef) {}
 
   public barChartOptions = {
     scales: {
@@ -19,27 +19,33 @@ export class QuestionComponent implements OnInit {
         {
           ticks: {
             beginAtZero: true,
-            stepSize: 1
-          }
-        }
-      ]
+            stepSize: 1,
+          },
+        },
+      ],
     },
     scaleShowVerticalLines: false,
     responsive: true,
     lineOnHover: {
-      enabled: false
-   }
+      enabled: false,
+    },
   };
-  public barChartLabels = ['Určitě ne', 'Spíše ne', 'Nevím', 'Spíše ano', 'Určitě ano'];
-  public barChartType = 'bar';
+  public barChartLabels = [
+    "Určitě ne",
+    "Spíše ne",
+    "Nevím",
+    "Spíše ano",
+    "Určitě ano",
+  ];
+  public barChartType = "bar";
   public barChartLegend = false;
-  public barChartData
+  public barChartData;
 
   ngOnInit() {
-    this.barChartData= [
+    this.barChartData = [
       {
         data: this.questionResults,
-        labels: ['Určitě ne', 'Spíše ne', 'Nevím', 'Spíše ano', 'Určitě ano'],
+        labels: this.questionAnswers,
         backgroundColor: [
           "#d22630",
           "#f4c385",
@@ -54,25 +60,25 @@ export class QuestionComponent implements OnInit {
           "#bfdd92",
           "#81c26d",
         ],
-        borderWidth: 0
-      }
+        borderWidth: 0,
+      },
     ];
   }
 
   get questionResults() {
-    let arr = [0,0,0,0,0];
+    let arr = [0, 0, 0, 0, 0];
     for (let i = 0; i < this.results.length; i++) {
       arr[this.results[i].answers[this.index].answer - 1]++;
     }
     return arr;
   }
 
-  get questionAnswers(){
-    let arr = []
+  get questionAnswers() {
+    let arr = [];
     for (let i = 0; i < this.results.length; i++) {
-      arr.push(this.results[i].answers[this.index].answer)
+      arr.push(this.results[i].answers[this.index].answer.cs);
     }
-    return arr
+    console.log(arr);
+    return arr;
   }
-
 }

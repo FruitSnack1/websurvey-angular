@@ -6,9 +6,9 @@
     <div *ngIf='question.open'></div>
     <ng-template [ngIf]='question.open' [ngIfElse]='closed'>
         <div class="au-card-inner p-3" style="max-height: 300px;overflow: auto;">
-                <div *ngFor='let answer of questionAnswers; let i=index' class="au-card mb-3">
-                    {{answer}}
-                </div>
+            <div *ngFor='let answer of questionAnswers; let i=index' class="au-card mb-3">
+                {{answer}}
+            </div>
         </div>
     </ng-template>
 
