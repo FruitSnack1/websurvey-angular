@@ -3,6 +3,7 @@ import { PlayService } from "src/app/services/play.service";
 import { ActivatedRoute } from "@angular/router";
 import { ResultsService } from "src/app/services/results.service";
 import { GlobalVariables } from "src/global";
+import { CookieService } from "ngx-cookie-service";
 
 @Component({
   selector: "app-play",
@@ -14,7 +15,7 @@ export class PlayComponent implements OnInit {
   progress_bar = 0;
   questionTime;
   textarea_value = "";
-  stage = 0;
+  stage = -1;
   result = {
     answers: [],
     anketa_id: "",
@@ -25,15 +26,21 @@ export class PlayComponent implements OnInit {
   constructor(
     private playService: PlayService,
     private route: ActivatedRoute,
-    private resultsService: ResultsService
+    private resultsService: ResultsService,
+    private cookieService: CookieService
   ) {}
 
   ngOnInit() {
+    if (this.cookieService.get("pin")) this.stage = 0;
     const id = this.route.snapshot.paramMap.get("id");
     this.playService.getAneta(id).subscribe((data) => {
       this.anketa = data;
       this.result.anketa_id = this.anketa._id;
     });
+  }
+
+  onRegister() {
+    this.stage++;
   }
 
   changeLang() {

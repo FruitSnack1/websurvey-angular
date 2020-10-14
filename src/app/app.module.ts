@@ -16,6 +16,7 @@ import { AnketaDetailComponent } from './components/anketa-detail/anketa-detail.
 import { QuestionComponent } from './components/question/question.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { ChartsModule } from 'ng2-charts';
+import { PlayRegisterComponent } from './components/play-register/play-register.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ChartsModule } from 'ng2-charts';
     FormAnketaComponent,
     AnketaDetailComponent,
     QuestionComponent,
+    PlayRegisterComponent,
   ],
   imports: [
     BrowserModule,
