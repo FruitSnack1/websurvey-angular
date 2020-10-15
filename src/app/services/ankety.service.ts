@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { GlobalVariables } from "src/global";
+import { environment } from "./../../environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class AnketyService {
-  url: string = `${GlobalVariables.API_URL}/ankety`;
+  url: string = `${environment.API_URL}/ankety`;
 
   constructor(private httpClient: HttpClient) {}
 

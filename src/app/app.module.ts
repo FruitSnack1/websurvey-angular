@@ -17,6 +17,7 @@ import { QuestionComponent } from './components/question/question.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { ChartsModule } from 'ng2-charts';
 import { PlayRegisterComponent } from './components/play-register/play-register.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PlayRegisterComponent } from './components/play-register/play-register.
     AnketaDetailComponent,
     QuestionComponent,
     PlayRegisterComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

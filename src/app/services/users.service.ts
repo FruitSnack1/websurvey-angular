@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { User } from '../models/user.model';
-import { GlobalVariables } from 'src/global';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { User } from "../models/user.model";
+import { environment } from "./../../environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class UsersService {
-  url: string = `${GlobalVariables.API_URL}/users`
-  constructor(private httpClient: HttpClient) {
-  }
+  url: string = `${environment.API_URL}/users`;
+  constructor(private httpClient: HttpClient) {}
 
   getUsers() {
-    return this.httpClient.get(this.url)
+    return this.httpClient.get(this.url);
   }
 
   registerUser(user: User) {
@@ -20,6 +19,8 @@ export class UsersService {
   }
 
   loginUser(user: object) {
-    return this.httpClient.post(`${this.url}/login`, user, { withCredentials: true });
+    return this.httpClient.post(`${this.url}/login`, user, {
+      withCredentials: true,
+    });
   }
 }

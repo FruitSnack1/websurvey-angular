@@ -235,3 +235,124 @@ textarea {
   object-fit: cover;
   object-position: center center;
 }
+
+.bg-menu {
+  background-color: black;
+}
+
+.menu-theme {
+  width: 100%;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 16px 0 32px;
+  border-radius: 4px;
+}
+
+.menu-theme h4 {
+  color: white;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0;
+}
+
+.menu-logo {
+  height: 200px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+}
+
+.menu-theme-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-width: 1200px;
+}
+
+/* .bg-electrification {
+  background-image: linear-gradient(45deg, #0fb6eb, #0d6bd4, #8bf0fa),
+    url("../images/theme1.png");
+} */
+.bg-electrification {
+  background-image: linear-gradient(
+      45deg,
+      rgba(15, 182, 235, 0.7),
+      rgba(13, 107, 212, 0.7),
+      rgba(139, 240, 250, 0.7)
+    ),
+    url("../images/theme1.png");
+  background-size: cover;
+}
+
+.bg-automated-driving {
+  background-image: linear-gradient(
+      45deg,
+      rgba(255, 169, 0, 0.7),
+      rgba(255, 84, 0, 0.7),
+      rgba(255, 236, 112, 0.7)
+    ),
+    url("../images/theme1.png");
+  background-size: cover;
+}
+
+.bg-connectivity {
+  background-image: linear-gradient(
+      45deg,
+      rgba(87, 38, 207, 0.7),
+      rgba(127, 0, 207, 0.7),
+      rgba(119, 147, 237, 0.7)
+    ),
+    url("../images/theme1.png");
+  background-size: cover;
+}
+
+.bg-vehicle-experience {
+  background-image: linear-gradient(
+      45deg,
+      rgba(183, 18, 32, 0.7),
+      rgba(126, 0, 83, 0.7),
+      rgba(248, 55, 0, 0.7)
+    ),
+    url("../images/theme1.png");
+  background-size: cover;
+}
+
+.bg-environment {
+  background-image: linear-gradient(
+      45deg,
+      rgba(67, 176, 42, 0.7),
+      rgba(0, 88, 48, 0.7),
+      rgba(133, 217, 55, 0.7)
+    ),
+    url("../images/theme1.png");
+  background-size: cover;
+}
+
+.bg-virtual {
+  background-image: linear-gradient(
+      45deg,
+      rgba(124, 120, 131, 0.7),
+      rgba(74, 77, 84, 0.7),
+      rgba(214, 207, 216, 0.7)
+    ),
+    url("../images/theme1.png");
+  background-size: cover;
+}
+
+@media only screen and (min-width: 600px) {
+  .menu-theme {
+    width: 49%;
+  }
+}
