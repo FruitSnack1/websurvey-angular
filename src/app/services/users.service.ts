@@ -11,6 +11,7 @@ export class UsersService {
   constructor(private httpClient: HttpClient) {}
 
   getUsers() {
+    console.log(this.url);
     return this.httpClient.get(this.url);
   }
 
