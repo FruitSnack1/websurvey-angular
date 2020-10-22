@@ -267,10 +267,21 @@ textarea {
   padding: 32px 0;
 }
 
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .menu-logo {
-  height: 200px;
+  height: 180px;
   margin: 0 auto;
   margin-bottom: 16px;
+  animation: appear 0.3s ease-in-out both;
+  animation-delay: 300ms;
 }
 
 .menu-theme-container {
@@ -294,6 +305,8 @@ textarea {
     ),
     url("../images/theme1.png");
   background-size: cover;
+  animation: appear 0.3s ease-in-out both;
+  animation-delay: 100ms;
 }
 
 .bg-automated-driving {
@@ -303,8 +316,10 @@ textarea {
       rgba(255, 84, 0, 0.7),
       rgba(255, 236, 112, 0.7)
     ),
-    url("../images/theme1.png");
+    url("../images/theme2.png");
   background-size: cover;
+  animation: appear 0.3s ease-in-out both;
+  animation-delay: 150ms;
 }
 
 .bg-connectivity {
@@ -314,8 +329,10 @@ textarea {
       rgba(127, 0, 207, 0.7),
       rgba(119, 147, 237, 0.7)
     ),
-    url("../images/theme1.png");
+    url("../images/theme3.png");
   background-size: cover;
+  animation: appear 0.3s ease-in-out both;
+  animation-delay: 200ms;
 }
 
 .bg-vehicle-experience {
@@ -325,8 +342,10 @@ textarea {
       rgba(126, 0, 83, 0.7),
       rgba(248, 55, 0, 0.7)
     ),
-    url("../images/theme1.png");
+    url("../images/theme4.png");
   background-size: cover;
+  animation: appear 0.3s ease-in-out both;
+  animation-delay: 250ms;
 }
 
 .bg-environment {
@@ -336,8 +355,10 @@ textarea {
       rgba(0, 88, 48, 0.7),
       rgba(133, 217, 55, 0.7)
     ),
-    url("../images/theme1.png");
+    url("../images/theme5.png");
   background-size: cover;
+  animation: appear 0.3s ease-in-out both;
+  animation-delay: 300ms;
 }
 
 .bg-virtual {
@@ -347,8 +368,10 @@ textarea {
       rgba(74, 77, 84, 0.7),
       rgba(214, 207, 216, 0.7)
     ),
-    url("../images/theme1.png");
+    url("../images/theme6.png");
   background-size: cover;
+  animation: appear 0.3s ease-in-out both;
+  animation-delay: 350ms;
 }
 
 @media only screen and (min-width: 600px) {

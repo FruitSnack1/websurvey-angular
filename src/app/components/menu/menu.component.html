@@ -2,8 +2,8 @@
     <div class="menu-logo-container">
         <img src="/assets/images/ivet_logo.png" alt="" class="menu-logo">
     </div>
-    <div class="menu-theme-container">
-        <div class="menu-theme bg-electrification mb-2">
+    <div class="menu-theme-container" *ngIf='themeSelector == 0'>
+        <div class="menu-theme bg-electrification mb-2" (click)='openTheme(1)'>
             <h4>Electrification</h4>
         </div>
         <div class="menu-theme bg-automated-driving mb-2">
@@ -20,6 +20,21 @@
         </div>
         <div class="menu-theme bg-virtual mb-2">
             <h4>Virtual Development</h4>
+        </div>
+    </div>
+
+    <div class="menu-theme-container" *ngIf='themeSelector == 1'>
+        <div class="menu-theme bg-electrification mb-2">
+            <h4>Prvni anketa</h4>
+        </div>
+        <div class="menu-theme bg-electrification mb-2">
+            <h4>Prvni anketa</h4>
+        </div>
+        <div class="menu-theme bg-electrification mb-2">
+            <h4>Prvni anketa</h4>
+        </div>
+        <div class="menu-theme bg-electrification mb-2">
+            <h4>Prvni anketa</h4>
         </div>
     </div>
 </div>
