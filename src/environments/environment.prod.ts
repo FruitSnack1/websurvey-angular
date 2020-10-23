@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: "http://api.skodaquiz.com/api",
+  API_URL: "https://skodaquiz.com:80/api",
 };
