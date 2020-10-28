@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PlayService } from "src/app/services/play.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ResultsService } from "src/app/services/results.service";
 import { GlobalVariables } from "src/global";
 import { CookieService } from "ngx-cookie-service";
@@ -27,7 +27,8 @@ export class PlayComponent implements OnInit {
     private playService: PlayService,
     private route: ActivatedRoute,
     private resultsService: ResultsService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    public router: Router
   ) {}
 
   ngOnInit() {
@@ -62,7 +63,11 @@ export class PlayComponent implements OnInit {
           0,
           GlobalVariables.API_URL.length - 4
         )}${this.anketa.questions[this.questionNumber].img}`
-      : "assets/images/avatar.png";
+      : null;
+  }
+
+  get bgClass() {
+    if (this.anketa?.theme) return `bg-${this.anketa.theme}`;
   }
 
   answer(answer) {
@@ -91,5 +96,8 @@ export class PlayComponent implements OnInit {
 
   postResult() {
     this.resultsService.postResults(this.result).subscribe((data) => {});
+    setTimeout(() => {
+      this.router.navigateByUrl("/");
+    }, 3000);
   }
 }

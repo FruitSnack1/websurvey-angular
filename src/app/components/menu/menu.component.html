@@ -3,38 +3,69 @@
         <img src="/assets/images/ivet_logo.png" alt="" class="menu-logo">
     </div>
     <div class="menu-theme-container" *ngIf='themeSelector == 0'>
-        <div class="menu-theme bg-electrification mb-2" (click)='openTheme(1)'>
+        <div class="menu-theme bg-e-img mb-2" (click)='openTheme(1)'>
             <h4>Electrification</h4>
         </div>
-        <div class="menu-theme bg-automated-driving mb-2">
+        <div class="menu-theme bg-ad-img mb-2" (click)='openTheme(2)'>
             <h4>Automated Driving</h4>
         </div>
-        <div class="menu-theme bg-connectivity mb-2">
+        <div class="menu-theme bg-ce-img mb-2" (click)='openTheme(3)'>
             <h4>Connectivity & Ecosystem</h4>
         </div>
-        <div class="menu-theme bg-vehicle-experience mb-2">
+        <div class="menu-theme bg-ve-img mb-2" (click)='openTheme(4)'>
             <h4>Vehicle experience</h4>
         </div>
-        <div class="menu-theme bg-environment mb-2">
+        <div class="menu-theme bg-es-img mb-2" (click)='openTheme(5)'>
             <h4>Environment & Sustainability</h4>
         </div>
-        <div class="menu-theme bg-virtual mb-2">
+        <div class="menu-theme bg-vd-img mb-2" (click)='openTheme(6)'>
             <h4>Virtual Development</h4>
         </div>
     </div>
 
-    <div class="menu-theme-container" *ngIf='themeSelector == 1'>
-        <div class="menu-theme bg-electrification mb-2">
-            <h4>Prvni anketa</h4>
+    <div class="menu-survey-container" *ngIf='themeSelector == 1'>
+        <div>
+            <i class="fas fa-chevron-left menu-back" (click)='openTheme(0)'></i>
         </div>
-        <div class="menu-theme bg-electrification mb-2">
-            <h4>Prvni anketa</h4>
+        <div *ngFor='let anketa of anketyTheme("e")' class="menu-theme bg-e-img mb-2" (click)='playAnketa(anketa._id)'>
+            <h4>{{anketa.name.cs}}</h4>
         </div>
-        <div class="menu-theme bg-electrification mb-2">
-            <h4>Prvni anketa</h4>
+    </div>
+    <div class="menu-survey-container" *ngIf='themeSelector == 2'>
+        <i class="fas fa-chevron-left menu-back" (click)='openTheme(0)'></i>
+        <div *ngFor='let anketa of anketyTheme("ad")' class="menu-theme bg-ad-img mb-2"
+            (click)='playAnketa(anketa._id)'>
+            <h4>{{anketa.name.cs}}</h4>
         </div>
-        <div class="menu-theme bg-electrification mb-2">
-            <h4>Prvni anketa</h4>
+    </div>
+    <div class="menu-survey-container" *ngIf='themeSelector == 3'>
+        <div class="menu-back-container">
+            <i class="fas fa-arrow-left menu-back" (click)='openTheme(0)'></i>
+        </div>
+        <div *ngFor='let anketa of anketyTheme("ce")' class="menu-theme bg-ce-img mb-2"
+            (click)='playAnketa(anketa._id)'>
+            <h4>{{anketa.name.cs}}</h4>
+        </div>
+    </div>
+    <div class="menu-survey-container" *ngIf='themeSelector == 4'>
+        <i class="fas fa-chevron-left menu-back" (click)='openTheme(0)'></i>
+        <div *ngFor='let anketa of anketyTheme("ve")' class="menu-theme bg-ve-img mb-2"
+            (click)='playAnketa(anketa._id)'>
+            <h4>{{anketa.name.cs}}</h4>
+        </div>
+    </div>
+    <div class="menu-survey-container" *ngIf='themeSelector == 5'>
+        <i class="fas fa-chevron-left menu-back" (click)='openTheme(0)'></i>
+        <div *ngFor='let anketa of anketyTheme("es")' class="menu-theme bg-es-img mb-2"
+            (click)='playAnketa(anketa._id)'>
+            <h4>{{anketa.name.cs}}</h4>
+        </div>
+    </div>
+    <div class="menu-survey-container" *ngIf='themeSelector == 6'>
+        <i class="fas fa-chevron-left menu-back" (click)='openTheme(0)'></i>
+        <div *ngFor='let anketa of anketyTheme("vd")' class="menu-theme bg-vd-img mb-2"
+            (click)='playAnketa(anketa._id)'>
+            <h4>{{anketa.name.cs}}</h4>
         </div>
     </div>
 </div>

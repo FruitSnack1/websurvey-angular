@@ -11,11 +11,10 @@ import { AnketaDetailComponent } from "./components/anketa-detail/anketa-detail.
 import { MenuComponent } from "./components/menu/menu.component";
 
 const routes: Routes = [
-  { path: "", component: LoginComponent },
+  { path: "", component: MenuComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
   { path: "play/:id", component: PlayComponent },
-  { path: "menu", component: MenuComponent },
   {
     path: "admin",
     component: AdminComponent,

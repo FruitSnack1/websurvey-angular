@@ -237,7 +237,8 @@ textarea {
 }
 
 .bg-menu {
-  background-color: black;
+  /* background-color: rgb(28, 33, 39); */
+  background-color: rgb(23, 23, 26);
 }
 
 .menu-theme {
@@ -296,7 +297,7 @@ textarea {
   background-image: linear-gradient(45deg, #0fb6eb, #0d6bd4, #8bf0fa),
     url("../images/theme1.png");
 } */
-.bg-electrification {
+.bg-e-img {
   background-image: linear-gradient(
       45deg,
       rgba(15, 182, 235, 0.7),
@@ -309,7 +310,17 @@ textarea {
   animation-delay: 100ms;
 }
 
-.bg-automated-driving {
+.bg-e {
+  background: linear-gradient(
+    45deg,
+    rgba(15, 182, 235, 0.7),
+    rgba(13, 107, 212, 0.7),
+    rgba(139, 240, 250, 0.7)
+  );
+  box-shadow: 0px 2px 20px 0px rgba(13, 107, 212, 1);
+}
+
+.bg-ad-img {
   background-image: linear-gradient(
       45deg,
       rgba(255, 169, 0, 0.7),
@@ -322,7 +333,17 @@ textarea {
   animation-delay: 150ms;
 }
 
-.bg-connectivity {
+.bg-ad {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 169, 0, 0.7),
+    rgba(255, 84, 0, 0.7),
+    rgba(255, 236, 112, 0.7)
+  );
+  box-shadow: 0px 2px 20px 0px rgba(255, 84, 0, 1);
+}
+
+.bg-ce-img {
   background-image: linear-gradient(
       45deg,
       rgba(87, 38, 207, 0.7),
@@ -335,7 +356,17 @@ textarea {
   animation-delay: 200ms;
 }
 
-.bg-vehicle-experience {
+.bg-ce {
+  background: linear-gradient(
+    45deg,
+    rgba(87, 38, 207, 0.7),
+    rgba(127, 0, 207, 0.7),
+    rgba(119, 147, 237, 0.7)
+  );
+  box-shadow: 0px 2px 20px 0px rgba(126, 0, 84, 1);
+}
+
+.bg-ve-img {
   background-image: linear-gradient(
       45deg,
       rgba(183, 18, 32, 0.7),
@@ -348,7 +379,17 @@ textarea {
   animation-delay: 250ms;
 }
 
-.bg-environment {
+.bg-ve {
+  background: linear-gradient(
+    45deg,
+    rgba(183, 18, 32, 0.7),
+    rgba(126, 0, 83, 0.7),
+    rgba(248, 55, 0, 0.7)
+  );
+  box-shadow: 0px 2px 20px 0px rgba(126, 0, 83, 1);
+}
+
+.bg-es-img {
   background-image: linear-gradient(
       45deg,
       rgba(67, 176, 42, 0.7),
@@ -361,7 +402,17 @@ textarea {
   animation-delay: 300ms;
 }
 
-.bg-virtual {
+.bg-es {
+  background: linear-gradient(
+    45deg,
+    rgba(67, 176, 42, 0.7),
+    rgba(0, 88, 48, 0.7),
+    rgba(133, 217, 55, 0.7)
+  );
+  box-shadow: 0px 2px 20px 0px rgba(0, 88, 48, 1);
+}
+
+.bg-vd-img {
   background-image: linear-gradient(
       45deg,
       rgba(124, 120, 131, 0.7),
@@ -374,8 +425,53 @@ textarea {
   animation-delay: 350ms;
 }
 
+.bg-vd {
+  background: linear-gradient(
+    45deg,
+    rgba(124, 120, 131, 0.7),
+    rgba(74, 77, 84, 0.7),
+    rgba(214, 207, 216, 0.7)
+  );
+  box-shadow: 0px 2px 20px 0px rgba(74, 77, 84, 1);
+}
+
 @media only screen and (min-width: 600px) {
   .menu-theme {
     width: 49%;
   }
+}
+
+.ivet {
+  color: white !important;
+  /* background-color: rgb(28, 33, 39); */
+  background-color: rgb(23, 23, 26);
+}
+
+.ivet h1,
+h3 {
+  color: white;
+}
+
+.menu-survey-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.menu-back {
+  color: white;
+  font-size: 24px;
+}
+
+.menu-back-container {
+  width: 100%;
+  padding-left: 32px;
+}
+
+.ivet button {
+  background-color: rgb(43, 48, 56);
+  background-color: rgb(34, 34, 40);
 }

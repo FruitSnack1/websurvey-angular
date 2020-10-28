@@ -1,10 +1,10 @@
-<div>
+<div class="ivet">
     <app-play-register *ngIf='stage == -1' (cookie)='onRegister()'></app-play-register>
 
     <div *ngIf='stage == 0' class="p-4 min-vh-100 d-flex flex-column justify-content-between" id="begin">
         <h1 class="text-center mt-5">{{anketa?.name[lang]}} </h1>
         <p class="text-center">{{anketa?.description[lang]}} </p>
-        <button class="au-btn au-btn--skoda btn-block mb-5" (click)='nextStage()'>Začít</button>
+        <button *ngIf='anketa' class="au-btn au-btn--skoda btn-block mb-5" (click)='nextStage()'>Začít</button>
     </div>
 
     <div *ngIf='stage == 1' class="p-4 min-vh-100 d-flex flex-column justify-content-around hide" id="play">
@@ -16,14 +16,16 @@
                 <textarea name="" id="" cols="30" rows="10" class="form-control" #opentext placeholder="Vaše odpověď..."
                     [(ngModel)]='textarea_value'></textarea>
             </div>
-            <button class="au-btn au-btn--skoda btn-block" (click)='answer(opentext.value)'>Pokračovat
+            <button [ngClass]='bgClass' class="au-btn au-btn--skoda btn-block"
+                (click)='answer(opentext.value)'>Pokračovat
             </button>
         </ng-template>
 
         <ng-template #closed>
 
             <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question[lang]}}</h3>
-            <img class="rounded mx-auto" [src]='questionImage' style="height: 200px; width : 200px" id="question-image">
+            <img *ngIf='questionImage' class="rounded mx-auto" [src]='questionImage'
+                style="height: 200px; width : 200px" id="question-image">
             <button class="au-btn au-btn--skoda btn-block"
                 (click)='answer(anketa.answers[0].value)'>{{anketa.answers[0].answer[lang]}} </button>
             <button class="au-btn au-btn--skoda btn-block"
@@ -37,7 +39,7 @@
         </ng-template>
 
     </div>
-    <div class="anketa-progress-bar" id="progress-bar" [style.width.%]='progress_bar'></div>
+    <div [ngClass]='bgClass' class="anketa-progress-bar" id="progress-bar" [style.width.%]='progress_bar'></div>
 
     <div *ngIf='stage == 2' class="p-4 min-vh-100 d-flex flex-column justify-content-center hide" id="finish">
         <h1 class="text-center">Děkujeme za Váš čas</h1>
