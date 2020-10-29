@@ -259,6 +259,8 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
+  /* min-height: -webkit-fill-available; */
 }
 
 .menu-logo-container {
@@ -354,6 +356,19 @@ textarea {
   background-size: cover;
   animation: appear 0.3s ease-in-out both;
   animation-delay: 200ms;
+}
+
+.bg-ce-btn:active {
+  background: linear-gradient(
+    45deg,
+    rgba(87, 38, 207, 0.7),
+    rgba(127, 0, 207, 0.7),
+    rgba(119, 147, 237, 0.7)
+  );
+}
+
+.bg-ce-btn:hover {
+  background-color: rgb(34, 34, 40);
 }
 
 .bg-ce {
@@ -458,7 +473,7 @@ h3 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .menu-back {

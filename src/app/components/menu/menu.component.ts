@@ -9,6 +9,7 @@ import { AnketyService } from "../../services/ankety.service";
 export class MenuComponent implements OnInit {
   themeSelector = 0;
   ankety: any;
+  innerHeight;
   constructor(private anketyService: AnketyService, private router: Router) {}
 
   ngOnInit() {
@@ -16,6 +17,7 @@ export class MenuComponent implements OnInit {
       console.log(data);
       this.ankety = data;
     });
+    this.innerHeight = window.innerHeight;
   }
 
   anketyTheme(theme) {

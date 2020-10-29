@@ -23,6 +23,7 @@ export class PlayComponent implements OnInit {
   lang = "cs";
   langCounter = 0;
   questionNumber: number = 0;
+  innerHeight: string;
   constructor(
     private playService: PlayService,
     private route: ActivatedRoute,
@@ -38,6 +39,8 @@ export class PlayComponent implements OnInit {
       this.anketa = data;
       this.result.anketa_id = this.anketa._id;
     });
+    innerHeight = 100;
+    console.log(innerHeight);
   }
 
   onRegister() {
@@ -68,6 +71,10 @@ export class PlayComponent implements OnInit {
 
   get bgClass() {
     if (this.anketa?.theme) return `bg-${this.anketa.theme}`;
+  }
+
+  get bgBtn() {
+    if (this.anketa?.theme) return `bg-${this.anketa.theme}-btn`;
   }
 
   answer(answer) {
