@@ -7,7 +7,7 @@
         <button *ngIf='anketa' class="au-btn  btn-block mb-5" (click)='nextStage()'>Začít</button>
     </div>
 
-    <div *ngIf='stage == 1' class="p-4 min-vh-100 d-flex flex-column justify-content-around hide" id="play">
+    <div *ngIf='stage == 1' class="p-4 h-100 d-flex flex-column justify-content-around hide" id="play">
         <i (click)='changeLang()' class="fas fa-language lang-icon"></i>
         <ng-template [ngIf]='anketa.questions[questionNumber].open' [ngIfElse]='closed'>
             <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question[lang]}}</h3>
