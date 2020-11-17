@@ -24,54 +24,55 @@
     </div>
 
     <div class="menu-survey-container" *ngIf='themeSelector == 1'>
-        <div>
+        <div class="w-100">
             <i class="fas fa-chevron-left menu-back" (click)='openTheme(0)'></i>
         </div>
-        <div *ngFor='let anketa of anketyTheme("e")' class="menu-theme bg-e-img mb-2" (click)='playAnketa(anketa._id)'>
+        <div *ngFor='let anketa of anketyTheme("e")' class="menu-theme bg-e-img mb-2 no-delay"
+            (click)='playAnketa(anketa._id)'>
             <h4>{{anketa.name.cs}}</h4>
         </div>
     </div>
     <div class="menu-survey-container" *ngIf='themeSelector == 2'>
-        <div>
+        <div class="w-100">
             <i class="fas fa-chevron-left menu-back" (click)='openTheme(0)'></i>
         </div>
-        <div *ngFor='let anketa of anketyTheme("ad")' class="menu-theme bg-ad-img mb-2"
+        <div *ngFor='let anketa of anketyTheme("ad")' class="menu-theme bg-ad-img mb-2 no-delay"
             (click)='playAnketa(anketa._id)'>
             <h4>{{anketa.name.cs}}</h4>
         </div>
     </div>
     <div class="menu-survey-container" *ngIf='themeSelector == 3'>
-        <div>
+        <div class="w-100">
             <i class="fas fa-chevron-left menu-back" (click)='openTheme(0)'></i>
         </div>
-        <div *ngFor='let anketa of anketyTheme("ce")' class="menu-theme bg-ce-img mb-2"
+        <div *ngFor='let anketa of anketyTheme("ce")' class="menu-theme bg-ce-img mb-2 no-delay"
             (click)='playAnketa(anketa._id)'>
             <h4>{{anketa.name.cs}}</h4>
         </div>
     </div>
     <div class="menu-survey-container" *ngIf='themeSelector == 4'>
-        <div>
+        <div class="w-100">
             <i class="fas fa-chevron-left menu-back" (click)='openTheme(0)'></i>
         </div>
-        <div *ngFor='let anketa of anketyTheme("ve")' class="menu-theme bg-ve-img mb-2"
+        <div *ngFor='let anketa of anketyTheme("ve")' class="menu-theme bg-ve-img mb-2 no-delay"
             (click)='playAnketa(anketa._id)'>
             <h4>{{anketa.name.cs}}</h4>
         </div>
     </div>
     <div class="menu-survey-container" *ngIf='themeSelector == 5'>
-        <div>
+        <div class="w-100">
             <i class="fas fa-chevron-left menu-back" (click)='openTheme(0)'></i>
         </div>
-        <div *ngFor='let anketa of anketyTheme("es")' class="menu-theme bg-es-img mb-2"
+        <div *ngFor='let anketa of anketyTheme("es")' class="menu-theme bg-es-img mb-2 no-delay"
             (click)='playAnketa(anketa._id)'>
             <h4>{{anketa.name.cs}}</h4>
         </div>
     </div>
     <div class="menu-survey-container" *ngIf='themeSelector == 6'>
-        <div>
+        <div class="w-100">
             <i class="fas fa-chevron-left menu-back" (click)='openTheme(0)'></i>
         </div>
-        <div *ngFor='let anketa of anketyTheme("vd")' class="menu-theme bg-vd-img mb-2"
+        <div *ngFor='let anketa of anketyTheme("vd")' class="menu-theme bg-vd-img mb-2 no-delay"
             (click)='playAnketa(anketa._id)'>
             <h4>{{anketa.name.cs}}</h4>
         </div>

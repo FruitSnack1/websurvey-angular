@@ -167,7 +167,7 @@ textarea {
 }
 
 .anketa-progress-bar {
-  width: 100%;
+  width: 0%;
   height: 5px;
   position: absolute;
   bottom: 0;
@@ -251,10 +251,6 @@ textarea {
   border-radius: 4px;
 }
 
-.menu-theme:last-child {
-  margin-bottom: 0 !important;
-}
-
 .menu-theme h4 {
   color: white;
 }
@@ -290,6 +286,10 @@ textarea {
   margin-bottom: 16px;
   animation: appear 0.3s ease-in-out both;
   animation-delay: 300ms;
+}
+
+.no-delay {
+  animation-delay: 50ms !important;
 }
 
 .menu-theme-container {
@@ -523,6 +523,12 @@ textarea {
 @media only screen and (min-width: 600px) {
   .menu-theme {
     width: 49%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .menu-theme:last-child {
+    margin-bottom: 0 !important;
   }
 }
 

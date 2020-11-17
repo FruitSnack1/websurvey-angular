@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AnketyService } from "../../services/ankety.service";
 @Component({
@@ -17,6 +17,11 @@ export class MenuComponent implements OnInit {
       console.log(data);
       this.ankety = data;
     });
+    this.innerHeight = window.innerHeight;
+  }
+
+  @HostListener("window:resize", [])
+  onResize() {
     this.innerHeight = window.innerHeight;
   }
 

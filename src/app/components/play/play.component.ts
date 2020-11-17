@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { PlayService } from "src/app/services/play.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ResultsService } from "src/app/services/results.service";
@@ -23,7 +23,7 @@ export class PlayComponent implements OnInit {
   lang = "cs";
   langCounter = 0;
   questionNumber: number = 0;
-  innerHeight: string;
+  innerHeight;
   constructor(
     private playService: PlayService,
     private route: ActivatedRoute,
@@ -39,12 +39,17 @@ export class PlayComponent implements OnInit {
       this.anketa = data;
       this.result.anketa_id = this.anketa._id;
     });
-    innerHeight = 100;
-    console.log(innerHeight);
+    this.innerHeight = window.innerHeight;
+    console.log(this.innerHeight);
   }
 
   onRegister() {
     this.stage++;
+  }
+
+  @HostListener("window:resize", [])
+  onResize() {
+    this.innerHeight = window.innerHeight;
   }
 
   changeLang() {
