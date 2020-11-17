@@ -1,7 +1,7 @@
 <div class="ivet" [ngStyle]="{'height.px':innerHeight}">
     <app-play-register *ngIf='stage == -1' (cookie)='onRegister()'></app-play-register>
 
-    <div *ngIf='stage == 0' class="p-4 min-vh-100 d-flex flex-column justify-content-between" id="begin">
+    <div *ngIf='stage == 0' class="p-4 h-100 d-flex flex-column justify-content-between" id="begin">
         <h1 class="text-center mt-5">{{anketa?.name[lang]}} </h1>
         <p class="text-center">{{anketa?.description[lang]}} </p>
         <button *ngIf='anketa' class="au-btn  btn-block mb-5" (click)='nextStage()'>Začít</button>
