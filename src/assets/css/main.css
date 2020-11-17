@@ -251,6 +251,10 @@ textarea {
   border-radius: 4px;
 }
 
+.menu-theme:last-child {
+  margin-bottom: 0 !important;
+}
+
 .menu-theme h4 {
   color: white;
 }
@@ -260,6 +264,7 @@ textarea {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  overflow: auto;
   /* min-height: -webkit-fill-available; */
 }
 
@@ -312,6 +317,19 @@ textarea {
   animation-delay: 100ms;
 }
 
+.bg-e-btn:active {
+  background-image: linear-gradient(
+    45deg,
+    rgba(15, 182, 235, 0.7),
+    rgba(13, 107, 212, 0.7),
+    rgba(139, 240, 250, 0.7)
+  );
+}
+
+.bg-e-btn:hover {
+  background-color: rgb(34, 34, 40);
+}
+
 .bg-e {
   background: linear-gradient(
     45deg,
@@ -333,6 +351,19 @@ textarea {
   background-size: cover;
   animation: appear 0.3s ease-in-out both;
   animation-delay: 150ms;
+}
+
+.bg-ad-btn:active {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 169, 0, 0.7),
+    rgba(255, 84, 0, 0.7),
+    rgba(255, 236, 112, 0.7)
+  );
+}
+
+.bg-ad-btn:hover {
+  background-color: rgb(34, 34, 40);
 }
 
 .bg-ad {
@@ -394,6 +425,19 @@ textarea {
   animation-delay: 250ms;
 }
 
+.bg-ve-btn:active {
+  background-image: linear-gradient(
+    45deg,
+    rgba(183, 18, 32, 0.7),
+    rgba(126, 0, 83, 0.7),
+    rgba(248, 55, 0, 0.7)
+  );
+}
+
+.bg-ve-btn:hover {
+  background-color: rgb(34, 34, 40);
+}
+
 .bg-ve {
   background: linear-gradient(
     45deg,
@@ -417,6 +461,19 @@ textarea {
   animation-delay: 300ms;
 }
 
+.bg-es-btn:active {
+  background-image: linear-gradient(
+    45deg,
+    rgba(67, 176, 42, 0.7),
+    rgba(0, 88, 48, 0.7),
+    rgba(133, 217, 55, 0.7)
+  );
+}
+
+.bg-es-btn:hover {
+  background-color: rgb(34, 34, 40);
+}
+
 .bg-es {
   background: linear-gradient(
     45deg,
@@ -438,6 +495,19 @@ textarea {
   background-size: cover;
   animation: appear 0.3s ease-in-out both;
   animation-delay: 350ms;
+}
+
+.bg-vd-btn:active {
+  background-image: linear-gradient(
+    45deg,
+    rgba(124, 120, 131, 0.7),
+    rgba(74, 77, 84, 0.7),
+    rgba(214, 207, 216, 0.7)
+  );
+}
+
+.bg-vd-btn:hover {
+  background-color: rgb(34, 34, 40);
 }
 
 .bg-vd {
@@ -478,7 +548,7 @@ h3 {
 
 .menu-back {
   color: white;
-  font-size: 24px;
+  font-size: 36px;
 }
 
 .menu-back-container {
