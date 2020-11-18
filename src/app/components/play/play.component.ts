@@ -24,6 +24,19 @@ export class PlayComponent implements OnInit {
   langCounter = 0;
   questionNumber: number = 0;
   innerHeight;
+
+  languages = {
+    beginBtn: {
+      cs: "Začít",
+      en: "Start",
+      de: "Start",
+    },
+    endText: {
+      cs: "Děkujeme za spolupráci",
+      en: "Thank you for your cooperation",
+      de: "Danke für Ihre Mitarbeit",
+    },
+  };
   constructor(
     private playService: PlayService,
     private route: ActivatedRoute,
@@ -38,9 +51,11 @@ export class PlayComponent implements OnInit {
     this.playService.getAneta(id).subscribe((data) => {
       this.anketa = data;
       this.result.anketa_id = this.anketa._id;
+      const userLang = navigator.language;
+      if (this.anketa.languages.includes(userLang)) this.lang = userLang;
+      else this.lang = "en";
     });
     this.innerHeight = window.innerHeight;
-    console.log(this.innerHeight);
   }
 
   onRegister() {
@@ -55,6 +70,8 @@ export class PlayComponent implements OnInit {
   changeLang() {
     this.langCounter = ++this.langCounter % this.anketa.languages.length;
     this.lang = this.anketa.languages[this.langCounter];
+    console.log(this.langCounter);
+    console.log(this.lang);
   }
 
   nextStage() {
@@ -110,6 +127,6 @@ export class PlayComponent implements OnInit {
     this.resultsService.postResults(this.result).subscribe((data) => {});
     setTimeout(() => {
       this.router.navigateByUrl("/");
-    }, 3000);
+    }, 2000);
   }
 }

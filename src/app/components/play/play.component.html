@@ -4,7 +4,8 @@
     <div *ngIf='stage == 0' class="p-4 h-100 d-flex flex-column justify-content-between" id="begin">
         <h1 class="text-center mt-5">{{anketa?.name[lang]}} </h1>
         <p class="text-center">{{anketa?.description[lang]}} </p>
-        <button *ngIf='anketa' class="au-btn  btn-block mb-5" (click)='nextStage()'>Začít</button>
+        <button *ngIf='anketa' class="au-btn  btn-block mb-5"
+            (click)='nextStage()'>{{languages.beginBtn[lang]}}</button>
     </div>
 
     <div *ngIf='stage == 1' class="p-4 h-100 d-flex flex-column justify-content-around hide" id="play">
@@ -40,7 +41,8 @@
     </div>
     <div [ngClass]='bgClass' class="anketa-progress-bar" id="progress-bar" [style.width.%]='progress_bar'></div>
 
-    <div *ngIf='stage == 2' class="p-4 min-vh-100 d-flex flex-column justify-content-center hide" id="finish">
-        <h1 class="text-center">Děkujeme za Váš čas</h1>
+    <div *ngIf='stage == 2' class="p-4 h-100 d-flex flex-column justify-content-center hide" id="finish">
+        <h1 class="text-center">{{languages.endText[lang]}}</h1>
+        <i class="fas fa-circle-notch survey-loading"></i>
     </div>
 </div>

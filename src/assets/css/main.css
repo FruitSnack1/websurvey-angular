@@ -552,6 +552,21 @@ h3 {
   justify-content: space-between;
 }
 
+.survey-loading {
+  text-align: center;
+  font-size: 32px;
+  margin-top: 8px;
+  animation: rotate 1s ease-in-out infinite;
+  transition: opacity 1s linear;
+  opacity: 1;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .menu-back {
   color: white;
   font-size: 36px;
