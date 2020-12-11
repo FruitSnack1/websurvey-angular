@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf='anketa?.type===1'>
         <div class="col-lg-6 m-b-40">
             <div class="au-card au-card--no-pad">
                 <div class="au-card-inner p-5">
@@ -93,8 +93,14 @@
         <div class="col-12">
             <h2 class="title-1 m-b-25 m-t-25">Otázky</h2>
         </div>
-        <app-question [question]=anketa.questions[i] [results]=results [index]=i
-            *ngFor='let question of anketa?.questions;let i = index' class="col-lg-6"></app-question>
+        <ng-template [ngIf]='anketa?.type===1'>
+            <app-question [question]=anketa.questions[i] [results]=results [index]=i
+                *ngFor='let question of anketa?.questions;let i = index' class="col-lg-6"></app-question>
+        </ng-template>
+        <ng-template [ngIf]='anketa?.type===2'>
+            <app-open-question [question]=anketa.questions[i] [results]=results [index]=i
+                *ngFor='let question of anketa?.questions;let i = index' class="col-lg-6"></app-open-question>
+        </ng-template>
     </div>
 </div>
 <script src="node_modules/chart.js/src/chart.js"></script>

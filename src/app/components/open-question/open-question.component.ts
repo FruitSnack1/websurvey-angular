@@ -3,11 +3,11 @@ import { Question } from "src/app/models/question.model";
 // import { Chart } from "chart.js";
 
 @Component({
-  selector: "app-question",
-  templateUrl: "./question.component.html",
-  styleUrls: ["./question.component.css"],
+  selector: "app-open-question",
+  templateUrl: "./open-question.component.html",
+  styleUrls: ["./open-question.component.css"],
 })
-export class QuestionComponent implements OnInit {
+export class OpenQuestionComponent implements OnInit {
   @Input() question: any;
   @Input() results;
   @Input() index;
@@ -44,6 +44,7 @@ export class QuestionComponent implements OnInit {
   public barChartData;
 
   ngOnInit() {
+    console.log(this.question);
     this.barChartLabels = this.question.answers;
     this.barChartData = [
       {
@@ -70,13 +71,15 @@ export class QuestionComponent implements OnInit {
 
   get questionResults() {
     let arr = [0, 0, 0, 0, 0];
-    for (let i = 0; i < this.results.length; i++) {
-      arr[this.results[i].answers[this.index].answer - 1]++;
+    console.log(this.results);
+    for (let result of this.results) {
+      arr[this.barChartLabels.indexOf(result.answers[this.index].answer)]++;
     }
     return arr;
   }
 
   get questionAnswers() {
+    console.log(this.results);
     let arr = [];
     for (let i = 0; i < this.results.length; i++) {
       arr.push(this.results[i].answers[this.index].answer.cs);

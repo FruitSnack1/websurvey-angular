@@ -9,6 +9,7 @@ import { PlayComponent } from "./components/play/play.component";
 import { FormAnketaComponent } from "./components/form-anketa/form-anketa.component";
 import { AnketaDetailComponent } from "./components/anketa-detail/anketa-detail.component";
 import { MenuComponent } from "./components/menu/menu.component";
+import { FormOpenSurveyComponent } from "./components/form-open-survey/form-open-survey.component";
 
 const routes: Routes = [
   { path: "", component: MenuComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: "ankety", component: AnketyComponent },
       { path: "ankety/new", component: AnketyComponent },
       { path: "create", component: FormAnketaComponent },
+      { path: "create2", component: FormOpenSurveyComponent },
       { path: "detail/:id", component: AnketaDetailComponent },
       { path: "edit/:id", component: FormAnketaComponent },
     ],

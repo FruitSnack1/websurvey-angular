@@ -10,7 +10,8 @@
 
     <div *ngIf='stage == 1' class="p-4 h-100 d-flex flex-column justify-content-around hide" id="play">
         <i (click)='changeLang()' class="fas fa-language lang-icon"></i>
-        <ng-template [ngIf]='anketa.questions[questionNumber].open' [ngIfElse]='closed'>
+
+        <div *ngIf='anketa.questions[questionNumber].open'>
             <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question[lang]}}</h3>
             <img class="rounded mx-auto" src="assets/images/avatar.png" style="height: 200px; width : 200px">
             <div class="form-group">
@@ -19,23 +20,32 @@
             </div>
             <button [ngClass]='bgClass' class="au-btn  btn-block" (click)='answer(opentext.value)'>Pokračovat
             </button>
-        </ng-template>
+        </div>
 
-        <ng-template #closed>
+        <ng-template [ngIf]='!anketa.questions[questionNumber].open && anketa.type===1'
+            class="p-4 h-100 d-flex flex-column justify-content-around hide">
 
             <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question[lang]}}</h3>
             <img *ngIf='questionImage' class="rounded mx-auto" [src]='questionImage'
                 style="height: 200px; width : 200px" id="question-image">
             <button [ngClass]='bgBtn' class="au-btn  btn-block"
-                (click)='answer(anketa.answers[0].value)'>{{anketa.answers[0].answer[lang]}} </button>
+                (click)='answer(anketa.answers[0]?.value)'>{{anketa.answers[0]?.answer[lang]}} </button>
             <button [ngClass]='bgBtn' class="au-btn  btn-block"
-                (click)='answer(anketa.answers[1].value)'>{{anketa.answers[1].answer[lang]}} </button>
+                (click)='answer(anketa.answers[1]?.value)'>{{anketa.answers[1]?.answer[lang]}} </button>
             <button [ngClass]='bgBtn' class="au-btn  btn-block"
-                (click)='answer(anketa.answers[2].value)'>{{anketa.answers[2].answer[lang]}} </button>
+                (click)='answer(anketa.answers[2]?.value)'>{{anketa.answers[2]?.answer[lang]}} </button>
             <button [ngClass]='bgBtn' class="au-btn  btn-block"
-                (click)='answer(anketa.answers[3].value)'>{{anketa.answers[3].answer[lang]}} </button>
+                (click)='answer(anketa.answers[3]?.value)'>{{anketa.answers[3]?.answer[lang]}} </button>
             <button [ngClass]='bgBtn' class="au-btn  btn-block"
-                (click)='answer(anketa.answers[4].value)'>{{anketa.answers[4].answer[lang]}} </button>
+                (click)='answer(anketa.answers[4]?.value)'>{{anketa.answers[4]?.answer[lang]}} </button>
+        </ng-template>
+
+        <ng-template [ngIf]='anketa.type==2'>
+            <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question[lang]}}</h3>
+            <img *ngIf='questionImage' class="rounded mx-auto" [src]='questionImage'
+                style="height: 200px; width : 200px" id="question-image">
+            <button *ngFor='let ans of anketa.questions[questionNumber].answers' class="au-btn  btn-block"
+                (click)='answer(ans)'>{{ans}} </button>
         </ng-template>
 
     </div>

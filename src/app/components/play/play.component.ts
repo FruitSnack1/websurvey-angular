@@ -50,10 +50,12 @@ export class PlayComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get("id");
     this.playService.getAneta(id).subscribe((data) => {
       this.anketa = data;
+      console.log(this.anketa);
       this.result.anketa_id = this.anketa._id;
       const userLang = navigator.language;
       if (this.anketa.languages.includes(userLang)) this.lang = userLang;
       else this.lang = "en";
+      if (this.anketa.type === 2) this.lang = "cs";
     });
     this.innerHeight = window.innerHeight;
   }
@@ -106,6 +108,7 @@ export class PlayComponent implements OnInit {
       answer,
       time: Date.now() - this.questionTime,
     });
+    console.log(this.result);
     this.questionTime = Date.now();
     if (this.questionNumber == this.anketa.questions.length - 1) {
       this.nextStage();

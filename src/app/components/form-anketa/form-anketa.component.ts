@@ -55,6 +55,7 @@ export class FormAnketaComponent implements OnInit {
       answers: this.fb.array([]),
       questions: this.fb.array([]),
       theme: null,
+      type: 1,
     });
 
     const defaultAnswers = [
