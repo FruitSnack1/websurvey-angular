@@ -10,6 +10,7 @@ import { FormAnketaComponent } from "./components/form-anketa/form-anketa.compon
 import { AnketaDetailComponent } from "./components/anketa-detail/anketa-detail.component";
 import { MenuComponent } from "./components/menu/menu.component";
 import { FormOpenSurveyComponent } from "./components/form-open-survey/form-open-survey.component";
+import { AuthGuard } from "./auth.guard";
 
 const routes: Routes = [
   { path: "", component: MenuComponent },
@@ -21,13 +22,37 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: "", component: DashboardComponent },
-      { path: "dashboard", component: DashboardComponent },
-      { path: "ankety", component: AnketyComponent },
-      { path: "ankety/new", component: AnketyComponent },
-      { path: "create", component: FormAnketaComponent },
-      { path: "create2", component: FormOpenSurveyComponent },
-      { path: "detail/:id", component: AnketaDetailComponent },
-      { path: "edit/:id", component: FormAnketaComponent },
+      {
+        path: "dashboard",
+        component: DashboardComponent,
+        canActivate: [AuthGuard],
+      },
+      { path: "ankety", component: AnketyComponent, canActivate: [AuthGuard] },
+      {
+        path: "ankety/new",
+        component: AnketyComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: "create",
+        component: FormAnketaComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: "create2",
+        component: FormOpenSurveyComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: "detail/:id",
+        component: AnketaDetailComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: "edit/:id",
+        component: FormAnketaComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ];

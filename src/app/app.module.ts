@@ -20,6 +20,7 @@ import { PlayRegisterComponent } from "./components/play-register/play-register.
 import { MenuComponent } from "./components/menu/menu.component";
 import { FormOpenSurveyComponent } from "./components/form-open-survey/form-open-survey.component";
 import { OpenQuestionComponent } from "./components/open-question/open-question.component";
+import { AuthGuard } from "./auth.guard";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { OpenQuestionComponent } from "./components/open-question/open-question.
     BrowserAnimationsModule,
     ChartsModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
