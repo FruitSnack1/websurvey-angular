@@ -86,30 +86,30 @@ export class FormOpenSurveyComponent implements OnInit {
 
   submitSurvey() {
     console.log(this.surveyForm.value);
-    // if (this.editMode) {
-    //   let anketaFormValue = this.surveyForm.value;
-    //   const formData = new FormData();
-    //   for (let key in this.files) {
-    //     formData.append(key, this.files[key]);
-    //   }
-    //   formData.append("anketa", JSON.stringify(anketaFormValue));
-    //   this.anketyService
-    //     .updateSurvey(this.editId, formData)
-    //     .subscribe((data) => {
-    //       this.router.navigateByUrl("/admin/ankety");
-    //     });
-    // } else {
-    //   let anketaFormValue = this.surveyForm.value;
-    //   console.log(anketaFormValue);
-    //   const formData = new FormData();
-    //   for (let key in this.files) {
-    //     formData.append(key, this.files[key]);
-    //   }
-    //   formData.append("anketa", JSON.stringify(anketaFormValue));
-    //   this.anketyService.createAnketa(formData).subscribe((data) => {
-    //     this.router.navigateByUrl("/admin/ankety");
-    //   });
-    // }
+    if (this.editMode) {
+      let anketaFormValue = this.surveyForm.value;
+      const formData = new FormData();
+      for (let key in this.files) {
+        formData.append(key, this.files[key]);
+      }
+      formData.append("anketa", JSON.stringify(anketaFormValue));
+      this.anketyService
+        .updateSurvey(this.editId, formData)
+        .subscribe((data) => {
+          this.router.navigateByUrl("/admin/ankety");
+        });
+    } else {
+      let anketaFormValue = this.surveyForm.value;
+      console.log(anketaFormValue);
+      const formData = new FormData();
+      for (let key in this.files) {
+        formData.append(key, this.files[key]);
+      }
+      formData.append("anketa", JSON.stringify(anketaFormValue));
+      this.anketyService.createAnketa(formData).subscribe((data) => {
+        this.router.navigateByUrl("/admin/ankety");
+      });
+    }
   }
 
   deleteQuestion(i) {}

@@ -75,9 +75,7 @@ export class AnketyComponent implements OnInit {
   }
 
   showAnketaDetail(id) {
-    this.router.navigateByUrl(`/admin/detail/${id}`, {
-      skipLocationChange: true,
-    });
+    this.router.navigateByUrl(`/admin/detail/${id}`);
   }
 
   get animationState() {
