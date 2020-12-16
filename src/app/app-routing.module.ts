@@ -49,8 +49,13 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: "edit/:id",
+        path: "edit/:id/1",
         component: FormAnketaComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: "edit/:id/2",
+        component: FormOpenSurveyComponent,
         canActivate: [AuthGuard],
       },
     ],

@@ -48,8 +48,8 @@ export class AnketyComponent implements OnInit {
     this.router.navigateByUrl(`/play/${id}`);
   }
 
-  editAnketa(id) {
-    this.router.navigateByUrl(`/admin/edit/${id}`);
+  editAnketa(id, type) {
+    this.router.navigateByUrl(`/admin/edit/${id}/${type}`);
   }
 
   deleteAnketa() {
