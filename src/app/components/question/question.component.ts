@@ -31,24 +31,24 @@ export class QuestionComponent implements OnInit {
       enabled: false,
     },
   };
-  // public barChartLabels = [
-  //   "Určitě ne",
-  //   "Spíše ne",
-  //   "Nevím",
-  //   "Spíše ano",
-  //   "Určitě ano",
-  // ];
-  public barChartLabels;
+  public barChartLabels = [
+    "Určitě ne",
+    "Spíše ne",
+    "Nevím",
+    "Spíše ano",
+    "Určitě ano",
+  ];
+  // public barChartLabels;
   public barChartType = "bar";
   public barChartLegend = false;
   public barChartData;
 
   ngOnInit() {
-    this.barChartLabels = this.question.answers;
+    // this.barChartLabels = this.question.answers;
     this.barChartData = [
       {
         data: this.questionResults,
-        labels: this.questionAnswers,
+        labels: this.barChartLabels,
         backgroundColor: [
           "#d22630",
           "#f4c385",
@@ -78,6 +78,8 @@ export class QuestionComponent implements OnInit {
 
   get questionAnswers() {
     let arr = [];
+    console.log(this.results);
+
     for (let i = 0; i < this.results.length; i++) {
       arr.push(this.results[i].answers[this.index].answer.cs);
     }

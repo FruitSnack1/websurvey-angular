@@ -106,7 +106,7 @@ export class AnketaDetailComponent implements OnInit {
   }
 
   get questionResults() {
-    if (!this.results) return [[]];
+    if (!this.results || this.anketa.type == 2) return [[]];
     let arr = [];
     for (let i = 0; i < this.anketa.questions.length; i++) {
       let answers = [0, 0, 0, 0, 0];
@@ -131,7 +131,7 @@ export class AnketaDetailComponent implements OnInit {
   }
 
   getBarWidth(i, j) {
-    if (!this.results) return [0, 0, 0, 0, 0];
+    if (!this.results || this.anketa.type == 2) return [0, 0, 0, 0, 0];
     return (this.questionResults[i][j] / this.results.length) * 100 + "%";
   }
 }
