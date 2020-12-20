@@ -38,6 +38,7 @@ export class AnketyComponent implements OnInit {
   show: boolean = false;
   anketaId: string;
   deleteModal: boolean = false;
+  createModal: boolean = false;
   constructor(private anketyService: AnketyService, private router: Router) {}
 
   ngOnInit() {
@@ -45,11 +46,11 @@ export class AnketyComponent implements OnInit {
   }
 
   playAnketa(id: string) {
-    this.router.navigateByUrl(`/play/${id}`);
+    window.open(`/play/${id}`, "_blank");
   }
 
-  editAnketa(id) {
-    this.router.navigateByUrl(`/admin/edit/${id}`);
+  editAnketa(id, type) {
+    this.router.navigateByUrl(`/admin/edit/${id}/${type}`);
   }
 
   deleteAnketa() {
@@ -66,6 +67,10 @@ export class AnketyComponent implements OnInit {
 
   toggleDeleteModal() {
     this.deleteModal = !this.deleteModal;
+  }
+
+  toggleCreateModal() {
+    this.createModal = !this.createModal;
   }
 
   getAnkety() {

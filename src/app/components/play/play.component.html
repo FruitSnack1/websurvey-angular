@@ -22,7 +22,7 @@
             </button>
         </div>
 
-        <ng-template [ngIf]='!anketa.questions[questionNumber].open && anketa.type===1'
+        <ng-template [ngIf]='!anketa.questions[questionNumber].open && anketa.type!=2'
             class="p-4 h-100 d-flex flex-column justify-content-around hide">
 
             <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question[lang]}}</h3>
@@ -40,7 +40,7 @@
                 (click)='answer(anketa.answers[4]?.value)'>{{anketa.answers[4]?.answer[lang]}} </button>
         </ng-template>
 
-        <ng-template [ngIf]='anketa.type==2'>
+        <ng-template [ngIf]='!anketa.questions[questionNumber].open && anketa.type==2'>
             <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question[lang]}}</h3>
             <img *ngIf='questionImage' class="rounded mx-auto" [src]='questionImage'
                 style="height: 200px; width : 200px" id="question-image">
