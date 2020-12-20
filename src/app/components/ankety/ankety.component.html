@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-12">
         <button type="button" name="button" class="m-b-40 au-btn au-btn-icon au-btn--skoda btn-block"
-            routerLink='../create'><i class="zmdi zmdi-plus"></i>Přidat novou anketu</button>
+            (click)='toggleCreateModal()'><i class="zmdi zmdi-plus"></i>Přidat novou anketu</button>
     </div>
 </div>
 
@@ -60,6 +60,43 @@
                     data-dismiss="modal">Zrušit</button>
                 <button (click)='deleteAnketa()' type="button" class="btn btn-danger">Odstranit</button>
             </div>
+        </div>
+    </div>
+</div>
+<div [ngClass]="{'show' : createModal}" class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+    aria-labelledby="mediumModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mediumModalLabel">Vytvořit novou anketu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span (click)='toggleCreateModal()' aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <h3 class="text-dark text-center">Stejné odpovědi</h3>
+                        <img src="../../assets/images/survey.svg" alt="" style="padding: 50px;">
+                        <p class="text-center">Každá otázka má stejné odpovědi (otázky lze
+                            porovnávat mezi sebou)</p>
+                        <div class="d-flex justify-content-center mt-3 mb-4">
+                            <button routerLink='../create' type="button" class="au-btn au-btn--skoda m-auto">Vytvořit
+                                anketu</button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <h3 class="text-dark text-center">Vlastní odpovědi</h3>
+                        <img src="../../assets/images/survey.svg" alt="" style="padding: 50px;">
+                        <p class="text-center" style="min-height: 52px;">Každá otázka má vlastní odpovědi</p>
+                        <div class="d-flex justify-content-center mt-3 mb-4">
+                            <button routerLink='../create2' type="button" class="au-btn au-btn--skoda m-auto">Vytvořit
+                                anketu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
