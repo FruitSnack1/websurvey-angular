@@ -1,32 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { UsersService } from 'src/app/services/users.service';
-import { Router} from '@angular/router'
+import { Component, OnInit } from "@angular/core";
+import { UsersService } from "src/app/services/users.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
+  constructor(private userService: UsersService, private router: Router) {}
 
-  constructor(private userService:UsersService, private router:Router) { }
-
-  users : object
+  users: object;
   user = {
-    id: 'Vyberte uživatele',
-    password:''
-  }
+    id: "Vyberte uživatele",
+    password: "",
+  };
 
   ngOnInit() {
-    this.userService.getUsers().subscribe(data =>{
-      this.users = data
-    })
+    this.userService.getUsers().subscribe((data) => {
+      this.users = data;
+    });
   }
 
-  loginUser(){
-    this.userService.loginUser(this.user).subscribe(data =>{
-      this.router.navigateByUrl('/admin',{state:data})
-    })
+  loginUser() {
+    this.userService.loginUser(this.user).subscribe((data: any) => {
+      this.router.navigateByUrl("/admin");
+      localStorage.setItem("username", data.username);
+    });
   }
-
 }

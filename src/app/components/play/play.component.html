@@ -1,14 +1,15 @@
 <div class="ivet" [ngStyle]="{'height.px':innerHeight}">
     <app-play-register *ngIf='stage == -1' (cookie)='onRegister()'></app-play-register>
 
-    <div *ngIf='stage == 0' class="p-4 h-100 d-flex flex-column justify-content-between" id="begin">
+    <div *ngIf='stage == 0' class="p-4 h-100 d-flex flex-column justify-content-between play-container" id="begin">
         <h1 class="text-center mt-5">{{anketa?.name[lang]}} </h1>
         <p class="text-center">{{anketa?.description[lang]}} </p>
         <button *ngIf='anketa' class="au-btn  btn-block mb-5"
             (click)='nextStage()'>{{languages.beginBtn[lang]}}</button>
     </div>
 
-    <div *ngIf='stage == 1' class="p-4 h-100 d-flex flex-column justify-content-around hide" id="play">
+    <div *ngIf='stage == 1' class="p-4 h-100 d-flex flex-column justify-content-around hide play-container" id="play"
+        style="max-width: 1200px; margin: auto;">
         <i (click)='changeLang()' class="fas fa-language lang-icon"></i>
 
         <div *ngIf='anketa.questions[questionNumber].open'>
@@ -53,6 +54,6 @@
 
     <div *ngIf='stage == 2' class="p-4 h-100 d-flex flex-column justify-content-center hide" id="finish">
         <h1 class="text-center">{{languages.endText[lang]}}</h1>
-        <i class="fas fa-circle-notch survey-loading"></i>
+        <i class="fas fa-circle-notch survey-loading" style="color: #4ba82e;"></i>
     </div>
 </div>

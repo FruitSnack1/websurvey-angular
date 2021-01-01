@@ -539,7 +539,7 @@ textarea {
 }
 
 .ivet h1,
-h3 {
+.ivet h3 {
   color: white;
 }
 
@@ -580,4 +580,30 @@ h3 {
 .ivet button {
   background-color: rgb(43, 48, 56);
   background-color: rgb(34, 34, 40);
+}
+
+.play-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.au-btn:hover {
+  background-color: #4ba82e;
+}
+.account-item > .content > a {
+  text-transform: unset;
+}
+
+.alert {
+  animation: fadeIn 3s both;
+}
+
+@keyframes fadeIn {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
