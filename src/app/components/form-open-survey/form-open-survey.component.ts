@@ -166,13 +166,13 @@ export class FormOpenSurveyComponent implements OnInit {
   }
 
   getImageSrc(index) {
-    // if (this.imagesPreviews[index]) return this.imagesPreviews[index];
-    // else if (this.editSurvey) {
-    //   if (this.editSurvey.questions[index].img)
-    //     return this.sanitizer.bypassSecurityTrustUrl(
-    //       `http://localhost:3001${this.editSurvey.questions[index].img}`
-    //     );
-    //   else return "assets/images/no-image.png";
-    // } else return "assets/images/no-image.png";
+    if (this.imagesPreviews[index]) return this.imagesPreviews[index];
+    else if (this.editSurvey) {
+      if (this.editSurvey.questions[index].img)
+        return this.sanitizer.bypassSecurityTrustUrl(
+          `http://localhost:3001${this.editSurvey.questions[index].img}`
+        );
+      else return "assets/images/no-image.png";
+    } else return "assets/images/no-image.png";
   }
 }
