@@ -11,6 +11,7 @@ import { AnketaDetailComponent } from "./components/anketa-detail/anketa-detail.
 import { MenuComponent } from "./components/menu/menu.component";
 import { FormOpenSurveyComponent } from "./components/form-open-survey/form-open-survey.component";
 import { AuthGuard } from "./auth.guard";
+import { SettingsComponent } from "./components/settings/settings.component";
 
 const routes: Routes = [
   { path: "", component: MenuComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   {
     path: "admin",
     component: AdminComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: "", component: DashboardComponent },
       {
@@ -28,6 +30,11 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       { path: "ankety", component: AnketyComponent, canActivate: [AuthGuard] },
+      {
+        path: "settings",
+        component: SettingsComponent,
+        canActivate: [AuthGuard],
+      },
       {
         path: "ankety/new",
         component: AnketyComponent,
