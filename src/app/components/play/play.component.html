@@ -10,7 +10,7 @@
 
     <div *ngIf='stage == 1' class="p-4 h-100 d-flex flex-column justify-content-around hide play-container" id="play"
         style="max-width: 1200px; margin: auto;">
-        <i (click)='changeLang()' class="fas fa-language lang-icon"></i>
+        <!-- <i (click)='changeLang()' class="fas fa-language lang-icon"></i> -->
 
         <div *ngIf='anketa.questions[questionNumber].open'>
             <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question[lang]}}</h3>
@@ -42,11 +42,21 @@
         </ng-template>
 
         <ng-template [ngIf]='!anketa.questions[questionNumber].open && anketa.type==2'>
-            <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question[lang]}}</h3>
-            <img *ngIf='questionImage' class="rounded mx-auto" [src]='questionImage'
-                style="height: 200px; width : 200px" id="question-image">
-            <button *ngFor='let ans of anketa.questions[questionNumber].answers' class="au-btn  btn-block"
-                (click)='answer(ans)'>{{ans}} </button>
+            <div class="row h-100 w-100 " style="margin-left: 0;">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question[lang]}}</h3>
+                </div>
+                <div *ngIf='questionImage'
+                    class="col-lg-6 col-sm-12 h-50 d-flex justify-content-center align-items-center">
+
+                    <img class="rounded mx-auto" [src]='questionImage' id="question-image">
+                </div>
+                <div [ngClass]="{'col-lg-6':questionImage}"
+                    class=" col-sm-12 h-50 d-flex justify-content-center align-items-center flex-column">
+                    <button *ngFor='let ans of anketa.questions[questionNumber].answers' class="au-btn  btn-block"
+                        (click)='answer(ans)'>{{ans}} </button>
+                </div>
+            </div>
         </ng-template>
 
     </div>
