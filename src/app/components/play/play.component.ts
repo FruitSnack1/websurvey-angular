@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit } from "@angular/core";
 import { PlayService } from "src/app/services/play.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ResultsService } from "src/app/services/results.service";
-import { GlobalVariables } from "src/global";
+import { environment } from "src/environments/environment";
 import { CookieService } from "ngx-cookie-service";
 
 @Component({
@@ -86,10 +86,9 @@ export class PlayComponent implements OnInit {
 
   get questionImage() {
     return this.anketa.questions[this.questionNumber].img
-      ? `${GlobalVariables.API_URL.substring(
-          0,
-          GlobalVariables.API_URL.length - 4
-        )}${this.anketa.questions[this.questionNumber].img}`
+      ? `${environment.API_URL.substring(0, environment.API_URL.length - 4)}${
+          this.anketa.questions[this.questionNumber].img
+        }`
       : null;
   }
 

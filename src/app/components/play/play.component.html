@@ -12,16 +12,27 @@
         style="max-width: 1200px; margin: auto;">
         <!-- <i (click)='changeLang()' class="fas fa-language lang-icon"></i> -->
 
-        <div *ngIf='anketa.questions[questionNumber].open'>
-            <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question[lang]}}</h3>
-            <img class="rounded mx-auto" src="assets/images/avatar.png" style="height: 200px; width : 200px">
-            <div class="form-group">
-                <textarea name="" id="" cols="30" rows="10" class="form-control" #opentext placeholder="Vaše odpověď..."
-                    [(ngModel)]='textarea_value'></textarea>
+        <ng-template [ngIf]='anketa.questions[questionNumber].open'>
+            <div class="row h-100 w-100 " style="margin-left: 0;">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question[lang]}}</h3>
+                </div>
+                <div *ngIf='questionImage'
+                    class="col-lg-6 col-sm-12 h-50 d-flex justify-content-center align-items-center">
+
+                    <img class="rounded mx-auto" [src]='questionImage' id="question-image">
+                </div>
+                <div [ngClass]="{'col-lg-6':questionImage}"
+                    class=" col-sm-12 h-50 d-flex justify-content-center align-items-center flex-column">
+                    <div class="form-group" style="width: 100%;">
+                        <textarea name="" id="" cols="30" rows="10" class="form-control" #opentext
+                            placeholder="Vaše odpověď..." [(ngModel)]='textarea_value'></textarea>
+                    </div>
+                    <button [ngClass]='bgClass' class="au-btn  btn-block" (click)='answer(opentext.value)'>Pokračovat
+                    </button>
+                </div>
             </div>
-            <button [ngClass]='bgClass' class="au-btn  btn-block" (click)='answer(opentext.value)'>Pokračovat
-            </button>
-        </div>
+        </ng-template>
 
         <ng-template [ngIf]='!anketa.questions[questionNumber].open && anketa.type!=2'
             class="p-4 h-100 d-flex flex-column justify-content-around hide">
