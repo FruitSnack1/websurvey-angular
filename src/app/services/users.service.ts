@@ -1,7 +1,7 @@
 import { Injectable, Output } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { User } from "../models/user.model";
-import { environment } from "./../../environments/environment";
+import { environment } from "src/environments/environment";
 import { CookieService } from "ngx-cookie-service";
 import { factor } from "@rxweb/reactive-form-validators";
 import { EventEmitter } from "protractor";
