@@ -53,19 +53,31 @@
         </ng-template>
 
         <ng-template [ngIf]='!anketa.questions[questionNumber].open && anketa.type==2'>
-            <div class="row h-100 w-100 " style="margin-left: 0;">
+            <div class="row h-100 w-100 " style="margin-left: 0;position: relative;">
                 <div class="col-12 d-flex justify-content-center align-items-center">
                     <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question[lang]}}</h3>
                 </div>
-                <div *ngIf='questionImage'
+                <div *ngIf='questionImage ' [ngClass]="{'other-background':other}"
                     class="col-lg-6 col-sm-12 h-50 d-flex justify-content-center align-items-center">
 
                     <img class="rounded mx-auto" [src]='questionImage' id="question-image">
                 </div>
-                <div [ngClass]="{'col-lg-6':questionImage}"
+                <div [ngClass]="{'col-lg-6':questionImage,'other-background':other}"
                     class=" col-sm-12 h-50 d-flex justify-content-center align-items-center flex-column">
                     <button *ngFor='let ans of anketa.questions[questionNumber].answers' class="au-btn  btn-block"
                         (click)='answer(ans)'>{{ans}} </button>
+                    <button *ngIf='anketa.questions[questionNumber].other_answer' class="au-btn  btn-block"
+                        (click)='showOtherAnswer()'>Jiné </button>
+                </div>
+                <div class="col-lg-6 col-sm-12 other" *ngIf='other'>
+                    <h4 class="text-center text-white mb-3">Jiné</h4>
+                    <div class="form-group" style="width: 100%;">
+                        <textarea name="" id="" cols="30" rows="10" class="form-control" #other
+                            placeholder="Vaše odpověď..." [(ngModel)]='textarea_value'></textarea>
+                    </div>
+                    <button [ngClass]='bgClass' class="au-btn  btn-block" (click)='answer(other.value)'
+                        style="background-color: rgb(23, 23, 26);">Pokračovat
+                    </button>
                 </div>
             </div>
         </ng-template>

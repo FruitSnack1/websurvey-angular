@@ -24,6 +24,7 @@ export class PlayComponent implements OnInit {
   langCounter = 0;
   questionNumber: number = 0;
   innerHeight;
+  other = false;
 
   languages = {
     beginBtn: {
@@ -84,6 +85,10 @@ export class PlayComponent implements OnInit {
     }
   }
 
+  showOtherAnswer() {
+    this.other = true;
+  }
+
   get questionImage() {
     return this.anketa.questions[this.questionNumber].img
       ? `${environment.API_URL.substring(0, environment.API_URL.length - 4)}${
@@ -116,6 +121,7 @@ export class PlayComponent implements OnInit {
       this.questionNumber++;
     }
     this.updateProgressBar();
+    this.other = false;
   }
 
   updateProgressBar() {
