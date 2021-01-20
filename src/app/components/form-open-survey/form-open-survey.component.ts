@@ -74,6 +74,7 @@ export class FormOpenSurveyComponent implements OnInit {
         cs: "",
       }),
       open: false,
+      other_answer: false,
       answers: this.fb.array(defaultArray),
     });
 
@@ -99,6 +100,10 @@ export class FormOpenSurveyComponent implements OnInit {
       for (let i = 0; i < survey.questions.length; i++) {
         this.addQuestion(true);
         this.questionForms.at(i).get("open").setValue(survey.questions[i].open);
+        this.questionForms
+          .at(i)
+          .get("other_answer")
+          .setValue(survey.questions[i].other_answer);
         this.questionForms
           .at(i)
           .get("question")
