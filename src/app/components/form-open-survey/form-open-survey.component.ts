@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
+import { greaterThanEqualToValidatorExtension } from "@rxweb/reactive-form-validators/validators-extension";
 import { AnketyService } from "src/app/services/ankety.service";
 
 @Component({
@@ -37,6 +38,7 @@ export class FormOpenSurveyComponent implements OnInit {
       user_data: false,
       type: 2,
       questions: this.fb.array([]),
+      user_data_fields: this.fb.array([]),
     });
 
     const id = this.route.snapshot.paramMap.get("id");
@@ -135,6 +137,10 @@ export class FormOpenSurveyComponent implements OnInit {
     let answer = this.fb.control("");
     let answers = this.questionForms.at(i).get("answers") as FormArray;
     answers.insert(j + 1, answer);
+  }
+
+  onNewFieldEvent(fields) {
+    this.surveyForm.setControl("user_data_fields", this.fb.array(fields || []));
   }
 
   submitSurvey() {

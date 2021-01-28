@@ -19,6 +19,7 @@ export class PlayComponent implements OnInit {
   result = {
     answers: [],
     anketa_id: "",
+    user_data: [],
   };
   lang = "cs";
   langCounter = 0;
@@ -51,6 +52,7 @@ export class PlayComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get("id");
     this.playService.getAneta(id).subscribe((data) => {
       this.anketa = data;
+      if (this.anketa.user_data) this.stage = -1;
       console.log(this.anketa);
       this.result.anketa_id = this.anketa._id;
       const userLang = navigator.language;
@@ -61,7 +63,8 @@ export class PlayComponent implements OnInit {
     this.innerHeight = window.innerHeight;
   }
 
-  onRegister() {
+  onRegister(data) {
+    this.result.user_data = data;
     this.stage++;
   }
 

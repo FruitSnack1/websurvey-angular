@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { CookieService } from "ngx-cookie-service";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 
 @Component({
   selector: "app-play-register",
@@ -7,14 +6,20 @@ import { CookieService } from "ngx-cookie-service";
   styleUrls: ["./play-register.component.css"],
 })
 export class PlayRegisterComponent implements OnInit {
-  @Output() cookie: EventEmitter<any> = new EventEmitter();
-  PIN: string;
-  constructor(private cookieService: CookieService) {}
+  @Output() register: EventEmitter<any> = new EventEmitter();
+  @Input() fields: [];
+  constructor() {}
 
   ngOnInit(): void {}
 
-  register() {
-    this.cookieService.set("pin", this.PIN, 365);
-    this.cookie.emit(null);
+  onSubmit(data) {
+    let userData = [];
+    for (let i = 0; i < this.fields.length; i++) {
+      userData.push({
+        key: this.fields[i],
+        value: data.target[i].value,
+      });
+    }
+    this.register.emit(userData);
   }
 }

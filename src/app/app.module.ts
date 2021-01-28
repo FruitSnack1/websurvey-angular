@@ -22,6 +22,7 @@ import { FormOpenSurveyComponent } from "./components/form-open-survey/form-open
 import { OpenQuestionComponent } from "./components/open-question/open-question.component";
 import { AuthGuard } from "./auth.guard";
 import { SettingsComponent } from './components/settings/settings.component';
+import { FormUserDataComponent } from './components/form-user-data/form-user-data.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { SettingsComponent } from './components/settings/settings.component';
     FormOpenSurveyComponent,
     OpenQuestionComponent,
     SettingsComponent,
+    FormUserDataComponent,
   ],
   imports: [
     BrowserModule,

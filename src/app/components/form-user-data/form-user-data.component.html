@@ -1,0 +1,17 @@
+<div class="au-card au-card--no-pad">
+    <div class="au-card-title">
+        <h3>Uživatelská data</h3>
+        <div class="bg-overlay bg-overlay--skoda"></div>
+    </div>
+    <div class="card-body" [formGroup]='userDataForm'>
+        <div class="form-group" formArrayName='fields'>
+            <label for="">Název</label>
+            <br>
+            <div *ngFor='let field of fields.controls; let i=index' class="mb-3">
+                <input [formControlName]='i' type="text" class="form-control w-75 d-inline">
+                <i (click)='addField()' class="fas fa-plus user-data-icon"></i>
+                <i (click)='removeField(i)' class="fas fa-minus "></i>
+            </div>
+        </div>
+    </div>
+</div>

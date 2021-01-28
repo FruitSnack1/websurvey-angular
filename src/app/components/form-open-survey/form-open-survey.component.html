@@ -41,6 +41,9 @@
                 </div>
             </div>
         </div>
+
+        <app-form-user-data (newFieldEvent)='onNewFieldEvent($event)' *ngIf='surveyForm.value.user_data'
+            class="col-lg-6 m-b-40"></app-form-user-data>
     </div>
 
 

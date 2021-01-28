@@ -1,7 +1,11 @@
-<div class="p-4 min-vh-100 d-flex flex-column justify-content-around">
-    <div class="form-group">
-        <label for="">Zadejte osobni cislo</label>
-        <input [(ngModel)]='PIN' type="text" class="form-control mb-3">
-        <button (click)='register()' class="au-btn au-btn--skoda btn-block">Pokracovat</button>
-    </div>
+<div class="p-4 min-vh-100 d-flex flex-column justify-content-around play-container">
+    <form (ngSubmit)='onSubmit($event)'>
+        <div class="form-group">
+            <div *ngFor='let field of fields; let i = index'>
+                <label for="">{{field}}</label>
+                <input type="text" class="form-control mb-3" id='{{i}}'>
+            </div>
+            <button type="submit" class="au-btn au-btn--skoda btn-block">Pokracovat</button>
+        </div>
+    </form>
 </div>
