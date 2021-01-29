@@ -68,10 +68,10 @@
                     <button *ngFor='let ans of anketa.questions[questionNumber].answers' class="au-btn  btn-block"
                         (click)='answer(ans)'>{{ans}} </button>
                     <button *ngIf='anketa.questions[questionNumber].other_answer' class="au-btn  btn-block"
-                        (click)='showOtherAnswer()'>Jiné </button>
+                        (click)='showOtherAnswer()'>Jiné (vlastní odpověď)</button>
                 </div>
                 <div class="col-lg-6 col-sm-12 other" *ngIf='other'>
-                    <h4 class="text-center text-white mb-3">Jiné</h4>
+                    <h4 class="text-center text-white mb-3">Jiné (vlastní odpověď)</h4>
                     <div class="form-group" style="width: 100%;">
                         <textarea name="" id="" cols="30" rows="10" class="form-control" #other
                             placeholder="Vaše odpověď..." [(ngModel)]='textarea_value'></textarea>
