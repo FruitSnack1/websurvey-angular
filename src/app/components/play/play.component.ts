@@ -15,7 +15,7 @@ export class PlayComponent implements OnInit {
   progress_bar = 0;
   questionTime;
   textarea_value = "";
-  stage = -1;
+  stage = 0;
   result = {
     answers: [],
     anketa_id: "",

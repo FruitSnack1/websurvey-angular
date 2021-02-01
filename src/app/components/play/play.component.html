@@ -1,5 +1,5 @@
 <div class="ivet" [ngStyle]="{'height.px':innerHeight}">
-    <app-play-register *ngIf='stage == -1' (register)='onRegister($event)' [fields]='anketa.user_data_fields'>
+    <app-play-register *ngIf='stage == -1 ' (register)='onRegister($event)' [fields]='anketa.user_data_fields'>
     </app-play-register>
 
     <div *ngIf='stage == 0' class="p-4 h-100 d-flex flex-column justify-content-between play-container" id="begin">
