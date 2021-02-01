@@ -3,7 +3,7 @@ import { AnketyService } from "src/app/services/ankety.service";
 import { ActivatedRoute } from "@angular/router";
 import { ResultsService } from "src/app/services/results.service";
 import { Chart } from "chart.js";
-import { GlobalVariables } from "src/global";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-anketa-detail",
@@ -25,7 +25,7 @@ export class AnketaDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get("id");
     this.anketyService.getAnketa(id).subscribe((data) => {
       this.anketa = data;
-      this.anketa_qr = `${GlobalVariables.QR_URL}/${this.anketa._id}.png`;
+      this.anketa_qr = `${environment.API_URL}/qrcodes/${this.anketa._id}.png`;
     });
 
     this.resultsService.getResults(id).subscribe((data) => {

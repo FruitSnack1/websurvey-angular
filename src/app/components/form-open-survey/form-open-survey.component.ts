@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
-import { greaterThanEqualToValidatorExtension } from "@rxweb/reactive-form-validators/validators-extension";
 import { AnketyService } from "src/app/services/ankety.service";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-form-open-survey",
@@ -181,7 +181,7 @@ export class FormOpenSurveyComponent implements OnInit {
     else if (this.editSurvey) {
       if (this.editSurvey.questions[index].img)
         return this.sanitizer.bypassSecurityTrustUrl(
-          `http://localhost:3001${this.editSurvey.questions[index].img}`
+          `${environment.API_URL}${this.editSurvey.questions[index].img}`
         );
       else return "assets/images/no-image.png";
     } else return "assets/images/no-image.png";

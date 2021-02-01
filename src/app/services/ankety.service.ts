@@ -6,7 +6,7 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class AnketyService {
-  url: string = `${environment.API_URL}/ankety`;
+  url: string = `${environment.API_URL}/api/ankety`;
 
   constructor(private httpClient: HttpClient) {}
 

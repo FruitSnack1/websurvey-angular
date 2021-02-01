@@ -15,7 +15,7 @@ export class PlayComponent implements OnInit {
   progress_bar = 0;
   questionTime;
   textarea_value = "";
-  stage = -1;
+  stage = 0;
   result = {
     answers: [],
     anketa_id: "",
@@ -94,7 +94,7 @@ export class PlayComponent implements OnInit {
 
   get questionImage() {
     return this.anketa.questions[this.questionNumber].img
-      ? `${environment.API_URL.substring(0, environment.API_URL.length - 4)}${
+      ? `${environment.API_URL}${
           this.anketa.questions[this.questionNumber].img
         }`
       : null;

@@ -11,7 +11,7 @@ import { BehaviorSubject, Observable } from "rxjs";
   providedIn: "root",
 })
 export class UsersService {
-  url: string = `${environment.API_URL}/users`;
+  url: string = `${environment.API_URL}/api/users`;
   username$ = new BehaviorSubject<String>("");
   constructor(
     private httpClient: HttpClient,
