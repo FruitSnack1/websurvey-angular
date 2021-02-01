@@ -6,7 +6,7 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class PlayService {
-  url: string = `${environment.API_URL}/play`;
+  url: string = `${environment.API_URL}/api/play`;
   constructor(private httpClient: HttpClient) {}
 
   getAneta(id: string) {

@@ -6,7 +6,7 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class ResultsService {
-  url: string = `${environment.API_URL}/results`;
+  url: string = `${environment.API_URL}/api/results`;
   constructor(private httpClient: HttpClient) {}
 
   postResults(result: object) {
