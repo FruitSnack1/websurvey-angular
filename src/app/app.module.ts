@@ -21,8 +21,10 @@ import { MenuComponent } from "./components/menu/menu.component";
 import { FormOpenSurveyComponent } from "./components/form-open-survey/form-open-survey.component";
 import { OpenQuestionComponent } from "./components/open-question/open-question.component";
 import { AuthGuard } from "./auth.guard";
-import { SettingsComponent } from './components/settings/settings.component';
-import { FormUserDataComponent } from './components/form-user-data/form-user-data.component';
+import { SettingsComponent } from "./components/settings/settings.component";
+import { FormUserDataComponent } from "./components/form-user-data/form-user-data.component";
+import { FormQuestionSingleComponent } from "./components/form-questions/form-question-single/form-question-single.component";
+import { PlayQuestionSingleComponent } from './components/play-questions/play-question-single/play-question-single.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { FormUserDataComponent } from './components/form-user-data/form-user-dat
     OpenQuestionComponent,
     SettingsComponent,
     FormUserDataComponent,
+    FormQuestionSingleComponent,
+    PlayQuestionSingleComponent,
   ],
   imports: [
     BrowserModule,

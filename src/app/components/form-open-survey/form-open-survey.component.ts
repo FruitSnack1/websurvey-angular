@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
+import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AnketyService } from "src/app/services/ankety.service";
@@ -29,7 +29,7 @@ export class FormOpenSurveyComponent implements OnInit {
   ngOnInit() {
     this.surveyForm = this.fb.group({
       name: this.fb.group({
-        cs: "",
+        cs: "Nová anketa",
       }),
       description: this.fb.group({
         cs: "",
@@ -46,7 +46,7 @@ export class FormOpenSurveyComponent implements OnInit {
       this.editMode = true;
       this.editId = id;
       this.fetchSurvey(id);
-    } else this.addQuestion(false);
+    } else this.addQuestion();
   }
 
   get questionForms() {
@@ -68,16 +68,15 @@ export class FormOpenSurveyComponent implements OnInit {
     };
   }
 
-  addQuestion(empty: boolean) {
-    let defaultArray = ["", "", "", ""];
-    if (empty) defaultArray = [];
+  addQuestion() {
     const question = this.fb.group({
       question: this.fb.group({
         cs: "",
       }),
-      open: false,
       other_answer: false,
-      answers: this.fb.array(defaultArray),
+      description: "",
+      answers: this.fb.array([]),
+      type: "",
     });
 
     this.questionForms.push(question);
@@ -100,7 +99,7 @@ export class FormOpenSurveyComponent implements OnInit {
 
       //questions
       for (let i = 0; i < survey.questions.length; i++) {
-        this.addQuestion(true);
+        this.addQuestion();
         this.questionForms.at(i).get("open").setValue(survey.questions[i].open);
         this.questionForms
           .at(i)
@@ -141,6 +140,15 @@ export class FormOpenSurveyComponent implements OnInit {
 
   onNewFieldEvent(fields) {
     this.surveyForm.setControl("user_data_fields", this.fb.array(fields || []));
+  }
+
+  onQuestionChange(data) {
+    let answers = this.questionForms.at(data.index).get("answers") as FormArray;
+    answers.clear();
+    for (let answer of data.question.answers) {
+      answers.insert(0, this.fb.control(""));
+    }
+    this.questionForms.at(data.index).patchValue(data.question);
   }
 
   submitSurvey() {

@@ -13,7 +13,7 @@
         style="max-width: 1200px; margin: auto;">
         <!-- <i (click)='changeLang()' class="fas fa-language lang-icon"></i> -->
 
-        <ng-template [ngIf]='anketa.questions[questionNumber].open'>
+        <!-- <ng-template [ngIf]='anketa.questions[questionNumber].open'>
             <div class="row h-100 w-100 " style="margin-left: 0;">
                 <div class="col-12 d-flex justify-content-center align-items-center">
                     <h3 class="text-center" id="question">{{anketa.questions[questionNumber].question[lang]}}</h3>
@@ -81,7 +81,11 @@
                     </button>
                 </div>
             </div>
-        </ng-template>
+        </ng-template> -->
+
+        <app-play-question-single (questionAnswerd)='onQuestionAnswerd($event)' class="row h-100 w-100 "
+            style="margin-left: 0;position: relative;" [question]='anketa.questions[questionNumber]'>
+        </app-play-question-single>
 
     </div>
     <div [ngClass]='bgClass' class="anketa-progress-bar" id="progress-bar" [style.width.%]='progress_bar'></div>

@@ -49,7 +49,7 @@
 
     <!-- QUESTIONS -->
     <div formArrayName='questions'>
-        <div *ngFor='let question of questionForms.controls; let i=index' [formGroupName]='i' class="row">
+        <!-- <div *ngFor='let question of questionForms.controls; let i=index' [formGroupName]='i' class="row">
             <div class="col-lg-12 m-b-40" id="question0">
                 <div class="au-card au-card--no-pad">
                     <div class="au-card-title">
@@ -102,10 +102,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+        <ng-container *ngFor='let question of questionForms.controls; let i=index'>
+            <app-question-single [index]='i' (questionChange)='onQuestionChange($event)'></app-question-single>
+        </ng-container>
     </div>
 
-    <button (click)='addQuestion(false)' class="au-btn au-btn-icon btn-block au-btn--secondary m-b-10" type="button"><i
+    <button (click)='addQuestion()' class="au-btn au-btn-icon btn-block au-btn--secondary m-b-10" type="button"><i
             class="zmdi zmdi-plus"></i>Přidat otázku</button>
     <button *ngIf='!editMode' class="au-btn au-btn--skoda btn-block m-b-40" type="submit">Vytvořit anketu</button>
     <button *ngIf='editMode' class="au-btn au-btn--skoda btn-block m-b-40" type="submit">Upravit anketu</button>
