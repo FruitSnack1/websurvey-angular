@@ -4,10 +4,10 @@ import { Question } from "src/app/models/question.model";
 
 @Component({
   selector: "app-question",
-  templateUrl: "./question.component.html",
-  styleUrls: ["./question.component.css"],
+  templateUrl: "./result-question-single.component.html",
+  styleUrls: ["./result-question-single.component.css"],
 })
-export class QuestionComponent implements OnInit {
+export class ResultQuestionSingleComponent implements OnInit {
   @Input() question: any;
   @Input() results;
   @Input() index;

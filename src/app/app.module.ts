@@ -13,18 +13,18 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { PlayComponent } from "./components/play/play.component";
 import { FormAnketaComponent } from "./components/form-anketa/form-anketa.component";
 import { AnketaDetailComponent } from "./components/anketa-detail/anketa-detail.component";
-import { QuestionComponent } from "./components/question/question.component";
+import { ResultQuestionSingleComponent } from "./components/result-questions/result-question-single/result-question-single.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ChartsModule } from "ng2-charts";
 import { PlayRegisterComponent } from "./components/play-register/play-register.component";
 import { MenuComponent } from "./components/menu/menu.component";
 import { FormOpenSurveyComponent } from "./components/form-open-survey/form-open-survey.component";
-import { OpenQuestionComponent } from "./components/open-question/open-question.component";
+import { ResultQuestionOpenComponent } from "./components/result-questions/result-question-open/result-question-open.component";
 import { AuthGuard } from "./auth.guard";
 import { SettingsComponent } from "./components/settings/settings.component";
 import { FormUserDataComponent } from "./components/form-user-data/form-user-data.component";
 import { FormQuestionSingleComponent } from "./components/form-questions/form-question-single/form-question-single.component";
-import { PlayQuestionSingleComponent } from './components/play-questions/play-question-single/play-question-single.component';
+import { PlayQuestionSingleComponent } from "./components/play-questions/play-question-single/play-question-single.component";
 
 @NgModule({
   declarations: [
@@ -37,11 +37,11 @@ import { PlayQuestionSingleComponent } from './components/play-questions/play-qu
     PlayComponent,
     FormAnketaComponent,
     AnketaDetailComponent,
-    QuestionComponent,
+    ResultQuestionSingleComponent,
     PlayRegisterComponent,
     MenuComponent,
     FormOpenSurveyComponent,
-    OpenQuestionComponent,
+    ResultQuestionOpenComponent,
     SettingsComponent,
     FormUserDataComponent,
     FormQuestionSingleComponent,
