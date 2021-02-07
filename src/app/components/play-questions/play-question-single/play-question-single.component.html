@@ -3,25 +3,23 @@
         <h3 id="question">{{question.question['cs']}}</h3>
         <h6 style="color:'#777777'">{{question.description}}</h6>
     </div>
-    <div *ngIf='question.img ' [ngClass]="{'other-background':other}"
-        class="col-lg-6 col-sm-12 h-50 d-flex justify-content-center align-items-center">
+    <div *ngIf='question.img ' class="col-lg-6 col-sm-12 h-50 d-flex justify-content-center align-items-center">
 
         <img class="rounded mx-auto" [src]='' id="question-image">
     </div>
-    <div [ngClass]="{'col-lg-6':'','other-background':other}"
+    <div [ngClass]="{'col-lg-6':''}"
         class=" col-sm-12 h-50 d-flex justify-content-center align-items-center flex-column">
         <button *ngFor='let ans of question.answers' class="au-btn  btn-block" (click)='answer(ans)'>{{ans}} </button>
         <button *ngIf='question.other_answer' class="au-btn  btn-block" (click)='showOtherAnswer()'>Jiné (vlastní
             odpověď)</button>
     </div>
-    <div class="col-lg-6 col-sm-12 other" *ngIf='other'>
+    <div class="col-lg-6 col-sm-12 other" *ngIf='false'>
         <h4 class="text-center text-white mb-3">Jiné (vlastní odpověď)</h4>
         <div class="form-group" style="width: 100%;">
             <textarea name="" id="" cols="30" rows="10" class="form-control" #other
                 placeholder="Vaše odpověď..."></textarea>
         </div>
-        <button class="au-btn  btn-block" (click)='answer(other.value)'
-            style="background-color: rgb(23, 23, 26);">Pokračovat
+        <button class="au-btn  btn-block" style="background-color: rgb(23, 23, 26);">Pokračovat
         </button>
     </div>
 </div>
