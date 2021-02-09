@@ -8,7 +8,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-3">
-                    <img class='img-fluid form-anketa-img' alt="">
+                    <img class='img-fluid form-anketa-img' alt="" [src]='imageSrc'>
                 </div>
                 <div class="col-9">
 
@@ -39,7 +39,8 @@
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" for="name">Obrázek otázky</label>
-                        <input class="form-control-file" type="file" enctype="multipart/form-data" />
+                        <input (change)='onFileChange($event)' class="form-control-file" type="file"
+                            enctype="multipart/form-data" />
                     </div>
                 </div>
             </div>

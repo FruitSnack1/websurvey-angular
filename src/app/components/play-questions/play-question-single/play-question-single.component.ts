@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-play-question-single",
@@ -18,4 +19,10 @@ export class PlayQuestionSingleComponent implements OnInit {
   }
 
   showOtherAnswer() {}
+
+  get questionImg() {
+    return this.question.img
+      ? `${environment.API_URL}${this.question.img}`
+      : null;
+  }
 }

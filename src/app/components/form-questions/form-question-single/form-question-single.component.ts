@@ -8,8 +8,11 @@ import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 })
 export class FormQuestionSingleComponent implements OnInit {
   @Output() questionChange = new EventEmitter<any>();
+  @Output() imageChange = new EventEmitter<any>();
   @Input() index;
   questionForm: FormGroup;
+  imagePreview;
+  image;
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -40,7 +43,27 @@ export class FormQuestionSingleComponent implements OnInit {
     let answer = this.fb.control("");
     this.answers.insert(i + 1, answer);
   }
+
   deleteAnswer(i) {
     this.answers.removeAt(i);
+  }
+
+  onFileChange(event) {
+    if (!event.target.files) return;
+    this.image = event.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (event: any) => {
+      this.imagePreview = event.target.result;
+    };
+    this.imageChange.emit({
+      image: this.image,
+      index: this.index,
+    });
+  }
+
+  get imageSrc() {
+    if (this.imagePreview) return this.imagePreview;
+    else return "assets/images/no-image.png";
   }
 }

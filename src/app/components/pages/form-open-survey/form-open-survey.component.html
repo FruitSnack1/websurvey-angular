@@ -104,7 +104,8 @@
             </div>
         </div> -->
         <ng-container *ngFor='let question of questionForms.controls; let i=index'>
-            <app-question-single [index]='i' (questionChange)='onQuestionChange($event)'></app-question-single>
+            <app-question-single [index]='i' (questionChange)='onQuestionChange($event)'
+                (imageChange)='onImageChange($event)'></app-question-single>
         </ng-container>
     </div>
 
