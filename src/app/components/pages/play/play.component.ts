@@ -110,7 +110,7 @@ export class PlayComponent implements OnInit {
     this.other = true;
   }
 
-  get questionImage() {
+  get questionImg() {
     return this.anketa.questions[this.questionNumber].img
       ? `${environment.API_URL}${
           this.anketa.questions[this.questionNumber].img
@@ -146,10 +146,10 @@ export class PlayComponent implements OnInit {
   }
 
   updateProgressBar() {
-    this.progress_bar =
-      ((this.questionNumber + 1) / this.anketa.questions.length) * 100;
-
-    console.log(this.progress_bar);
+    setTimeout(() => {
+      this.progress_bar =
+        ((this.questionNumber + 1) / this.anketa.questions.length) * 100;
+    }, 1);
   }
 
   postResult() {
