@@ -73,43 +73,21 @@ export class FormOpenSurveyComponent implements OnInit {
   }
 
   fetchSurvey(id) {
-    // this.anketyService.getAnketa(id).subscribe((data) => {
-    //   let survey: any = data;
-    //   console.log(survey);
-    //   this.editSurvey = data;
-    //   this.surveyForm.get("random_order").setValue(survey.random_order);
-    //   this.surveyForm.get("user_data").setValue(survey.user_data);
-    //   this.surveyForm.get("name").get("cs").setValue(survey.name.cs);
-    //   this.surveyForm
-    //     .get("description")
-    //     .get("cs")
-    //     .setValue(survey.description.cs);
-    //   //questions
-    //   for (let i = 0; i < survey.questions.length; i++) {
-    //     this.addQuestion();
-    //     this.questionForms.at(i).get("open").setValue(survey.questions[i].open);
-    //     this.questionForms
-    //       .at(i)
-    //       .get("other_answer")
-    //       .setValue(survey.questions[i].other_answer);
-    //     this.questionForms
-    //       .at(i)
-    //       .get("question")
-    //       .get("cs")
-    //       .setValue(survey.questions[i].question.cs);
-    //     //answers
-    //     for (let j = 0; j < survey.questions[i].answers.length; j++) {
-    //       let answers = this.questionForms.at(i).get("answers") as FormArray;
-    //       answers.removeAt(j);
-    //       this.addAnswer(i, j);
-    //       answers.at(j).setValue(survey.questions[i].answers[j]);
-    //     }
-    //   }
-    //   //open
-    //   for (let i = 0; i < survey.questions.length; i++) {
-    //     this.questionForms.at(i).get("open").setValue(survey.questions[i].open);
-    //   }
-    // });
+    this.anketyService.getAnketa(id).subscribe((data) => {
+      let survey: any = data;
+      console.log(survey);
+      this.editSurvey = data;
+      this.surveyForm.get("random_order").setValue(survey.random_order);
+      this.surveyForm.get("user_data").setValue(survey.user_data);
+      this.surveyForm.get("name").get("cs").setValue(survey.name.cs);
+      this.surveyForm
+        .get("description")
+        .get("cs")
+        .setValue(survey.description.cs);
+      for (let question of this.editSurvey.questions) {
+        this.addQuestion();
+      }
+    });
   }
 
   onNewFieldEvent(fields) {
@@ -126,7 +104,7 @@ export class FormOpenSurveyComponent implements OnInit {
   }
 
   onImageChange(data) {
-    this.files[`img${data.index}`] = data.image;
+    if (data.image) this.files[`img${data.index}`] = data.image;
   }
 
   submitSurvey() {

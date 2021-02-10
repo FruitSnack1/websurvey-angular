@@ -105,7 +105,7 @@
         </div> -->
         <ng-container *ngFor='let question of questionForms.controls; let i=index'>
             <app-question-single [index]='i' (questionChange)='onQuestionChange($event)'
-                (imageChange)='onImageChange($event)'></app-question-single>
+                (imageChange)='onImageChange($event)' [question]='this.editSurvey?.questions[i]'></app-question-single>
         </ng-container>
     </div>
 

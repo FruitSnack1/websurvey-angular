@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-question-single",
@@ -10,6 +11,7 @@ export class FormQuestionSingleComponent implements OnInit {
   @Output() questionChange = new EventEmitter<any>();
   @Output() imageChange = new EventEmitter<any>();
   @Input() index;
+  @Input() question;
   questionForm: FormGroup;
   imagePreview;
   image;
@@ -33,6 +35,10 @@ export class FormQuestionSingleComponent implements OnInit {
       });
       console.log(this.questionForm.value);
     });
+
+    if (this.question) {
+      this.editQuestion();
+    }
   }
 
   get answers() {
@@ -64,6 +70,15 @@ export class FormQuestionSingleComponent implements OnInit {
 
   get imageSrc() {
     if (this.imagePreview) return this.imagePreview;
+    if (this.question.img) return `${environment.API_URL}${this.question.img}`;
     else return "assets/images/no-image.png";
+  }
+
+  editQuestion() {
+    this.answers.clear();
+    for (let answer of this.question.answers) {
+      this.answers.insert(0, this.fb.control(""));
+    }
+    this.questionForm.patchValue(this.question);
   }
 }
