@@ -68,6 +68,24 @@ export class PlayComponent implements OnInit {
     this.stage++;
   }
 
+  onQuestionAnswerd(answer) {
+    this.textarea_value = "";
+    this.result.answers.push({
+      question_id: this.anketa.questions[this.questionNumber]._id,
+      answer,
+      time: Date.now() - this.questionTime,
+    });
+    this.questionTime = Date.now();
+    if (this.questionNumber == this.anketa.questions.length - 1) {
+      this.nextStage();
+      this.postResult();
+    } else {
+      this.questionNumber++;
+    }
+    this.updateProgressBar();
+    this.other = false;
+  }
+
   @HostListener("window:resize", [])
   onResize() {
     this.innerHeight = window.innerHeight;
@@ -92,7 +110,7 @@ export class PlayComponent implements OnInit {
     this.other = true;
   }
 
-  get questionImage() {
+  get questionImg() {
     return this.anketa.questions[this.questionNumber].img
       ? `${environment.API_URL}${
           this.anketa.questions[this.questionNumber].img
@@ -128,10 +146,10 @@ export class PlayComponent implements OnInit {
   }
 
   updateProgressBar() {
-    this.progress_bar =
-      ((this.questionNumber + 1) / this.anketa.questions.length) * 100;
-
-    console.log(this.progress_bar);
+    setTimeout(() => {
+      this.progress_bar =
+        ((this.questionNumber + 1) / this.anketa.questions.length) * 100;
+    }, 1);
   }
 
   postResult() {

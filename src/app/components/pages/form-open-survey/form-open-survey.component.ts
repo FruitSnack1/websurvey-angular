@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
+import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AnketyService } from "src/app/services/ankety.service";
@@ -29,7 +29,7 @@ export class FormOpenSurveyComponent implements OnInit {
   ngOnInit() {
     this.surveyForm = this.fb.group({
       name: this.fb.group({
-        cs: "",
+        cs: "Nová anketa",
       }),
       description: this.fb.group({
         cs: "",
@@ -46,7 +46,7 @@ export class FormOpenSurveyComponent implements OnInit {
       this.editMode = true;
       this.editId = id;
       this.fetchSurvey(id);
-    } else this.addQuestion(false);
+    } else this.addQuestion();
   }
 
   get questionForms() {
@@ -58,26 +58,15 @@ export class FormOpenSurveyComponent implements OnInit {
     return answers.get("answers") as FormArray;
   }
 
-  onFileChange(event, i) {
-    if (!event.target.files) return;
-    this.files[`img${i}`] = event.target.files[0];
-    var reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
-    reader.onload = (event: any) => {
-      this.imagesPreviews[i] = event.target.result;
-    };
-  }
-
-  addQuestion(empty: boolean) {
-    let defaultArray = ["", "", "", ""];
-    if (empty) defaultArray = [];
+  addQuestion() {
     const question = this.fb.group({
       question: this.fb.group({
         cs: "",
       }),
-      open: false,
       other_answer: false,
-      answers: this.fb.array(defaultArray),
+      description: "",
+      answers: this.fb.array([]),
+      type: "",
     });
 
     this.questionForms.push(question);
@@ -90,57 +79,32 @@ export class FormOpenSurveyComponent implements OnInit {
       this.editSurvey = data;
       this.surveyForm.get("random_order").setValue(survey.random_order);
       this.surveyForm.get("user_data").setValue(survey.user_data);
-
       this.surveyForm.get("name").get("cs").setValue(survey.name.cs);
-
       this.surveyForm
         .get("description")
         .get("cs")
         .setValue(survey.description.cs);
-
-      //questions
-      for (let i = 0; i < survey.questions.length; i++) {
-        this.addQuestion(true);
-        this.questionForms.at(i).get("open").setValue(survey.questions[i].open);
-        this.questionForms
-          .at(i)
-          .get("other_answer")
-          .setValue(survey.questions[i].other_answer);
-        this.questionForms
-          .at(i)
-          .get("question")
-          .get("cs")
-          .setValue(survey.questions[i].question.cs);
-
-        //answers
-        for (let j = 0; j < survey.questions[i].answers.length; j++) {
-          let answers = this.questionForms.at(i).get("answers") as FormArray;
-          answers.removeAt(j);
-          this.addAnswer(i, j);
-          answers.at(j).setValue(survey.questions[i].answers[j]);
-        }
-      }
-
-      //open
-      for (let i = 0; i < survey.questions.length; i++) {
-        this.questionForms.at(i).get("open").setValue(survey.questions[i].open);
+      for (let question of this.editSurvey.questions) {
+        this.addQuestion();
       }
     });
   }
 
-  deleteAnswer(i, j) {
-    let answers = this.questionForms.at(i).get("answers") as FormArray;
-    answers.removeAt(j);
-  }
-
-  addAnswer(i, j) {
-    let answer = this.fb.control("");
-    let answers = this.questionForms.at(i).get("answers") as FormArray;
-    answers.insert(j + 1, answer);
-  }
-
   onNewFieldEvent(fields) {
     this.surveyForm.setControl("user_data_fields", this.fb.array(fields || []));
+  }
+
+  onQuestionChange(data) {
+    let answers = this.questionForms.at(data.index).get("answers") as FormArray;
+    answers.clear();
+    for (let answer of data.question.answers) {
+      answers.insert(0, this.fb.control(""));
+    }
+    this.questionForms.at(data.index).patchValue(data.question);
+  }
+
+  onImageChange(data) {
+    if (data.image) this.files[`img${data.index}`] = data.image;
   }
 
   submitSurvey() {
@@ -174,16 +138,5 @@ export class FormOpenSurveyComponent implements OnInit {
   deleteQuestion(i) {
     let questions = this.surveyForm.get("questions") as FormArray;
     questions.removeAt(i);
-  }
-
-  getImageSrc(index) {
-    if (this.imagesPreviews[index]) return this.imagesPreviews[index];
-    else if (this.editSurvey) {
-      if (this.editSurvey.questions[index].img)
-        return this.sanitizer.bypassSecurityTrustUrl(
-          `${environment.API_URL}${this.editSurvey.questions[index].img}`
-        );
-      else return "assets/images/no-image.png";
-    } else return "assets/images/no-image.png";
   }
 }

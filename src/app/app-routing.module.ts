@@ -1,17 +1,17 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { LoginComponent } from "./components/login/login.component";
-import { RegisterComponent } from "./components/register/register.component";
-import { AdminComponent } from "./components/admin/admin.component";
-import { DashboardComponent } from "./components/dashboard/dashboard.component";
-import { AnketyComponent } from "./components/ankety/ankety.component";
-import { PlayComponent } from "./components/play/play.component";
-import { FormAnketaComponent } from "./components/form-anketa/form-anketa.component";
-import { AnketaDetailComponent } from "./components/anketa-detail/anketa-detail.component";
+import { LoginComponent } from "./components/pages/login/login.component";
+import { RegisterComponent } from "./components/pages/register/register.component";
+import { AdminComponent } from "./components/pages/admin/admin.component";
+import { DashboardComponent } from "./components/pages/dashboard/dashboard.component";
+import { AnketyComponent } from "./components/pages/ankety/ankety.component";
+import { PlayComponent } from "./components/pages/play/play.component";
+import { FormAnketaComponent } from "./components/pages/form-anketa/form-anketa.component";
+import { AnketaDetailComponent } from "./components/pages/anketa-detail/anketa-detail.component";
 import { MenuComponent } from "./components/menu/menu.component";
-import { FormOpenSurveyComponent } from "./components/form-open-survey/form-open-survey.component";
+import { FormOpenSurveyComponent } from "./components/pages/form-open-survey/form-open-survey.component";
 import { AuthGuard } from "./auth.guard";
-import { SettingsComponent } from "./components/settings/settings.component";
+import { SettingsComponent } from "./components/pages/settings/settings.component";
 
 const routes: Routes = [
   { path: "", component: MenuComponent },

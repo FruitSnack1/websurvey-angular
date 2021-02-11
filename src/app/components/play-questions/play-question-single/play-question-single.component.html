@@ -1,0 +1,22 @@
+<div class="col-12 h-100 w-100 p-0">
+    <h3 id="question" class="mt-5">{{question.question['cs']}}</h3>
+    <p class="mb-5">{{question.description}}</p>
+    <!-- <div *ngIf='question.img ' class="col-lg-6 col-sm-12 h-50 d-flex justify-content-center align-items-center">
+
+        <img class="rounded mx-auto" [src]='questionImg' id="question-image">
+    </div> -->
+
+    <button *ngFor='let ans of question.answers' class="au-btn  btn-block au-btn--skoda" (click)='answer(ans)'>{{ans}}
+    </button>
+    <button *ngIf='question.other_answer' class="au-btn  btn-block" (click)='showOtherAnswer()'>Jiné (vlastní
+        odpověď)</button>
+    <div class="col-lg-6 col-sm-12 other" *ngIf='false'>
+        <h4 class="text-center text-white mb-3">Jiné (vlastní odpověď)</h4>
+        <div class="form-group" style="width: 100%;">
+            <textarea name="" id="" cols="30" rows="10" class="form-control" #other
+                placeholder="Vaše odpověď..."></textarea>
+        </div>
+        <button class="au-btn  btn-block" style="background-color: rgb(23, 23, 26);">Pokračovat
+        </button>
+    </div>
+</div>
