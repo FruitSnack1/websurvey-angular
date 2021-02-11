@@ -70,7 +70,7 @@ export class FormQuestionSingleComponent implements OnInit {
 
   get imageSrc() {
     if (this.imagePreview) return this.imagePreview;
-    if (this.question.img) return `${environment.API_URL}${this.question.img}`;
+    if (this.question?.img) return `${environment.API_URL}${this.question.img}`;
     else return "assets/images/no-image.png";
   }
 
