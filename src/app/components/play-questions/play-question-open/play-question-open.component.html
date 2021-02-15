@@ -1,0 +1,15 @@
+<div class="col-12 h-100 w-100 p-0">
+    <h3 id="question" class="mt-5">{{question.question['cs']}}</h3>
+    <p class="mb-5">{{question.description}}</p>
+    <!-- <div *ngIf='question.img ' class="col-lg-6 col-sm-12 h-50 d-flex justify-content-center align-items-center">
+
+        <img class="rounded mx-auto" [src]='questionImg' id="question-image">
+    </div> -->
+
+    <!-- <button *ngFor='let ans of question.answers' class="au-btn  btn-block au-btn--skoda" (click)='answer(ans)'>{{ans}}
+    </button> -->
+    <textarea [(ngModel)]='openAnswer' class='play-textarea' name="" id="" cols="30" rows="10"
+        placeholder="Vaše odpověď..."></textarea>
+    <button (click)='answer()' class="au-btn mb-5 au-btn--skoda btn-next">Pokračovat</button>
+
+</div>

@@ -46,7 +46,7 @@ export class FormOpenSurveyComponent implements OnInit {
       this.editMode = true;
       this.editId = id;
       this.fetchSurvey(id);
-    } else this.addQuestion();
+    } else this.addQuestion("single");
   }
 
   get questionForms() {
@@ -58,7 +58,7 @@ export class FormOpenSurveyComponent implements OnInit {
     return answers.get("answers") as FormArray;
   }
 
-  addQuestion() {
+  addQuestion(type) {
     const question = this.fb.group({
       question: this.fb.group({
         cs: "",
@@ -66,7 +66,7 @@ export class FormOpenSurveyComponent implements OnInit {
       other_answer: false,
       description: "",
       answers: this.fb.array([]),
-      type: "",
+      type,
     });
 
     this.questionForms.push(question);
@@ -85,7 +85,7 @@ export class FormOpenSurveyComponent implements OnInit {
         .get("cs")
         .setValue(survey.description.cs);
       for (let question of this.editSurvey.questions) {
-        this.addQuestion();
+        this.addQuestion(question.type);
       }
     });
   }
@@ -95,10 +95,14 @@ export class FormOpenSurveyComponent implements OnInit {
   }
 
   onQuestionChange(data) {
-    let answers = this.questionForms.at(data.index).get("answers") as FormArray;
-    answers.clear();
-    for (let answer of data.question.answers) {
-      answers.insert(0, this.fb.control(""));
+    if (data.question.type == "single") {
+      let answers = this.questionForms
+        .at(data.index)
+        .get("answers") as FormArray;
+      answers.clear();
+      for (let answer of data.question.answers) {
+        answers.insert(0, this.fb.control(""));
+      }
     }
     this.questionForms.at(data.index).patchValue(data.question);
   }

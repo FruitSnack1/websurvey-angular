@@ -25,6 +25,8 @@ import { SettingsComponent } from "./components/pages/settings/settings.componen
 import { FormUserDataComponent } from "./components/form-user-data/form-user-data.component";
 import { FormQuestionSingleComponent } from "./components/form-questions/form-question-single/form-question-single.component";
 import { PlayQuestionSingleComponent } from "./components/play-questions/play-question-single/play-question-single.component";
+import { FormQuestionOpenComponent } from './components/form-questions/form-question-open/form-question-open.component';
+import { PlayQuestionOpenComponent } from './components/play-questions/play-question-open/play-question-open.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { PlayQuestionSingleComponent } from "./components/play-questions/play-qu
     FormUserDataComponent,
     FormQuestionSingleComponent,
     PlayQuestionSingleComponent,
+    FormQuestionOpenComponent,
+    PlayQuestionOpenComponent,
   ],
   imports: [
     BrowserModule,

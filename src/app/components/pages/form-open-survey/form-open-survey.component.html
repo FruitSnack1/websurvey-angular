@@ -104,13 +104,19 @@
             </div>
         </div> -->
         <ng-container *ngFor='let question of questionForms.controls; let i=index'>
-            <app-question-single [index]='i' (questionChange)='onQuestionChange($event)'
-                (imageChange)='onImageChange($event)' [question]='this.editSurvey?.questions[i]'></app-question-single>
+            <app-form-question-single *ngIf='question.value.type == "single"' [index]='i'
+                (questionChange)='onQuestionChange($event)' (imageChange)='onImageChange($event)'
+                [question]='this.editSurvey?.questions[i]'></app-form-question-single>
+            <app-form-question-open *ngIf='question.value.type == "open"' [index]='i'
+                (questionChange)='onQuestionChange($event)' (imageChange)='onImageChange($event)'
+                [question]='this.editSurvey?.questions[i]'></app-form-question-open>
         </ng-container>
     </div>
 
-    <button (click)='addQuestion()' class="au-btn au-btn-icon btn-block au-btn--secondary m-b-10" type="button"><i
-            class="zmdi zmdi-plus"></i>Přidat otázku</button>
+    <button (click)='addQuestion("single")' class="au-btn au-btn-icon au-btn--secondary m-b-10" type="button"><i
+            class="zmdi zmdi-plus"></i>Přidat single otázku</button>
+    <button (click)='addQuestion("open")' class="au-btn au-btn-icon au-btn--secondary m-b-10" type="button"><i
+            class="zmdi zmdi-plus"></i>Přidat open otázku</button>
     <button *ngIf='!editMode' class="au-btn au-btn--skoda btn-block m-b-40" type="submit">Vytvořit anketu</button>
     <button *ngIf='editMode' class="au-btn au-btn--skoda btn-block m-b-40" type="submit">Upravit anketu</button>
 </form>
