@@ -10,6 +10,7 @@ import { environment } from "src/environments/environment";
 export class FormQuestionOpenComponent implements OnInit {
   @Output() questionChange = new EventEmitter<any>();
   @Output() imageChange = new EventEmitter<any>();
+  @Output() questionDelete = new EventEmitter<any>();
   @Input() index;
   @Input() question;
   questionForm: FormGroup;
@@ -60,5 +61,9 @@ export class FormQuestionOpenComponent implements OnInit {
 
   editQuestion() {
     this.questionForm.patchValue(this.question);
+  }
+
+  deleteQuestion() {
+    this.questionDelete.emit(this.index);
   }
 }

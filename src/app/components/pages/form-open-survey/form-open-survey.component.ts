@@ -139,7 +139,7 @@ export class FormOpenSurveyComponent implements OnInit {
     }
   }
 
-  deleteQuestion(i) {
+  onQuestionDelete(i) {
     let questions = this.surveyForm.get("questions") as FormArray;
     questions.removeAt(i);
   }

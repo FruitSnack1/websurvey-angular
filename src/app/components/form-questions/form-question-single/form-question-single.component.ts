@@ -10,6 +10,7 @@ import { environment } from "src/environments/environment";
 export class FormQuestionSingleComponent implements OnInit {
   @Output() questionChange = new EventEmitter<any>();
   @Output() imageChange = new EventEmitter<any>();
+  @Output() questionDelete = new EventEmitter<any>();
   @Input() index;
   @Input() question;
   questionForm: FormGroup;
@@ -79,5 +80,9 @@ export class FormQuestionSingleComponent implements OnInit {
       this.answers.insert(0, this.fb.control(""));
     }
     this.questionForm.patchValue(this.question);
+  }
+
+  deleteQuestion() {
+    this.questionDelete.emit(this.index);
   }
 }
