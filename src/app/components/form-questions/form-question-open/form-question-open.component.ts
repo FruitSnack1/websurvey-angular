@@ -1,13 +1,13 @@
-import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { environment } from "src/environments/environment";
 
 @Component({
-  selector: "app-form-question-single",
-  templateUrl: "./form-question-single.component.html",
-  styleUrls: ["./form-question-single.component.css"],
+  selector: "app-form-question-open",
+  templateUrl: "./form-question-open.component.html",
+  styleUrls: ["./form-question-open.component.css"],
 })
-export class FormQuestionSingleComponent implements OnInit {
+export class FormQuestionOpenComponent implements OnInit {
   @Output() questionChange = new EventEmitter<any>();
   @Output() imageChange = new EventEmitter<any>();
   @Output() questionDelete = new EventEmitter<any>();
@@ -18,15 +18,13 @@ export class FormQuestionSingleComponent implements OnInit {
   image;
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.questionForm = this.fb.group({
       question: this.fb.group({
         cs: "",
       }),
       description: "",
-      other_answer: false,
-      answers: this.fb.array([""]),
-      type: "single",
+      type: "open",
     });
 
     this.questionForm.valueChanges.subscribe(() => {
@@ -39,19 +37,6 @@ export class FormQuestionSingleComponent implements OnInit {
     if (this.question) {
       this.editQuestion();
     }
-  }
-
-  get answers() {
-    return this.questionForm.get("answers") as FormArray;
-  }
-
-  addAnswer(i) {
-    let answer = this.fb.control("");
-    this.answers.insert(i + 1, answer);
-  }
-
-  deleteAnswer(i) {
-    this.answers.removeAt(i);
   }
 
   onFileChange(event) {
@@ -75,10 +60,6 @@ export class FormQuestionSingleComponent implements OnInit {
   }
 
   editQuestion() {
-    this.answers.clear();
-    for (let answer of this.question.answers) {
-      this.answers.insert(0, this.fb.control(""));
-    }
     this.questionForm.patchValue(this.question);
   }
 
