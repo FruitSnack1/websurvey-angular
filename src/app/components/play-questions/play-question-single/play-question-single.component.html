@@ -6,8 +6,30 @@
         <img class="rounded mx-auto" [src]='questionImg' id="question-image">
     </div> -->
 
-    <button *ngFor='let ans of question.answers' class="au-btn  btn-block au-btn--skoda" (click)='answer(ans)'>{{ans}}
-    </button>
+    <!-- <button *ngFor='let ans of question.answers' class="au-btn  btn-block au-btn--skoda" (click)='answer(ans)'>{{ans}}
+    </button> -->
+
+    <!-- <div class="form-check" *ngFor='let ans of question.answers'>
+        <input class="form-check-input" type="radio" name="radios" id="{{ans}}">
+        <label class="form-check-label" for="{{ans}}">
+            {{ans}}
+        </label>
+    </div> -->
+
+    <div (click)='select(i)' class="play-answer-container" *ngFor='let ans of question.answers; let i = index'>
+        <div class="play-radio-container">
+            <div *ngIf='selected == i' class="play-radio"></div>
+        </div>
+        <span class="play-answer">{{ans}}</span>
+    </div>
+
+    <!-- <div class="play-answer-container" *ngFor='let ans of question.answers'>
+        <div class="play-check-container">
+            <div class="fas fa-check"></div>
+        </div>
+        <span class="play-answer">{{ans}}</span>
+    </div> -->
+
     <button *ngIf='question.other_answer' class="au-btn  btn-block" (click)='showOtherAnswer()'>Jiné (vlastní
         odpověď)</button>
     <div class="col-lg-6 col-sm-12 other" *ngIf='false'>
@@ -19,4 +41,7 @@
         <button class="au-btn  btn-block" style="background-color: rgb(23, 23, 26);">Pokračovat
         </button>
     </div>
+
+
+    <button (click)='answer()' class="au-btn mb-5 au-btn--skoda btn-next">Pokračovat</button>
 </div>

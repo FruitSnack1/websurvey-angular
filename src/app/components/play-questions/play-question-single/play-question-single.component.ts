@@ -9,15 +9,20 @@ import { environment } from "src/environments/environment";
 export class PlayQuestionSingleComponent implements OnInit {
   @Input() question;
   @Output() questionAnswerd = new EventEmitter<any>();
+  selected;
   constructor() {}
 
   ngOnInit(): void {}
 
-  answer(answer) {
-    this.questionAnswerd.emit(answer);
+  answer() {
+    this.questionAnswerd.emit(this.question.answers[this.selected]);
   }
 
   showOtherAnswer() {}
+
+  select(index) {
+    this.selected = index;
+  }
 
   get questionImg() {
     return this.question.img
