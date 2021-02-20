@@ -1,6 +1,6 @@
 <div class="col-12 h-100 w-100 p-0">
     <h3 id="question" class="mt-5">{{question.question['cs']}}</h3>
-    <p class="mb-5">{{question.description}}</p>
+    <p class="mb-3">{{question.description}}</p>
     <!-- <div *ngIf='question.img ' class="col-lg-6 col-sm-12 h-50 d-flex justify-content-center align-items-center">
 
         <img class="rounded mx-auto" [src]='questionImg' id="question-image">
@@ -16,19 +16,23 @@
         </label>
     </div> -->
 
-    <div (click)='select(i)' class="play-answer-container" *ngFor='let ans of question.answers; let i = index'>
-        <div class="play-radio-container">
-            <div *ngIf='selected == i' class="play-radio"></div>
+    <ng-template [ngIf]='question.limit == 1'>
+        <div (click)='select(i)' class="play-answer-container" *ngFor='let ans of question.answers; let i = index'>
+            <div class="play-radio-container">
+                <div *ngIf='selected.includes(i)' class="play-radio"></div>
+            </div>
+            <span class="play-answer">{{ans}}</span>
         </div>
-        <span class="play-answer">{{ans}}</span>
-    </div>
+    </ng-template>
 
-    <!-- <div class="play-answer-container" *ngFor='let ans of question.answers'>
-        <div class="play-check-container">
-            <div class="fas fa-check"></div>
+    <ng-template [ngIf]='question.limit > 1'>
+        <div (click)='select(i)' class="play-answer-container" *ngFor='let ans of question.answers; let i = index'>
+            <div class="play-check-container">
+                <div *ngIf='selected.includes(i)' class="fas fa-check" style="color: #4ba82e;"></div>
+            </div>
+            <span class="play-answer">{{ans}}</span>
         </div>
-        <span class="play-answer">{{ans}}</span>
-    </div> -->
+    </ng-template>
 
     <button *ngIf='question.other_answer' class="au-btn  btn-block" (click)='showOtherAnswer()'>Jiné (vlastní
         odpověď)</button>

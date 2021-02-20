@@ -44,8 +44,6 @@ export class ResultQuestionOpenComponent implements OnInit {
   public barChartData;
 
   ngOnInit() {
-    console.log(this.question);
-    console.log("results", this.questionAnswers);
     this.barChartLabels = this.question.answers;
     this.barChartData = [
       {
@@ -72,20 +70,17 @@ export class ResultQuestionOpenComponent implements OnInit {
 
   get questionResults() {
     let arr = [0, 0, 0, 0, 0];
-    console.log(this.results);
+    let allResults = [];
     for (let result of this.results) {
-      arr[this.barChartLabels.indexOf(result.answers[this.index].answer)]++;
+      allResults = allResults.concat(result.answers[this.index].answer);
+    }
+    for (let e of allResults) {
+      arr[this.barChartLabels.indexOf(e)]++;
     }
     return arr;
   }
 
   get questionAnswers() {
-    console.log(this.results);
-    let arr = [];
-    for (let i = 0; i < this.results.length; i++) {
-      arr.push(this.results[i].answers[this.index].answer);
-    }
-    console.log(arr);
-    return arr;
+    return this.question.answers;
   }
 }

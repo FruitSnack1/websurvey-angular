@@ -67,6 +67,7 @@ export class FormOpenSurveyComponent implements OnInit {
       description: "",
       answers: this.fb.array([]),
       type,
+      limit: 1,
     });
 
     this.questionForms.push(question);

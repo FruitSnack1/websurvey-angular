@@ -9,19 +9,29 @@ import { environment } from "src/environments/environment";
 export class PlayQuestionSingleComponent implements OnInit {
   @Input() question;
   @Output() questionAnswerd = new EventEmitter<any>();
-  selected;
+  selected = [];
   constructor() {}
 
   ngOnInit(): void {}
 
   answer() {
-    this.questionAnswerd.emit(this.question.answers[this.selected]);
+    this.questionAnswerd.emit(
+      this.selected.map((e) => this.question.answers[e])
+    );
+    this.selected = [];
   }
 
   showOtherAnswer() {}
 
   select(index) {
-    this.selected = index;
+    if (this.question.limit > 1) {
+      if (this.selected.includes(index))
+        return this.selected.splice(this.selected.indexOf(index), 1);
+      if (this.selected.length == this.question.limit) return;
+      else this.selected.push(index);
+    } else {
+      this.selected = [index];
+    }
   }
 
   get questionImg() {
