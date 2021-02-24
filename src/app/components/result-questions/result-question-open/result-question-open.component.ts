@@ -3,7 +3,7 @@ import { Question } from "src/app/models/question.model";
 // import { Chart } from "chart.js";
 
 @Component({
-  selector: "app-open-question",
+  selector: "app-result-question-open",
   templateUrl: "./result-question-open.component.html",
   styleUrls: ["./result-question-open.component.css"],
 })
@@ -82,5 +82,17 @@ export class ResultQuestionOpenComponent implements OnInit {
 
   get questionAnswers() {
     return this.question.answers;
+  }
+
+  get otherAnswers() {
+    let arr = [];
+    let allResults = [];
+    for (let result of this.results) {
+      allResults = allResults.concat(result.answers[this.index].answer);
+    }
+    for (let e of allResults) {
+      if (!this.barChartLabels.includes(e)) arr.push(e);
+    }
+    return arr;
   }
 }

@@ -34,8 +34,23 @@
         </div>
     </ng-template>
 
-    <button *ngIf='question.other_answer' class="au-btn  btn-block" (click)='showOtherAnswer()'>Jiné (vlastní
-        odpověď)</button>
+    <div (click)='select(question.answers.length)' *ngIf='question.other_answer && question.limit == 1'
+        class="play-answer-container">
+        <div class="play-radio-container">
+            <div *ngIf='selected.includes(question.answers.length)' class="play-radio"></div>
+        </div>
+        <input (change)='otherChange()' [(ngModel)]='other' type="text" class="play-other-input" placeholder="Jiné">
+    </div>
+
+    <div (click)='select(question.answers.length)' *ngIf='question.other_answer && question.limit > 1'
+        class="play-answer-container">
+        <div class="play-check-container">
+            <div *ngIf='selected.includes(question.answers.length)' class="fas fa-check" style="color: #4ba82e;"></div>
+        </div>
+        <input (change)='otherChange()' [(ngModel)]='other' type="text" class="play-other-input" placeholder="Jiné">
+    </div>
+
+
     <div class="col-lg-6 col-sm-12 other" *ngIf='false'>
         <h4 class="text-center text-white mb-3">Jiné (vlastní odpověď)</h4>
         <div class="form-group" style="width: 100%;">

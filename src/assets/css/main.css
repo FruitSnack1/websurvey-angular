@@ -705,3 +705,16 @@ textarea {
   align-items: center;
   justify-content: center;
 }
+
+.play-other-input {
+  border-bottom: #666 2px solid;
+  font-size: 20px;
+  color: black;
+  display: inline-block;
+}
+
+.other-answers-container {
+  width: 100%;
+  max-height: 100px;
+  overflow: auto;
+}

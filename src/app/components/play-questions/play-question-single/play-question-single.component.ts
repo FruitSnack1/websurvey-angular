@@ -10,15 +10,24 @@ export class PlayQuestionSingleComponent implements OnInit {
   @Input() question;
   @Output() questionAnswerd = new EventEmitter<any>();
   selected = [];
+  other = "";
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 
   answer() {
-    this.questionAnswerd.emit(
-      this.selected.map((e) => this.question.answers[e])
-    );
+    let answer = [];
+    for (let i = 0; i < this.question.answers.length; i++) {
+      if (this.selected.includes(i)) {
+        answer.push(this.question.answers[i]);
+      }
+    }
+    if (this.other) answer.push(this.other);
+    console.log("answer array : ", answer);
+    this.questionAnswerd.emit(answer);
+
     this.selected = [];
+    this.other = "";
   }
 
   showOtherAnswer() {}
@@ -32,7 +41,10 @@ export class PlayQuestionSingleComponent implements OnInit {
     } else {
       this.selected = [index];
     }
+    console.log(this.selected);
   }
+
+  otherChange() {}
 
   get questionImg() {
     return this.question.img

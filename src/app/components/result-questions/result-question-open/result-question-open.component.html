@@ -18,6 +18,19 @@
                 <canvas *ngIf='results' baseChart [datasets]="barChartData" [labels]="barChartLabels"
                     [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
                 </canvas>
+                <ng-template [ngIf]='question.other_answer'>
+                    <h4 class="mb-3 mt-1">Ostatní odpovědi</h4>
+                    <div class="other-answers-container">
+
+                        <table class="table">
+                            <tbody>
+                                <tr *ngFor='let answer of otherAnswers'>
+                                    <th style="padding-left: 0;">{{answer}}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </ng-template>
             </div>
         </div>
     </ng-template>
