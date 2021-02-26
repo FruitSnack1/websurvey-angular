@@ -69,6 +69,8 @@ export class PlayComponent implements OnInit {
   }
 
   onQuestionAnswerd(answer) {
+    console.log(answer);
+
     this.textarea_value = "";
     this.result.answers.push({
       question_id: this.anketa.questions[this.questionNumber]._id,

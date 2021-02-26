@@ -3,7 +3,7 @@ import { Question } from "src/app/models/question.model";
 // import { Chart } from "chart.js";
 
 @Component({
-  selector: "app-question",
+  selector: "app-result-question-single",
   templateUrl: "./result-question-single.component.html",
   styleUrls: ["./result-question-single.component.css"],
 })

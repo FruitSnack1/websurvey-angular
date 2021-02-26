@@ -25,8 +25,9 @@ export class FormQuestionSingleComponent implements OnInit {
       }),
       description: "",
       other_answer: false,
-      answers: this.fb.array([""]),
+      answers: this.fb.array(["", ""]),
       type: "single",
+      limit: 1,
     });
 
     this.questionForm.valueChanges.subscribe(() => {
@@ -51,6 +52,7 @@ export class FormQuestionSingleComponent implements OnInit {
   }
 
   deleteAnswer(i) {
+    if (this.questionForm.value.answers.length == 2) return;
     this.answers.removeAt(i);
   }
 
@@ -84,5 +86,13 @@ export class FormQuestionSingleComponent implements OnInit {
 
   deleteQuestion() {
     this.questionDelete.emit(this.index);
+  }
+
+  moreAnswers() {
+    if (this.questionForm.value.limit == 1)
+      this.questionForm
+        .get("limit")
+        .setValue(this.questionForm.value.answers.length);
+    else this.questionForm.get("limit").setValue(1);
   }
 }

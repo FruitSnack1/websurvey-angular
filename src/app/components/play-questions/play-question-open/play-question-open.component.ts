@@ -14,6 +14,6 @@ export class PlayQuestionOpenComponent implements OnInit {
   ngOnInit() {}
 
   answer() {
-    this.questionAnswerd.emit(this.openAnswer);
+    this.questionAnswerd.emit([this.openAnswer]);
   }
 }
