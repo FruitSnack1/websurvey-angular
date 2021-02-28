@@ -19,8 +19,8 @@
                         </label><span>Přidat odpověď 'Jiné (vlastní odpověď)</span><br />
 
                         <label class="switch switch-3d switch-skoda mr-3">
-                            <input (click)='moreAnswers()' class="switch-input" type="checkbox" /><span
-                                class="switch-label"></span><span class="switch-handle"></span>
+                            <input [checked]="questionForm.value.limit > 1" (click)='moreAnswers()' class="switch-input"
+                                type="checkbox" /><span class="switch-label"></span><span class="switch-handle"></span>
                         </label><span>Povolit více odpovědí</span><br />
 
                         <div class="form-group" [formGroup]='questionForm' *ngIf='questionForm.value.limit > 1'>
