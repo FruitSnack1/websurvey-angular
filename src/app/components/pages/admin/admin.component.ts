@@ -27,4 +27,9 @@ export class AdminComponent implements OnInit {
       this.username = localStorage.getItem("username");
     });
   }
+
+  logout() {
+    this.router.navigateByUrl("/login");
+    this.userService.logout();
+  }
 }

@@ -159,19 +159,18 @@
                                         <div class="image">
                                             <img src="assets/images/avatar.png" alt="John Doe" />
                                         </div>
-                                        <div class="content">
-                                            <a class="js-acc-btn">{{username}}</a>
+                                        <div class="content d-flex justify-content-center align-items-center">
+                                            <span class="js-acc-btn">{{username}}</span>
+                                            <i (click)='logout()' class="fas fa-sign-out-alt btn-logout"></i>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    <a href="#">
-                                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                                    </a>
+                                                    <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a>{{username}}</a>
+                                                        {{username}}
                                                     </h5>
                                                     <span class="email">johndoe@example.com</span>
                                                 </div>

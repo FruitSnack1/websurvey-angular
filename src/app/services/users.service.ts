@@ -1,10 +1,8 @@
-import { Injectable, Output } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { User } from "../models/user.model";
 import { environment } from "src/environments/environment";
 import { CookieService } from "ngx-cookie-service";
-import { factor } from "@rxweb/reactive-form-validators";
-import { EventEmitter } from "protractor";
 import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({
@@ -27,7 +25,6 @@ export class UsersService {
   }
 
   getUsers() {
-    console.log(this.url);
     return this.httpClient.get(this.url);
   }
 
@@ -42,7 +39,6 @@ export class UsersService {
   }
 
   loggedIn(): boolean {
-    console.log("token", this.cookieService.check("accessToken"));
     return this.cookieService.check("accessToken");
   }
 
@@ -55,5 +51,9 @@ export class UsersService {
         withCredentials: true,
       }
     );
+  }
+
+  logout() {
+    this.cookieService.delete("accessToken", "/");
   }
 }
