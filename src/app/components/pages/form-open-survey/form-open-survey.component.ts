@@ -2,7 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Result } from "src/app/models/result.model";
 import { AnketyService } from "src/app/services/ankety.service";
+import { ResultsService } from "src/app/services/results.service";
 import { environment } from "src/environments/environment";
 
 @Component({
@@ -16,7 +18,8 @@ export class FormOpenSurveyComponent implements OnInit {
     private anketyService: AnketyService,
     private route: ActivatedRoute,
     private router: Router,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private resultsService: ResultsService
   ) {}
 
   surveyForm: FormGroup;
@@ -25,6 +28,7 @@ export class FormOpenSurveyComponent implements OnInit {
   editSurvey = null;
   files = [];
   editId;
+  resultsExists = false;
 
   ngOnInit() {
     this.surveyForm = this.fb.group({
@@ -113,8 +117,11 @@ export class FormOpenSurveyComponent implements OnInit {
   }
 
   submitSurvey() {
-    console.log(this.surveyForm.value);
     if (this.editMode) {
+      if (this.editSurvey.result_count > 0) {
+        this.resultsExists = true;
+        return;
+      }
       let anketaFormValue = this.surveyForm.value;
       const formData = new FormData();
       for (let key in this.files) {
@@ -128,7 +135,6 @@ export class FormOpenSurveyComponent implements OnInit {
         });
     } else {
       let anketaFormValue = this.surveyForm.value;
-      console.log(anketaFormValue);
       const formData = new FormData();
       for (let key in this.files) {
         formData.append(key, this.files[key]);
@@ -143,5 +149,24 @@ export class FormOpenSurveyComponent implements OnInit {
   onQuestionDelete(i) {
     let questions = this.surveyForm.get("questions") as FormArray;
     questions.removeAt(i);
+  }
+
+  postEditSurvey(deleteResults) {
+    if (deleteResults) {
+      this.resultsService
+        .deleteSurveyResults(this.editSurvey._id)
+        .subscribe((data) => {
+          console.log(data);
+        });
+    }
+    let anketaFormValue = this.surveyForm.value;
+    const formData = new FormData();
+    for (let key in this.files) {
+      formData.append(key, this.files[key]);
+    }
+    formData.append("anketa", JSON.stringify(anketaFormValue));
+    this.anketyService.updateSurvey(this.editId, formData).subscribe((data) => {
+      this.router.navigateByUrl("/admin/ankety");
+    });
   }
 }

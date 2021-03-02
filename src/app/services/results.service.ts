@@ -18,4 +18,10 @@ export class ResultsService {
   getResults(id: string) {
     return this.httpClient.get(`${this.url}/${id}`, { withCredentials: true });
   }
+
+  deleteSurveyResults(id: string) {
+    return this.httpClient.delete(`${this.url}/delete/${id}`, {
+      withCredentials: true,
+    });
+  }
 }

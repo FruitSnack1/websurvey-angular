@@ -130,3 +130,34 @@
     <button *ngIf='!editMode' class="au-btn au-btn--skoda btn-block m-b-40 mt-4" type="submit">Vytvořit anketu</button>
     <button *ngIf='editMode' class="au-btn au-btn--skoda btn-block m-b-40 mt-4" type="submit">Upravit anketu</button>
 </form>
+
+<div [ngClass]="{'show' : resultsExists}" class="modal fade " tabindex="-1" role="dialog"
+    aria-labelledby="mediumModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mediumModalLabel">Existující výsledky</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span (click)='resultsExists = false' aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p>Upravovanou anketu již vyplnilo {{editSurvey?.result_count}} lidí. Jak chcete
+                            pokračovat?
+                        </p>
+                        <small class="mb-5">Ponechání výsledků může poškodit jejich správnost</small>
+                        <div class="d-flex justify-content-end">
+                            <button (click)='postEditSurvey(false)' class="au-btn au-btn--skoda ">Ponechat
+                                výsledky</button>
+                            <button (click)='postEditSurvey(true)' class="au-btn au-btn--skoda ">Smazat
+                                výsledky</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
