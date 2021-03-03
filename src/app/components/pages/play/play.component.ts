@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ResultsService } from "src/app/services/results.service";
 import { environment } from "src/environments/environment";
 import { CookieService } from "ngx-cookie-service";
+import { LoginComponent } from "../login/login.component";
 
 @Component({
   selector: "app-play",
@@ -26,6 +27,7 @@ export class PlayComponent implements OnInit {
   questionNumber: number = 0;
   innerHeight;
   other = false;
+  preview = false;
 
   languages = {
     beginBtn: {
@@ -50,6 +52,9 @@ export class PlayComponent implements OnInit {
   ngOnInit() {
     if (this.cookieService.get("pin")) this.stage = 0;
     const id = this.route.snapshot.paramMap.get("id");
+    if (this.router.url.includes("preview")) {
+      this.preview = true;
+    }
     this.playService.getAneta(id).subscribe((data) => {
       this.anketa = data;
       if (this.anketa.user_data) this.stage = -1;
@@ -155,9 +160,15 @@ export class PlayComponent implements OnInit {
   }
 
   postResult() {
-    this.resultsService.postResults(this.result).subscribe((data) => {});
-    setTimeout(() => {
-      this.router.navigateByUrl("/");
-    }, 2000);
+    if (this.preview) {
+      setTimeout(() => {
+        this.router.navigateByUrl("/");
+      }, 2000);
+    } else {
+      this.resultsService.postResults(this.result).subscribe((data) => {});
+      setTimeout(() => {
+        this.router.navigateByUrl("/");
+      }, 2000);
+    }
   }
 }

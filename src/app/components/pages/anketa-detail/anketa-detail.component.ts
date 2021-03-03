@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { AnketyService } from "src/app/services/ankety.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ResultsService } from "src/app/services/results.service";
 import { Chart } from "chart.js";
 import { environment } from "src/environments/environment";
+import { Clipboard } from "@angular/cdk/clipboard";
 
 @Component({
   selector: "app-anketa-detail",
@@ -14,18 +15,22 @@ export class AnketaDetailComponent implements OnInit {
   constructor(
     private anketyService: AnketyService,
     private route: ActivatedRoute,
-    private resultsService: ResultsService
+    private resultsService: ResultsService,
+    private clipboard: Clipboard,
+    private router: Router
   ) {}
 
   anketa: any;
   results: any;
   anketa_qr: string;
+  surveyUrl: string;
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get("id");
     this.anketyService.getAnketa(id).subscribe((data) => {
       this.anketa = data;
       this.anketa_qr = `${environment.API_URL}/qrcodes/${this.anketa._id}.png`;
+      this.surveyUrl = `${window.location.protocol}${window.location.host}/play/${this.anketa._id}`;
     });
 
     this.resultsService.getResults(id).subscribe((data) => {
@@ -133,5 +138,25 @@ export class AnketaDetailComponent implements OnInit {
   getBarWidth(i, j) {
     if (!this.results || this.anketa.type == 2) return [0, 0, 0, 0, 0];
     return (this.questionResults[i][j] / this.results.length) * 100 + "%";
+  }
+
+  copySurveyUrl() {
+    this.clipboard.copy(this.surveyUrl);
+  }
+
+  editSurvey() {
+    this.router.navigateByUrl(
+      `admin/edit/${this.anketa._id}/${this.anketa.type}`
+    );
+  }
+
+  deleteSurvey() {
+    this.anketyService.deleteAnketa(this.anketa._id).subscribe((data) => {
+      this.router.navigateByUrl(`admin/ankety`);
+    });
+  }
+
+  previewSurvey() {
+    this.router.navigateByUrl(`preview/${this.anketa._id}`);
   }
 }

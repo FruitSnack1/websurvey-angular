@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
                         <th>Název</th>
-                        <th>Datum</th>
+                        <th class="text-right">Datum</th>
                         <th class="text-right">Počet otázek</th>
                         <th class="text-right">Vyplněné</th>
                         <th></th>
@@ -22,9 +22,9 @@
                 <tbody *ngFor='let anketa of ankety' [ngClass]="{'new-anketa': isAdded}">
                     <tr class="tr-shadow">
                         <td (click)='showAnketaDetail(anketa._id)' class="font-weight-bold">{{anketa.name.cs}}</td>
-                        <td>{{anketa.date | date:'d.M.yyyy'}}</td>
+                        <td class="text-right">{{anketa.created | date:'d.M.yyyy'}}</td>
                         <td class="text-right">{{anketa.questions.length}}</td>
-                        <td class="text-right">to do</td>
+                        <td class="text-right">{{anketa.result_count}}</td>
                         <td>
                             <div class="table-data-feature">
                                 <button class="item" type="button" name="button" (click)='playAnketa(anketa._id)'><i
