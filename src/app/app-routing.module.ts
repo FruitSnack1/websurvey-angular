@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
   { path: "play/:id", component: PlayComponent },
+  { path: "preview/:id", component: PlayComponent },
   {
     path: "admin",
     component: AdminComponent,
