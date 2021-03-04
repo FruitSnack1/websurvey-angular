@@ -30,7 +30,7 @@ export class AnketaDetailComponent implements OnInit {
     this.anketyService.getAnketa(id).subscribe((data) => {
       this.anketa = data;
       this.anketa_qr = `${environment.API_URL}/qrcodes/${this.anketa._id}.png`;
-      this.surveyUrl = `${window.location.protocol}${window.location.host}/play/${this.anketa._id}`;
+      this.surveyUrl = `${window.location.protocol}//${window.location.host}/play/${this.anketa._id}`;
     });
 
     this.resultsService.getResults(id).subscribe((data) => {
