@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
@@ -8,6 +8,7 @@ import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 })
 export class FormUserDataComponent implements OnInit {
   @Output() newFieldEvent = new EventEmitter<any>();
+  @Input() userData;
   constructor(private fb: FormBuilder) {}
 
   userDataForm: FormGroup;
@@ -20,15 +21,24 @@ export class FormUserDataComponent implements OnInit {
     this.userDataForm.valueChanges.subscribe((x) => {
       this.newFieldEvent.emit(this.fields.value);
     });
+
+    if (this.userData) this.editUserData();
   }
 
   addField() {
     this.fields.push(this.fb.control(""));
-    console.log(this.fields.value);
   }
 
   removeField(i) {
     this.fields.removeAt(i);
+  }
+
+  editUserData() {
+    this.fields.clear();
+    for (let field of this.userData) {
+      this.fields.insert(0, this.fb.control(""));
+    }
+    this.fields.patchValue(this.userData);
   }
 
   get fields() {
