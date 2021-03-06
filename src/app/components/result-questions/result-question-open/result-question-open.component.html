@@ -4,11 +4,20 @@
         <h3> {{question.question.cs}}</h3>
     </div>
     <div *ngIf='question.open'></div>
-    <ng-template [ngIf]='question.open' [ngIfElse]='closed'>
+    <ng-template [ngIf]='question.type == "open"' [ngIfElse]='closed'>
         <div class="au-card-inner p-3" style="max-height: 300px;overflow: auto;">
-            <div *ngFor='let answer of questionAnswers; let i=index' class="au-card mb-3" style="padding: 15px 10px;">
-                {{answer}}
+            <div class="other-answers-container">
+                <table class="table">
+                    <tbody>
+                        <tr *ngFor='let result of questionResults; let i=index'>
+                            <th style="padding-left: 0;">{{result}}</th>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+            <!-- <div *ngFor='let result of questionResults; let i=index' class="au-card mb-3" style="padding: 15px 10px;">
+                {{result}}
+            </div> -->
         </div>
     </ng-template>
 

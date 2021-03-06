@@ -69,15 +69,24 @@ export class ResultQuestionOpenComponent implements OnInit {
   }
 
   get questionResults() {
-    let arr = [0, 0, 0, 0, 0];
-    let allResults = [];
-    for (let result of this.results) {
-      allResults = allResults.concat(result.answers[this.index].answer);
+    if (this.question.type == "single") {
+      let arr = [0, 0, 0, 0, 0];
+      let allResults = [];
+      for (let result of this.results) {
+        allResults = allResults.concat(result.answers[this.index].answer);
+      }
+      for (let e of allResults) {
+        arr[this.barChartLabels.indexOf(e)]++;
+      }
+      return arr;
+    } else {
+      let arr = [];
+      for (let result of this.results) {
+        arr.push(result.answers[0].answer[0]);
+      }
+      console.log(arr);
+      return arr;
     }
-    for (let e of allResults) {
-      arr[this.barChartLabels.indexOf(e)]++;
-    }
-    return arr;
   }
 
   get questionAnswers() {
