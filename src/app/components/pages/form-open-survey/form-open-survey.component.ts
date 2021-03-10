@@ -6,6 +6,7 @@ import { Result } from "src/app/models/result.model";
 import { AnketyService } from "src/app/services/ankety.service";
 import { ResultsService } from "src/app/services/results.service";
 import { environment } from "src/environments/environment";
+import { runInThisContext } from "vm";
 
 @Component({
   selector: "app-form-open-survey",
@@ -69,9 +70,10 @@ export class FormOpenSurveyComponent implements OnInit {
       }),
       other_answer: false,
       description: "",
-      answers: this.fb.array([]),
+      answers: this.fb.array(["", ""]),
       type,
       limit: 1,
+      img: "",
     });
 
     this.questionForms.push(question);
@@ -89,8 +91,18 @@ export class FormOpenSurveyComponent implements OnInit {
         .get("description")
         .get("cs")
         .setValue(survey.description.cs);
-      for (let question of this.editSurvey.questions) {
+      // for (let question of this.editSurvey.questions) {
+      for (let i = 0; i < this.editSurvey.questions.length; i++) {
+        const question = this.editSurvey.questions[i];
         this.addQuestion(question.type);
+        let questionForm = this.questionForms.at(i) as FormGroup;
+        let answersForm = questionForm.get("answers") as FormArray;
+        answersForm.clear();
+        for (let answer of question.answers) {
+          answersForm.insert(0, this.fb.control(""));
+        }
+
+        questionForm.patchValue(question);
       }
     });
   }
@@ -168,5 +180,31 @@ export class FormOpenSurveyComponent implements OnInit {
     this.anketyService.updateSurvey(this.editId, formData).subscribe((data) => {
       this.router.navigateByUrl("/admin/ankety");
     });
+  }
+
+  onQuestionMove(event) {
+    if (event.up) {
+      if (event.i === 0) return;
+      const q1 = this.questionForms.at(event.i).value;
+      const q2 = this.questionForms.at(event.i - 1).value;
+      this.patchQuestion(q1, event.i - 1);
+      this.patchQuestion(q2, event.i);
+    } else {
+      if (event.i === this.questionForms.length - 1) return;
+      const q1 = this.questionForms.at(event.i).value;
+      const q2 = this.questionForms.at(event.i + 1).value;
+      this.patchQuestion(q1, event.i + 1);
+      this.patchQuestion(q2, event.i);
+    }
+  }
+
+  patchQuestion(question, index) {
+    const update = this.questionForms.at(index) as FormGroup;
+    const answers = update.get("answers") as FormArray;
+    answers.clear();
+    for (let answer of question.answers) {
+      answers.insert(0, this.fb.control(""));
+    }
+    update.patchValue(question);
   }
 }
