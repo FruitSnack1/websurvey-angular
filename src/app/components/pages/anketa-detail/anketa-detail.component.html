@@ -111,7 +111,8 @@
     </div>
     <div class="row" *ngIf='results'>
         <div class="col-12">
-            <h2 class="title-1 m-b-25 m-t-25">Otázky</h2>
+            <h2 class="title-1 m-b-25 m-t-25">Výsledky</h2>
+            <button (click)='downloadExcelFile()' class="au-btn au-btn--skoda mb-3">Stáhnout výsledky v Excelu</button>
         </div>
         <ng-template [ngIf]='anketa?.type===1'>
             <app-result-question-single [question]=anketa.questions[i] [results]=results [index]=i

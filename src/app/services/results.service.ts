@@ -24,4 +24,10 @@ export class ResultsService {
       withCredentials: true,
     });
   }
+
+  getExcelFile(id: string) {
+    return this.httpClient.get(`${this.url}/${id}/excel`, {
+      withCredentials: true,
+    });
+  }
 }
