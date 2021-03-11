@@ -1,6 +1,11 @@
 <div [ngStyle]="{'height.px':innerHeight}">
     <div class="container-fluid h-100">
         <div class="row h-100">
+            <div class="col-6 play-img-container ">
+                <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                    <img *ngIf='stage == 1' src="{{questionImg}}" class="w-75 ">
+                </div>
+            </div>
             <div class="col-6 px-5">
                 <app-play-register *ngIf='stage == -1 ' (register)='onRegister($event)'
                     [fields]='anketa.user_data_fields'>
@@ -33,11 +38,6 @@
                 <div *ngIf='stage == 2' class="p-4 h-100 d-flex flex-column justify-content-center hide" id="finish">
                     <h1 class="text-center">{{languages.endText[lang]}}</h1>
                     <i class="fas fa-circle-notch survey-loading" style="color: #4ba82e;"></i>
-                </div>
-            </div>
-            <div class="col-6 play-img-container ">
-                <div class="d-flex justify-content-center align-items-center w-100 h-100">
-                    <img *ngIf='stage == 1' src="{{questionImg}}" class="w-75 ">
                 </div>
             </div>
         </div>

@@ -52,8 +52,8 @@
     <div formArrayName='questions'>
         <ng-container *ngFor='let question of questionForms.controls; let i=index'>
             <app-form-question-single *ngIf='question.value.type == "single"' [index]='i'
-                (questionChange)='onQuestionChange($event)' (imageChange)='onImageChange($event)'
-                (questionDelete)='onQuestionDelete($event)' [question]='this.editSurvey?.questions[i]'>
+                (imageChange)='onImageChange($event)' (questionDelete)='onQuestionDelete($event)'
+                [surveyForm]='surveyForm' (questionMove)='onQuestionMove($event)'>
             </app-form-question-single>
             <app-form-question-open *ngIf='question.value.type == "open"' [index]='i'
                 (questionChange)='onQuestionChange($event)' (imageChange)='onImageChange($event)'

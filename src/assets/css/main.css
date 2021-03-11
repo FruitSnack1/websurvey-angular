@@ -744,3 +744,19 @@ textarea {
   left: 20px;
   font-weight: bold;
 }
+
+.question-up {
+  color: white;
+  position: absolute;
+  right: 120px;
+  z-index: 100;
+  font-size: 28px;
+}
+
+.question-down {
+  color: white;
+  position: absolute;
+  right: 90px;
+  z-index: 100;
+  font-size: 28px;
+}

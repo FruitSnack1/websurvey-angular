@@ -159,4 +159,8 @@ export class AnketaDetailComponent implements OnInit {
   previewSurvey() {
     this.router.navigateByUrl(`preview/${this.anketa._id}`);
   }
+
+  downloadExcelFile() {
+    window.open(`localhost:3001/api/results/${this.anketa._id}/excel`);
+  }
 }

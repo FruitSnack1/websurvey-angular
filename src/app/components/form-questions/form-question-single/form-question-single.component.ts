@@ -8,47 +8,27 @@ import { environment } from "src/environments/environment";
   styleUrls: ["./form-question-single.component.css"],
 })
 export class FormQuestionSingleComponent implements OnInit {
-  @Output() questionChange = new EventEmitter<any>();
   @Output() imageChange = new EventEmitter<any>();
   @Output() questionDelete = new EventEmitter<any>();
+  @Output() questionMove = new EventEmitter<any>();
   @Input() index;
-  @Input() question;
-  questionForm: FormGroup;
+  @Input() surveyForm;
   imagePreview;
   image;
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {
-    this.questionForm = this.fb.group({
-      question: this.fb.group({
-        cs: "",
-      }),
-      description: "",
-      other_answer: false,
-      answers: this.fb.array(["", ""]),
-      type: "single",
-      limit: 1,
-    });
-
-    this.questionForm.valueChanges.subscribe(() => {
-      this.questionChange.emit({
-        question: this.questionForm.value,
-        index: this.index,
-      });
-    });
-
-    if (this.question) {
-      this.editQuestion();
-    }
-  }
+  ngOnInit(): void {}
 
   get answers() {
     return this.questionForm.get("answers") as FormArray;
   }
 
+  get questionForm() {
+    return this.surveyForm.get("questions").at(this.index) as FormGroup;
+  }
+
   addAnswer(i) {
-    let answer = this.fb.control("");
-    this.answers.insert(i + 1, answer);
+    this.answers.insert(i + 1, this.fb.control(""));
   }
 
   deleteAnswer(i) {
@@ -72,16 +52,9 @@ export class FormQuestionSingleComponent implements OnInit {
 
   get imageSrc() {
     if (this.imagePreview) return this.imagePreview;
-    if (this.question?.img) return `${environment.API_URL}${this.question.img}`;
+    if (this.questionForm.value.img)
+      return `${environment.API_URL}${this.questionForm.value.img}`;
     else return "assets/images/no-image.png";
-  }
-
-  editQuestion() {
-    this.answers.clear();
-    for (let answer of this.question.answers) {
-      this.answers.insert(0, this.fb.control(""));
-    }
-    this.questionForm.patchValue(this.question);
   }
 
   deleteQuestion() {
@@ -89,10 +62,13 @@ export class FormQuestionSingleComponent implements OnInit {
   }
 
   moreAnswers() {
+    console.log(this.answers.length);
     if (this.questionForm.value.limit == 1)
-      this.questionForm
-        .get("limit")
-        .setValue(this.questionForm.value.answers.length);
+      this.questionForm.get("limit").setValue(this.answers.length);
     else this.questionForm.get("limit").setValue(1);
+  }
+
+  moveQuestion(up) {
+    this.questionMove.emit({ up, i: this.index });
   }
 }
