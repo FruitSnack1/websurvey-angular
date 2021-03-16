@@ -8,62 +8,47 @@ import { environment } from "src/environments/environment";
   styleUrls: ["./form-question-open.component.css"],
 })
 export class FormQuestionOpenComponent implements OnInit {
-  @Output() questionChange = new EventEmitter<any>();
   @Output() imageChange = new EventEmitter<any>();
   @Output() questionDelete = new EventEmitter<any>();
+  @Output() questionMove = new EventEmitter<any>();
   @Input() index;
-  @Input() question;
-  questionForm: FormGroup;
+  @Input() surveyForm;
+  @Input() imagePreviews;
   imagePreview;
-  image;
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {
-    this.questionForm = this.fb.group({
-      question: this.fb.group({
-        cs: "",
-      }),
-      description: "",
-      type: "open",
-    });
-
-    this.questionForm.valueChanges.subscribe(() => {
-      this.questionChange.emit({
-        question: this.questionForm.value,
-        index: this.index,
-      });
-    });
-
-    if (this.question) {
-      this.editQuestion();
-    }
-  }
+  ngOnInit() {}
 
   onFileChange(event) {
     if (!event.target.files) return;
-    this.image = event.target.files[0];
+    const image = event.target.files[0];
     var reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = (event: any) => {
-      this.imagePreview = event.target.result;
+      this.imageChange.emit({
+        image,
+        index: this.index,
+        imagePreview: event.target.result,
+      });
     };
-    this.imageChange.emit({
-      image: this.image,
-      index: this.index,
-    });
   }
 
   get imageSrc() {
-    if (this.imagePreview) return this.imagePreview;
-    if (this.question?.img) return `${environment.API_URL}${this.question.img}`;
+    if (this.imagePreviews[this.index]) return this.imagePreviews[this.index];
+    if (this.questionForm?.value.img)
+      return `${environment.API_URL}${this.questionForm?.value.img}`;
     else return "assets/images/no-image.png";
-  }
-
-  editQuestion() {
-    this.questionForm.patchValue(this.question);
   }
 
   deleteQuestion() {
     this.questionDelete.emit(this.index);
+  }
+
+  moveQuestion(up) {
+    this.questionMove.emit({ up, i: this.index });
+  }
+
+  get questionForm() {
+    return this.surveyForm.get("questions").at(this.index) as FormGroup;
   }
 }
