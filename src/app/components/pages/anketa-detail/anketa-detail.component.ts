@@ -161,6 +161,6 @@ export class AnketaDetailComponent implements OnInit {
   }
 
   downloadExcelFile() {
-    window.open(`localhost:3001/api/results/${this.anketa._id}/excel`);
+    window.location.href = `${environment.API_URL}/api/results/${this.anketa._id}/excel`;
   }
 }

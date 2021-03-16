@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, ElementRef } from "@angular/core";
-import { Question } from "src/app/models/question.model";
-// import { Chart } from "chart.js";
 
 @Component({
   selector: "app-result-question-single",
@@ -31,20 +29,13 @@ export class ResultQuestionSingleComponent implements OnInit {
       enabled: false,
     },
   };
-  public barChartLabels = [
-    "Určitě ne",
-    "Spíše ne",
-    "Nevím",
-    "Spíše ano",
-    "Určitě ano",
-  ];
-  // public barChartLabels;
+  public barChartLabels;
   public barChartType = "bar";
   public barChartLegend = false;
   public barChartData;
 
   ngOnInit() {
-    // this.barChartLabels = this.question.answers;
+    this.barChartLabels = this.question.answers;
     this.barChartData = [
       {
         data: this.questionResults,
@@ -70,20 +61,30 @@ export class ResultQuestionSingleComponent implements OnInit {
 
   get questionResults() {
     let arr = [0, 0, 0, 0, 0];
-    for (let i = 0; i < this.results.length; i++) {
-      arr[this.results[i].answers[this.index].answer - 1]++;
+    let allResults = [];
+    for (let result of this.results) {
+      if (result.answers[this.index])
+        allResults = allResults.concat(result.answers[this.index].answer);
+    }
+    for (let e of allResults) {
+      arr[this.barChartLabels.indexOf(e)]++;
     }
     return arr;
   }
 
   get questionAnswers() {
-    let arr = [];
-    console.log(this.results);
+    return this.question.answers;
+  }
 
-    for (let i = 0; i < this.results.length; i++) {
-      arr.push(this.results[i].answers[this.index].answer.cs);
+  get otherAnswers() {
+    let arr = [];
+    let allResults = [];
+    for (let result of this.results) {
+      allResults = allResults.concat(result.answers[this.index].answer);
     }
-    console.log(arr);
+    for (let e of allResults) {
+      if (!this.barChartLabels.includes(e)) arr.push(e);
+    }
     return arr;
   }
 }

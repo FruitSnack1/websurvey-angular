@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, ElementRef } from "@angular/core";
-import { Question } from "src/app/models/question.model";
-// import { Chart } from "chart.js";
 
 @Component({
   selector: "app-result-question-open",
@@ -31,13 +29,6 @@ export class ResultQuestionOpenComponent implements OnInit {
       enabled: false,
     },
   };
-  // public barChartLabels = [
-  //   "Určitě ne",
-  //   "Spíše ne",
-  //   "Nevím",
-  //   "Spíše ano",
-  //   "Určitě ano",
-  // ];
   public barChartLabels;
   public barChartType = "bar";
   public barChartLegend = false;
@@ -69,39 +60,15 @@ export class ResultQuestionOpenComponent implements OnInit {
   }
 
   get questionResults() {
-    if (this.question.type == "single") {
-      let arr = [0, 0, 0, 0, 0];
-      let allResults = [];
-      for (let result of this.results) {
-        allResults = allResults.concat(result.answers[this.index].answer);
-      }
-      for (let e of allResults) {
-        arr[this.barChartLabels.indexOf(e)]++;
-      }
-      return arr;
-    } else {
-      let arr = [];
-      for (let result of this.results) {
-        arr.push(result.answers[0].answer[0]);
-      }
-      console.log(arr);
-      return arr;
+    let arr = [];
+    for (let result of this.results) {
+      if (result.answers[this.index])
+        arr.push(result.answers[this.index].answer[0]);
     }
+    return arr;
   }
 
   get questionAnswers() {
     return this.question.answers;
-  }
-
-  get otherAnswers() {
-    let arr = [];
-    let allResults = [];
-    for (let result of this.results) {
-      allResults = allResults.concat(result.answers[this.index].answer);
-    }
-    for (let e of allResults) {
-      if (!this.barChartLabels.includes(e)) arr.push(e);
-    }
-    return arr;
   }
 }

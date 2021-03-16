@@ -13,19 +13,10 @@ export class FormQuestionSingleComponent implements OnInit {
   @Output() questionMove = new EventEmitter<any>();
   @Input() index;
   @Input() surveyForm;
-  imagePreview;
-  image;
+  @Input() imagePreviews;
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {}
-
-  get answers() {
-    return this.questionForm.get("answers") as FormArray;
-  }
-
-  get questionForm() {
-    return this.surveyForm.get("questions").at(this.index) as FormGroup;
-  }
+  ngOnInit() {}
 
   addAnswer(i) {
     this.answers.insert(i + 1, this.fb.control(""));
@@ -38,23 +29,16 @@ export class FormQuestionSingleComponent implements OnInit {
 
   onFileChange(event) {
     if (!event.target.files) return;
-    this.image = event.target.files[0];
+    const image = event.target.files[0];
     var reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = (event: any) => {
-      this.imagePreview = event.target.result;
+      this.imageChange.emit({
+        image,
+        index: this.index,
+        imagePreview: event.target.result,
+      });
     };
-    this.imageChange.emit({
-      image: this.image,
-      index: this.index,
-    });
-  }
-
-  get imageSrc() {
-    if (this.imagePreview) return this.imagePreview;
-    if (this.questionForm.value.img)
-      return `${environment.API_URL}${this.questionForm.value.img}`;
-    else return "assets/images/no-image.png";
   }
 
   deleteQuestion() {
@@ -70,5 +54,20 @@ export class FormQuestionSingleComponent implements OnInit {
 
   moveQuestion(up) {
     this.questionMove.emit({ up, i: this.index });
+  }
+
+  get answers() {
+    return this.questionForm.get("answers") as FormArray;
+  }
+
+  get questionForm() {
+    return this.surveyForm.get("questions").at(this.index) as FormGroup;
+  }
+
+  get imageSrc() {
+    if (this.imagePreviews[this.index]) return this.imagePreviews[this.index];
+    if (this.questionForm.value.img)
+      return `${environment.API_URL}${this.questionForm.value.img}`;
+    else return "assets/images/no-image.png";
   }
 }

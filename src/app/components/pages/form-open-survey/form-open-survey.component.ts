@@ -30,6 +30,7 @@ export class FormOpenSurveyComponent implements OnInit {
   files = [];
   editId;
   resultsExists = false;
+  imagePreviews = [];
 
   ngOnInit() {
     this.surveyForm = this.fb.group({
@@ -111,21 +112,22 @@ export class FormOpenSurveyComponent implements OnInit {
     this.surveyForm.setControl("user_data_fields", this.fb.array(fields || []));
   }
 
-  onQuestionChange(data) {
-    if (data.question.type == "single") {
-      let answers = this.questionForms
-        .at(data.index)
-        .get("answers") as FormArray;
-      answers.clear();
-      for (let answer of data.question.answers) {
-        answers.insert(0, this.fb.control(""));
-      }
-    }
-    this.questionForms.at(data.index).patchValue(data.question);
-  }
+  // onQuestionChange(data) {
+  //   if (data.question.type == "single") {
+  //     let answers = this.questionForms
+  //       .at(data.index)
+  //       .get("answers") as FormArray;
+  //     answers.clear();
+  //     for (let answer of data.question.answers) {
+  //       answers.insert(0, this.fb.control(""));
+  //     }
+  //   }
+  //   this.questionForms.at(data.index).patchValue(data.question);
+  // }
 
   onImageChange(data) {
     if (data.image) this.files[`img${data.index}`] = data.image;
+    this.imagePreviews[data.index] = data.imagePreview;
   }
 
   submitSurvey() {
@@ -189,12 +191,28 @@ export class FormOpenSurveyComponent implements OnInit {
       const q2 = this.questionForms.at(event.i - 1).value;
       this.patchQuestion(q1, event.i - 1);
       this.patchQuestion(q2, event.i);
+
+      const imageTmp = this.imagePreviews[event.i];
+      this.imagePreviews[event.i] = this.imagePreviews[event.i - 1];
+      this.imagePreviews[event.i - 1] = imageTmp;
+
+      const fileTmp = this.files[`img${event.i}`];
+      this.files[`img${event.i}`] = this.files[`img${event.i - 1}`];
+      this.files[`img${event.i - 1}`] = fileTmp;
     } else {
       if (event.i === this.questionForms.length - 1) return;
       const q1 = this.questionForms.at(event.i).value;
       const q2 = this.questionForms.at(event.i + 1).value;
       this.patchQuestion(q1, event.i + 1);
       this.patchQuestion(q2, event.i);
+
+      const imageTmp = this.imagePreviews[event.i];
+      this.imagePreviews[event.i] = this.imagePreviews[event.i + 1];
+      this.imagePreviews[event.i + 1] = imageTmp;
+
+      const fileTmp = this.files[`img${event.i}`];
+      this.files[`img${event.i}`] = this.files[`img${event.i + 1}`];
+      this.files[`img${event.i + 1}`] = fileTmp;
     }
   }
 
