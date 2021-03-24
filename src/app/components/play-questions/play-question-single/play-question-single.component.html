@@ -16,6 +16,10 @@
         </label>
     </div> -->
 
+    <div class="play-img-sm d-flex justify-content-center align-items-center mb-3">
+        <img src="{{questionImg}}" alt="" class="question-img">
+    </div>
+
     <ng-template [ngIf]='question.limit == 1'>
         <div (click)='select(i)' class="play-answer-container" *ngFor='let ans of question.answers; let i = index'>
             <div class="play-radio-container">
