@@ -527,16 +527,29 @@ textarea {
   box-shadow: 0px 2px 20px 0px rgba(74, 77, 84, 1);
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 768px) {
   .menu-theme {
     width: 49%;
   }
+  .play-img-sm {
+    display: none !important;
+  }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .menu-theme:last-child {
     margin-bottom: 0 !important;
   }
+  .play-img-container {
+    display: none;
+  }
+  .play-img-sm {
+    display: flex !important;
+  }
+}
+
+.question-img {
+  max-height: 250px;
 }
 
 .ivet {

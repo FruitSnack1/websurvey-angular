@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-play-question-open",
@@ -15,5 +16,11 @@ export class PlayQuestionOpenComponent implements OnInit {
 
   answer() {
     this.questionAnswerd.emit([this.openAnswer]);
+  }
+
+  get questionImg() {
+    return this.question.img
+      ? `${environment.API_URL}${this.question.img}`
+      : null;
   }
 }
