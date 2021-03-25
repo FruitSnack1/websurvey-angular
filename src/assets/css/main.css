@@ -546,6 +546,17 @@ textarea {
   .play-img-sm {
     display: flex !important;
   }
+  .play-container-question {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .play-btn-start {
+    margin-right: 1rem !important;
+  }
+  .anketa-progress-bar-container {
+    width: calc(100% - 2rem);
+    left: 1rem;
+  }
 }
 
 .question-img {
