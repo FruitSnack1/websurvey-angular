@@ -10,7 +10,7 @@ import { FormAnketaComponent } from "./components/pages/form-anketa/form-anketa.
 import { AnketaDetailComponent } from "./components/pages/anketa-detail/anketa-detail.component";
 import { MenuComponent } from "./components/menu/menu.component";
 import { FormOpenSurveyComponent } from "./components/pages/form-open-survey/form-open-survey.component";
-import { AuthGuard } from "./auth.guard";
+import { AuthGuard } from "./auth/auth.guard";
 import { SettingsComponent } from "./components/pages/settings/settings.component";
 
 const routes: Routes = [

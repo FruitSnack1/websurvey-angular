@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { User } from "../models/user.model";
 import { environment } from "src/environments/environment";
-import { CookieService } from "ngx-cookie-service";
 import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({
@@ -11,10 +10,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 export class UsersService {
   url: string = `${environment.API_URL}/api/users`;
   username$ = new BehaviorSubject<String>("");
-  constructor(
-    private httpClient: HttpClient,
-    private cookieService: CookieService
-  ) {}
+  constructor(private httpClient: HttpClient) {}
 
   getUsername(): Observable<String> {
     return this.username$.asObservable();
@@ -39,8 +35,7 @@ export class UsersService {
   }
 
   loggedIn(): boolean {
-    return true;
-    return this.cookieService.check("accessToken");
+    return !!localStorage.getItem("accessToken");
   }
 
   changeUsername(username: String) {
@@ -55,6 +50,7 @@ export class UsersService {
   }
 
   logout() {
-    this.cookieService.delete("accessToken", "/");
+    localStorage.removeItem("username");
+    localStorage.removeItem("accessToken");
   }
 }
