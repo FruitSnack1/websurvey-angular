@@ -784,3 +784,15 @@ textarea {
   z-index: 100;
   font-size: 28px;
 }
+
+.play-range::-webkit-slider-thumb {
+  background: gray !important;
+}
+
+.play-range::-moz-range-thumb {
+  background: gray !important;
+}
+
+.play-range::-ms-thumb {
+  background: gray !important;
+}

@@ -26,6 +26,9 @@
                     <app-play-question-open *ngIf='anketa.questions[questionNumber].type == "open"' (questionAnswerd)='
                         onQuestionAnswerd($event)' [question]='anketa.questions[questionNumber]' class="w-100 h-100">
                     </app-play-question-open>
+                    <app-play-question-scale *ngIf='anketa.questions[questionNumber].type == "scale"' (questionAnswerd)='
+                        onQuestionAnswerd($event)' [question]='anketa.questions[questionNumber]' class="w-100 h-100">
+                    </app-play-question-scale>
                     <div class="anketa-progress-bar-container">
                         <div [ngClass]='bgClass' class="anketa-progress-bar" id="progress-bar"
                             [style.width.%]='progress_bar'>

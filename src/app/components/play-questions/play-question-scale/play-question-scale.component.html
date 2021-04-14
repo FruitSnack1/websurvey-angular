@@ -1,0 +1,21 @@
+<div class="col-12 h-100 w-100 p-0">
+    <h3 id="question" class="mt-5">{{question.question['cs']}}</h3>
+    <p class="mb-3">{{question.description}}</p>
+    <!-- <div *ngIf='question.img ' class="col-lg-6 col-sm-12 h-50 d-flex justify-content-center align-items-center">
+
+        <img class="rounded mx-auto" [src]='questionImg' id="question-image">
+    </div> -->
+
+    <!-- <button *ngFor='let ans of question.answers' class="au-btn  btn-block au-btn--skoda" (click)='answer(ans)'>{{ans}}
+    </button> -->
+    <div class="play-img-sm d-flex justify-content-center align-items-center mb-3">
+        <img src="{{questionImg}}" alt="" class="question-img">
+    </div>
+    <div class="d-flex justify-content-between">
+        <span *ngFor='let item of [].constructor(question.scale_end); let i = index'>{{i+1}}</span>
+    </div>
+    <input [(ngModel)]='scaleAnswer' class='form-range w-100 play-range' name="" id="" type='range' min="1"
+        max={{question.scale_end}} step='1' value="{{question.scale_end/2}}">
+    <button (click)='answer()' class="au-btn mb-5 au-btn--skoda btn-next">Pokračovat</button>
+
+</div>

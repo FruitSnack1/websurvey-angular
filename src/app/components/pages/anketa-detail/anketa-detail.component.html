@@ -130,6 +130,9 @@
             <app-result-question-open *ngIf='question.type == "open"' [question]=anketa.questions[i] [results]=results
                 [index]=i class="col-lg-6 d-flex align-items-stretch">
             </app-result-question-open>
+            <app-result-question-scale *ngIf='question.type == "scale"' [question]=anketa.questions[i] [results]=results
+                [index]=i class="col-lg-6 d-flex align-items-stretch">
+            </app-result-question-scale>
         </ng-container>
     </div>
 </div>

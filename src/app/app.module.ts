@@ -32,6 +32,9 @@ import { PlayQuestionSingleComponent } from "./components/play-questions/play-qu
 import { FormQuestionOpenComponent } from "./components/form-questions/form-question-open/form-question-open.component";
 import { PlayQuestionOpenComponent } from "./components/play-questions/play-question-open/play-question-open.component";
 import { JwtInterceptor } from "./auth/jwt.interceptor";
+import { FormQuestionScaleComponent } from './components/form-questions/form-question-scale/form-question-scale.component';
+import { PlayQuestionScaleComponent } from './components/play-questions/play-question-scale/play-question-scale.component';
+import { ResultQuestionScaleComponent } from './components/result-questions/result-question-scale/result-question-scale.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,9 @@ import { JwtInterceptor } from "./auth/jwt.interceptor";
     PlayQuestionSingleComponent,
     FormQuestionOpenComponent,
     PlayQuestionOpenComponent,
+    FormQuestionScaleComponent,
+    PlayQuestionScaleComponent,
+    ResultQuestionScaleComponent,
   ],
   imports: [
     BrowserModule,

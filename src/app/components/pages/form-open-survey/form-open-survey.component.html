@@ -59,6 +59,10 @@
                 (imageChange)='onImageChange($event)' (questionDelete)='onQuestionDelete($event)'
                 [surveyForm]='surveyForm' (questionMove)='onQuestionMove($event)' [imagePreviews]='imagePreviews'>
             </app-form-question-open>
+            <app-form-question-scale *ngIf='question.value.type == "scale"' [index]='i'
+                (imageChange)='onImageChange($event)' (questionDelete)='onQuestionDelete($event)'
+                [surveyForm]='surveyForm' (questionMove)='onQuestionMove($event)' [imagePreviews]='imagePreviews'>
+            </app-form-question-scale>
         </ng-container>
     </div>
     <div class="row">
@@ -67,8 +71,10 @@
                 <div class="card-body">
                     <button (click)='addQuestion("single")' class="au-btn au-btn-icon au-btn--secondary mr-3"
                         type="button"><i class="zmdi zmdi-plus"></i>Přidat volbu</button>
-                    <button (click)='addQuestion("open")' class="au-btn au-btn-icon au-btn--secondary" type="button"><i
-                            class="zmdi zmdi-plus"></i>Přidat text</button>
+                    <button (click)='addQuestion("open")' class="au-btn au-btn-icon au-btn--secondary mr-3"
+                        type="button"><i class="zmdi zmdi-plus"></i>Přidat text</button>
+                    <button (click)='addQuestion("scale")' class="au-btn au-btn-icon au-btn--secondary" type="button"><i
+                            class="zmdi zmdi-plus"></i>Přidat škálu</button>
                 </div>
             </div>
         </div>
