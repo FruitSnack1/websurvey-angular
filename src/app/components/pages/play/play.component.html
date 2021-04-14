@@ -18,7 +18,7 @@
                         (click)='nextStage()'>{{languages.beginBtn[lang]}}</button>
                 </div>
 
-                <div *ngIf='stage == 1' id="play" style="max-width: 1200px; margin: auto;height: calc(100% - 3rem);">
+                <div *ngIf='stage == 1' id="play" style="max-width: 1200px; margin: auto;height: calc(100% - 0rem);">
                     <app-play-question-single *ngIf='anketa.questions[questionNumber].type == "single"'
                         (questionAnswerd)='onQuestionAnswerd($event)' [question]='anketa.questions[questionNumber]'
                         class="w-100 h-100">
