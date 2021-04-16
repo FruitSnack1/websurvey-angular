@@ -1,0 +1,15 @@
+<div class="au-card au-card--no-pad m-b-40 w-100">
+    <div class="au-card-title">
+        <div class="bg-overlay bg-overlay--skoda"></div>
+        <h3> {{question.question.cs}}</h3>
+    </div>
+
+    <div class="au-card-inner p-5">
+        <div class="row">
+            <canvas *ngIf='results' baseChart [datasets]="barChartData" [labels]="barChartLabels"
+                [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+            </canvas>
+        </div>
+    </div>
+    <script src="node_modules/chart.js/src/chart.js"></script>
+</div>

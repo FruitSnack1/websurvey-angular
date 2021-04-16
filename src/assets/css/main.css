@@ -560,7 +560,7 @@ textarea {
 }
 
 .question-img {
-  max-height: 250px;
+  max-height: 220px;
 }
 
 .ivet {
@@ -697,7 +697,7 @@ textarea {
   border-radius: 50%;
   border: solid 2px #666;
   display: flex;
-  margin-right: 0.5rem;
+  margin-right: 12px;
   align-items: center;
   justify-content: center;
 }
@@ -712,11 +712,14 @@ textarea {
 .play-answer {
   font-size: 20px;
   color: black;
+  width: calc(100% - 30px);
+  line-height: 24px;
 }
 
 .play-answer-container {
   display: flex;
   align-items: center;
+  margin-bottom: 8px;
 }
 
 .play-check-container {
@@ -725,7 +728,7 @@ textarea {
   border-radius: 25%;
   border: solid 2px #666;
   display: flex;
-  margin-right: 0.5rem;
+  margin-right: 12px;
   align-items: center;
   justify-content: center;
 }
@@ -783,4 +786,16 @@ textarea {
   right: 90px;
   z-index: 100;
   font-size: 28px;
+}
+
+.play-range::-webkit-slider-thumb {
+  background: gray !important;
+}
+
+.play-range::-moz-range-thumb {
+  background: gray !important;
+}
+
+.play-range::-ms-thumb {
+  background: gray !important;
 }
