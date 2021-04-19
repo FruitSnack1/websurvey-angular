@@ -6,9 +6,7 @@
 
     <div class="au-card-inner p-5">
         <div class="row">
-            <canvas *ngIf='results' baseChart [datasets]="barChartData" [labels]="barChartLabels"
-                [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
-            </canvas>
+            <div class='w-100 h-100' app-chart-bar [labels]='barChartLabels' [data]='questionResults'></div>
         </div>
     </div>
     <script src="node_modules/chart.js/src/chart.js"></script>

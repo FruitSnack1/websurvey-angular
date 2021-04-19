@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ElementRef } from "@angular/core";
+import * as Chart from "chart.js";
 
 @Component({
   selector: "app-result-question-single",
@@ -9,8 +10,6 @@ export class ResultQuestionSingleComponent implements OnInit {
   @Input() question: any;
   @Input() results;
   @Input() index;
-
-  constructor(private elementRef: ElementRef) {}
 
   public barChartOptions = {
     scales: {
@@ -33,8 +32,11 @@ export class ResultQuestionSingleComponent implements OnInit {
   public barChartType = "bar";
   public barChartLegend = false;
   public barChartData;
+  public chart;
 
   ngOnInit() {
+    var ctx = document.getElementById("myChart");
+    this.chart = new Chart(`chart${this.index}`, {});
     this.barChartLabels = this.question.answers;
     this.barChartData = [
       {
@@ -57,6 +59,10 @@ export class ResultQuestionSingleComponent implements OnInit {
         borderWidth: 0,
       },
     ];
+
+    // setInterval(() => {
+    //   this.updateChart();
+    // }, 5000);
   }
 
   get questionResults() {
@@ -86,5 +92,11 @@ export class ResultQuestionSingleComponent implements OnInit {
       if (!this.barChartLabels.includes(e)) arr.push(e);
     }
     return arr;
+  }
+
+  updateChart() {
+    console.log(this.questionResults);
+    console.log(this.chart);
+    this.chart.datasets[0].data = this.questionResults;
   }
 }

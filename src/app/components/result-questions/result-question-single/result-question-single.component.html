@@ -6,9 +6,9 @@
 
     <div class="au-card-inner p-5">
         <div class="row">
-            <canvas *ngIf='results' baseChart [datasets]="barChartData" [labels]="barChartLabels"
-                [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
-            </canvas>
+
+            <div class='w-100 h-100' app-chart-bar [labels]='barChartLabels' [data]='questionResults'></div>
+
             <ng-template [ngIf]='question.other_answer'>
                 <h4 class="mb-3 mt-1">Ostatní odpovědi</h4>
                 <div class="other-answers-container">
