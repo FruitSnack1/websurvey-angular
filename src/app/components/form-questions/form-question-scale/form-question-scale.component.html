@@ -1,12 +1,11 @@
-<div class="row">
-    <div class="col-lg-12 m-b-40" id="question0" [formGroup]='questionForm'>
-        <div class="au-card au-card--no-pad">
-            <div class="au-card-title">
+<div class="row mb-4">
+    <div class="col-lg-12" id="question0" [formGroup]='questionForm'>
+        <div class="card shadow">
+            <div class="card-header bg-primary">
                 <i (click)='moveQuestion(true)' class="fas fa-arrow-up question-up"></i>
                 <i (click)='moveQuestion(false)' class="fas fa-arrow-down question-down"></i>
                 <i (click)='deleteQuestion()' class="fas fa-times question-delete"></i>
-                <h3>Otázka #{{index+1}}</h3>
-                <div class="bg-overlay bg-overlay--skoda"></div>
+                <h5 class="text-white m-0">Otázka #{{index+1}}</h5>
             </div>
             <div class="card-body">
                 <div class="row">

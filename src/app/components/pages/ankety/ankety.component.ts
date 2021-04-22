@@ -43,9 +43,9 @@ export class AnketyComponent implements OnInit {
 
   ngOnInit() {
     this.getAnkety();
-    setInterval(() => {
-      this.getAnkety();
-    }, 5000);
+    // setInterval(() => {
+    //   this.getAnkety();
+    // }, 5000);
   }
 
   playAnketa(id: string) {

@@ -1,5 +1,5 @@
-<div class="col-12 h-100 w-100 p-0 d-flex flex-column">
-    <h3 id="question" class="mt-5">{{question.question['cs']}}</h3>
+<div class="col-12 h-100 w-100 p-0 d-flex flex-column ">
+    <h3 id="question" class="mt-5 text-dark font-weight-bold">{{question.question['cs']}}</h3>
     <p class="mb-3">{{question.description}}</p>
     <!-- <div *ngIf='question.img ' class="col-lg-6 col-sm-12 h-50 d-flex justify-content-center align-items-center">
 
@@ -20,51 +20,44 @@
         <img src="{{questionImg}}" alt="" class="question-img">
     </div>
 
-    <ng-template [ngIf]='question.limit == 1'>
-        <div (click)='select(i)' class="play-answer-container" *ngFor='let ans of question.answers; let i = index'>
+
+    <div class="mb-3">
+        <ng-template [ngIf]='question.limit == 1'>
+            <div (click)='select(i)' class="play-answer-container" *ngFor='let ans of question.answers; let i = index'>
+                <div class="play-radio-container">
+                    <div *ngIf='selected.includes(i)' class="play-radio"></div>
+                </div>
+                <span class="play-answer text-dark">{{ans}}</span>
+            </div>
+        </ng-template>
+
+        <ng-template [ngIf]='question.limit > 1'>
+            <div (click)='select(i)' class="play-answer-container" *ngFor='let ans of question.answers; let i = index'>
+                <div class="play-check-container">
+                    <div *ngIf='selected.includes(i)' class="fas fa-check" style="color: #4ba82e;"></div>
+                </div>
+                <span class="play-answer text-dark">{{ans}}</span>
+            </div>
+        </ng-template>
+
+        <div (click)='select(question.answers.length)' *ngIf='question.other_answer && question.limit == 1'
+            class="play-answer-container">
             <div class="play-radio-container">
-                <div *ngIf='selected.includes(i)' class="play-radio"></div>
+                <div *ngIf='selected.includes(question.answers.length)' class="play-radio"></div>
             </div>
-            <span class="play-answer">{{ans}}</span>
+            <input (change)='otherChange()' [(ngModel)]='other' type="text" class="play-other-input" placeholder="Jiné">
         </div>
-    </ng-template>
 
-    <ng-template [ngIf]='question.limit > 1'>
-        <div (click)='select(i)' class="play-answer-container" *ngFor='let ans of question.answers; let i = index'>
+        <div (click)='select(question.answers.length)' *ngIf='question.other_answer && question.limit > 1'
+            class="play-answer-container">
             <div class="play-check-container">
-                <div *ngIf='selected.includes(i)' class="fas fa-check" style="color: #4ba82e;"></div>
+                <div *ngIf='selected.includes(question.answers.length)' class="fas fa-check" style="color: #4ba82e;">
+                </div>
             </div>
-            <span class="play-answer">{{ans}}</span>
+            <input (change)='otherChange()' [(ngModel)]='other' type="text" class="play-other-input" placeholder="Jiné">
         </div>
-    </ng-template>
 
-    <div (click)='select(question.answers.length)' *ngIf='question.other_answer && question.limit == 1'
-        class="play-answer-container">
-        <div class="play-radio-container">
-            <div *ngIf='selected.includes(question.answers.length)' class="play-radio"></div>
-        </div>
-        <input (change)='otherChange()' [(ngModel)]='other' type="text" class="play-other-input" placeholder="Jiné">
     </div>
 
-    <div (click)='select(question.answers.length)' *ngIf='question.other_answer && question.limit > 1'
-        class="play-answer-container">
-        <div class="play-check-container">
-            <div *ngIf='selected.includes(question.answers.length)' class="fas fa-check" style="color: #4ba82e;"></div>
-        </div>
-        <input (change)='otherChange()' [(ngModel)]='other' type="text" class="play-other-input" placeholder="Jiné">
-    </div>
-
-
-    <div class="col-lg-6 col-sm-12 other" *ngIf='false'>
-        <h4 class="text-center text-white mb-3">Jiné (vlastní odpověď)</h4>
-        <div class="form-group" style="width: 100%;">
-            <textarea name="" id="" cols="30" rows="10" class="form-control" #other
-                placeholder="Vaše odpověď..."></textarea>
-        </div>
-        <button class="au-btn  btn-block" style="background-color: rgb(23, 23, 26);">Pokračovat
-        </button>
-    </div>
-
-
-    <button (click)='answer()' class="au-btn  au-btn--skoda  mt-auto align-self-end mb-5">Pokračovat</button>
+    <button (click)='answer()' class="btn btn-primary mb-5 btn-round btn-lg mt-auto align-self-end">Pokračovat</button>
 </div>

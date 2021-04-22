@@ -1,10 +1,9 @@
-<div class="au-card au-card--no-pad m-b-40 w-100">
-    <div class="au-card-title">
-        <div class="bg-overlay bg-overlay--skoda"></div>
-        <h3> {{question.question.cs}}</h3>
+<div class="card shadow w-100">
+    <div class="card-header bg-primary">
+        <h5 class="text-white font-weight-bold"> {{question.question.cs}}</h5>
     </div>
 
-    <div class="au-card-inner p-5">
+    <div class="card-body p-5">
         <div class="row">
             <div class='w-100 h-100' app-chart-bar [labels]='barChartLabels' [data]='questionResults'></div>
         </div>

@@ -3,12 +3,14 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <div class="au-card">
-            <div class="form-group">
-                <label for="">Změnit uživatelské jméno</label>
-                <input [(ngModel)]='username' type="text" class="form-control">
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="">Změnit uživatelské jméno</label>
+                    <input [(ngModel)]='username' type="text" class="form-control">
+                </div>
+                <button (click)='changeUsername()' class="btn btn-primary" type="button">Změnit</button>
             </div>
-            <button (click)='changeUsername()' class="au-btn au-btn--skoda" type="button">Změnit</button>
         </div>
     </div>
 </div>
