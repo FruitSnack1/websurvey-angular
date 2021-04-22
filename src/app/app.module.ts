@@ -35,6 +35,7 @@ import { JwtInterceptor } from "./auth/jwt.interceptor";
 import { FormQuestionScaleComponent } from './components/form-questions/form-question-scale/form-question-scale.component';
 import { PlayQuestionScaleComponent } from './components/play-questions/play-question-scale/play-question-scale.component';
 import { ResultQuestionScaleComponent } from './components/result-questions/result-question-scale/result-question-scale.component';
+import { ChartBarComponent } from './components/charts/chart-bar/chart-bar.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { ResultQuestionScaleComponent } from './components/result-questions/resu
     FormQuestionScaleComponent,
     PlayQuestionScaleComponent,
     ResultQuestionScaleComponent,
+    ChartBarComponent,
   ],
   imports: [
     BrowserModule,

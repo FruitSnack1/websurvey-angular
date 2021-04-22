@@ -1,4 +1,4 @@
-<body class="animsition">
+<!-- <body class="animsition">
     <div class="page-wrapper">
         <div class="page-content--bge5">
             <div class="container">
@@ -44,4 +44,57 @@
         </div>
 
     </div>
+</body> -->
+
+
+
+<body>
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Vytvořit účet</h1>
+                            </div>
+                            <form #userForm='ngForm' (ngSubmit)='registerUser()'>
+                                <div class="form-group">
+                                    <label>Uživatelské jméno</label>
+                                    <input [(ngModel)]='model.username' required class="form-control" type="text"
+                                        name="username" placeholder="Uživatelské jméno">
+                                </div>
+                                <div class="form-group">
+                                    <label>Heslo </label>
+                                    <input [(ngModel)]='model.password' required class="form-control" type="password"
+                                        name="password" placeholder="Heslo">
+                                </div>
+                                <div class="form-group">
+                                    <label>Ověření hesla</label>
+                                    <input [(ngModel)]='model.confimred_password' required class="form-control"
+                                        type="password" name="confirmed_password" placeholder="Heslo znovu">
+                                </div>
+
+                                <button class="btn btn-block btn-primary" type="submit">Registrovat
+                                    se</button>
+
+                            </form>
+                            <hr>
+
+                            <div class="text-center small">
+                                Už máte účet?
+                                <a routerLink='/login'>Přihlásit se</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </body>

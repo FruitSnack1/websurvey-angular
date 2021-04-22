@@ -1,42 +1,57 @@
-<body class="animsition">
-    <div class="page-wrapper">
-        <div class="page-content--bge5">
-            <div class="container">
-                <div class="login-wrap">
-                    <div class="login-content">
-                        <div class="login-logo">
-                            <a href="#">
-                                <img src="assets/images/logo.png" alt="CoolAdmin">
-                            </a>
-                        </div>
-                        <div class="login-form">
-                            <form (ngSubmit)='loginUser()'>
-                                <div class="form-group">
-                                    <label>Uživatel</label>
-                                    <select [(ngModel)]='user.id' name="username" class="form-control">
-                                        <option selected disabled>Vyberte uživatele</option>
-                                    <option *ngFor='let user of users' value="{{user._id}}">{{user.username}}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Heslo</label>
-                                    <input [(ngModel)]='user.password' class="form-control" type="password" name="password" placeholder="Heslo">
-                                </div>
+<body class="">
 
-                                <button class="au-btn au-btn--block au-btn--skoda m-b-20" type="submit">Přihlásit se</button>
+    <div class="container">
 
-                            </form>
-                            <div class="register-link">
-                                <p>
-                                    Nemáte účet?
-                                    <a href="#" routerLink='/register'>Zaregistrovat se</a>
-                                </p>
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Vítejte zpátky!</h1>
+                                    </div>
+                                    <form (ngSubmit)='loginUser()'>
+                                        <div class="form-group">
+                                            <label>Uživatel</label>
+                                            <select [(ngModel)]='user.id' name="username" class="form-control">
+                                                <option selected disabled>Vyberte uživatele</option>
+                                                <option *ngFor='let user of users' value="{{user._id}}">
+                                                    {{user.username}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Heslo</label>
+                                            <input [(ngModel)]='user.password' class="form-control" type="password"
+                                                name="password" placeholder="Heslo">
+                                        </div>
+
+                                        <button class="btn btn-primary btn-block" type="submit">Přihlásit se</button>
+
+                                    </form>
+                                    <hr>
+
+                                    <div class="text-center small">
+                                        Nemáte účet?
+                                        <a routerLink='/register'>Registrovat se</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</body>
 
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>

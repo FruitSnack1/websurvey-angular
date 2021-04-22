@@ -1,19 +1,15 @@
 <form [formGroup]='surveyForm' (ngSubmit)='submitSurvey()'>
-    <div class="row">
+    <div class="row mb-4">
         <div class="col-lg-6 m-b-40">
-            <div class="au-card au-card--no-pad">
-                <div class="au-card-title">
-                    <h3>Nová anketa</h3>
-                    <div class="bg-overlay bg-overlay--skoda"></div>
+            <div class="card shadow">
+                <div class="card-header bg-primary">
+                    <h5 class="text-white m-0">Nová anketa</h5>
                 </div>
                 <div class="card-body">
-                    <!-- <h3 class="title-2">Nová anketa</h3> -->
-
                     <div class="form-group" formGroupName='name'>
                         <label class="form-control-label" for="name">Název ankety</label>
                         <input formControlName='cs' class="form-control" type="text" placeholder="" />
                     </div>
-
 
                     <div class="form-group" formGroupName='description'>
                         <label class="form-control-label" for="name">Popis ankety</label>
@@ -23,29 +19,28 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 m-b-40">
-            <div class="au-card au-card--no-pad">
-                <div class="au-card-title">
-                    <h3>Možnosti</h3>
-                    <div class="bg-overlay bg-overlay--skoda"></div>
+        <div class="col-lg-6">
+            <div class="card shadow h-100">
+                <div class="card-header bg-primary">
+                    <h5 class="text-white m-0">Možnosti</h5>
                 </div>
                 <div class="card-body">
-                    <label class="switch switch-3d switch-skoda mr-3">
-                        <input formControlName='random_order' class="switch-input" type="checkbox" /><span
-                            class="switch-label"></span><span class="switch-handle"></span>
-                    </label><span>Náhodné pořadí otázek</span><br />
-                    <label class="switch switch-3d switch-skoda mr-3">
-                        <input formControlName='user_data' class="switch-input" type="checkbox" /><span
-                            class="switch-label"></span><span class="switch-handle"></span>
-                    </label><span>Přidat identifikaci</span><br />
+                    <div class="form-check">
+                        <input formControlName='random_order' class="form-check-input" type="checkbox" />
+                        <label for="" class="form-check-label">Náhodné pořadí otázek</label>
+                    </div>
+                    <div class="form-check">
+                        <input formControlName='user_data' class="form-check-input" type="checkbox" />
+                        <label for="" class="form-check-label">Přidat identifikaci</label>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <app-form-user-data [userData]='this.editSurvey?.user_data_fields
-        ' (newFieldEvent)='onNewFieldEvent($event)' *ngIf='surveyForm.value.user_data' class="col-lg-6 m-b-40">
-        </app-form-user-data>
     </div>
+    <app-form-user-data [userData]='this.editSurvey?.user_data_fields
+    ' (newFieldEvent)='onNewFieldEvent($event)' *ngIf='surveyForm.value.user_data'>
+    </app-form-user-data>
 
 
     <!-- QUESTIONS -->
@@ -65,22 +60,22 @@
             </app-form-question-scale>
         </ng-container>
     </div>
-    <div class="row">
+    <div class="row mb-4">
         <div class="col">
-            <div class="au-card au-card--no-pad">
+            <div class="card shadow">
                 <div class="card-body">
-                    <button (click)='addQuestion("single")' class="au-btn au-btn-icon au-btn--secondary mr-3"
-                        type="button"><i class="zmdi zmdi-plus"></i>Přidat volbu</button>
-                    <button (click)='addQuestion("open")' class="au-btn au-btn-icon au-btn--secondary mr-3"
-                        type="button"><i class="zmdi zmdi-plus"></i>Přidat text</button>
-                    <button (click)='addQuestion("scale")' class="au-btn au-btn-icon au-btn--secondary" type="button"><i
+                    <button (click)='addQuestion("single")' class="btn btn-secondary mr-3" type="button"><i
+                            class="zmdi zmdi-plus"></i>Přidat volbu</button>
+                    <button (click)='addQuestion("open")' class="btn btn-secondary mr-3" type="button"><i
+                            class="zmdi zmdi-plus"></i>Přidat text</button>
+                    <button (click)='addQuestion("scale")' class="btn btn-secondary" type="button"><i
                             class="zmdi zmdi-plus"></i>Přidat škálu</button>
                 </div>
             </div>
         </div>
     </div>
-    <button *ngIf='!editMode' class="au-btn au-btn--skoda btn-block m-b-40 mt-4" type="submit">Vytvořit anketu</button>
-    <button *ngIf='editMode' class="au-btn au-btn--skoda btn-block m-b-40 mt-4" type="submit">Upravit anketu</button>
+    <button *ngIf='!editMode' class="btn btn-primary btn-block" type="submit">Vytvořit anketu</button>
+    <button *ngIf='editMode' class="btn btn-primary btn-block" type="submit">Upravit anketu</button>
 </form>
 
 <div [ngClass]="{'show' : resultsExists}" class="modal fade " tabindex="-1" role="dialog"
@@ -88,7 +83,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="mediumModalLabel">Existující výsledky</h5>
+                <h5 class="modal-title text-dark font-weight-bold" id="mediumModalLabel">Existující výsledky</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span (click)='resultsExists = false' aria-hidden="true">&times;</span>
                 </button>
@@ -101,9 +96,9 @@
                         </p>
                         <small class="mb-5">Ponechání výsledků může poškodit jejich správnost</small>
                         <div class="d-flex justify-content-end">
-                            <button (click)='postEditSurvey(false)' class="au-btn au-btn--skoda ">Ponechat
+                            <button (click)='postEditSurvey(false)' class="btn btn-secondary mr-3">Ponechat
                                 výsledky</button>
-                            <button (click)='postEditSurvey(true)' class="au-btn au-btn--skoda ">Smazat
+                            <button (click)='postEditSurvey(true)' class="btn btn-danger ">Smazat
                                 výsledky</button>
                         </div>
                     </div>

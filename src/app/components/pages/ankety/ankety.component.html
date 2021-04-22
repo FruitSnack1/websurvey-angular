@@ -1,47 +1,44 @@
 <div class="row">
     <div class="col-12">
-        <button type="button" name="button" class="m-b-40 au-btn au-btn-icon au-btn--skoda btn-block"
-            (click)='toggleCreateModal()'><i class="zmdi zmdi-plus"></i>Přidat novou anketu</button>
+        <button type="button" name="button" class="btn btn-block btn-primary mb-2 " (click)='toggleCreateModal()'><i
+                class="zmdi zmdi-plus"></i>Přidat novou anketu</button>
     </div>
 </div>
-
+<hr class="mb-4">
 <div class="row m-b-40">
-    <div class="col-lg-12">
-        <div class="table-responsive table-responsive-data2">
-            <table class="table table-data2">
-                <thead>
-                    <tr>
-                        <th>Název</th>
-                        <th class="text-right">Datum</th>
-                        <th class="text-right">Počet otázek</th>
-                        <th class="text-right">Vyplněné</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <!-- <tbody *ngFor='let anketa of ankety' skipLocationChange [routerLink]='anketa._id'> -->
-                <tbody *ngFor='let anketa of ankety' [ngClass]="{'new-anketa': isAdded}">
-                    <tr class="tr-shadow">
-                        <td (click)='showAnketaDetail(anketa._id)' class="font-weight-bold">{{anketa.name.cs}}</td>
-                        <td class="text-right">{{anketa.created | date:'d.M.yyyy'}}</td>
-                        <td class="text-right">{{anketa.questions.length}}</td>
-                        <td class="text-right">{{anketa.result_count}}</td>
-                        <td>
-                            <div class="table-data-feature">
-                                <button class="item" type="button" name="button" (click)='playAnketa(anketa._id)'><i
-                                        class="fas fa-play"></i></button>
-                                <button class="item" type="button" name="button"
-                                    (click)='editAnketa(anketa._id, anketa.type)'><i class="fas fa-edit"></i></button>
-                                <button class="item" type="button" name="button" (click)='setAnketa(anketa._id)'><i
-                                        class="fas fa-trash"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="spacer">
+    <div class="col-lg-6 mb-4" *ngFor='let anketa of ankety'>
+        <div class="card shadow">
+            <div class="card-header ">
+                <h5 class=" m-0 d-inline font-weight-bold">{{anketa.name.cs}}</h5>
+                <i (click)='setAnketa(anketa._id)' class="fas fa-trash float-right text-danger mt-1"></i>
+                <i (click)='editAnketa(anketa._id, anketa.type)' class="fas fa-edit mr-3 float-right mt-1"></i>
+                <i (click)='playAnketa(anketa._id)' class="fas fa-play mr-3 float-right text-primary mt-1"></i>
+            </div>
+            <div class="card-body" (click)='showAnketaDetail(anketa._id)' style="cursor: pointer;">
 
-                    </tr>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="border-top-0">Název</th>
+                            <th class="text-right border-top-0">Datum</th>
+                            <th class="text-right border-top-0">Počet otázek</th>
+                            <th class="text-right border-top-0">Vyplněné</th>
+                            <th class="border-top-0"></th>
+                        </tr>
+                    </thead>
+                    <!-- <tbody *ngFor='let anketa of ankety' skipLocationChange [routerLink]='anketa._id'> -->
+                    <tbody [ngClass]="{'new-anketa': isAdded}">
+                        <tr class="tr-shadow ">
+                            <td class="border-bottom-0">{{anketa.name.cs}}</td>
+                            <td class="border-bottom-0 text-right">{{anketa.created | date:'d.M.yyyy'}}</td>
+                            <td class="border-bottom-0 text-right">{{anketa.questions.length}}</td>
+                            <td class="border-bottom-0 text-right">{{anketa.result_count}}</td>
 
-                </tbody>
-            </table>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -51,8 +48,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="mediumModalLabel">Opravdu chcete odstranit anketu ?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span (click)='toggleDeleteModal()' aria-hidden="true">&times;</span>
+                <button (click)='toggleDeleteModal()' type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-footer">
@@ -64,33 +62,34 @@
     </div>
 </div>
 <div [ngClass]="{'show' : createModal}" class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-    aria-labelledby="mediumModalLabel" aria-hidden="true">
+    aria-labelledby="mediumModalLabel" aria-hidden="false">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="mediumModalLabel">Vytvořit novou anketu</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span (click)='toggleCreateModal()' aria-hidden="true">&times;</span>
+                <button (click)='toggleCreateModal()' type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-6">
                         <h3 class="text-dark text-center">Stejné odpovědi</h3>
-                        <img src="../../assets/images/survey.svg" alt="" style="padding: 50px;">
+                        <img src="../../assets/images/survey.svg" alt="" style="padding: 50px; width: 100%;">
                         <p class="text-center">Každá otázka má stejné odpovědi (otázky lze
                             porovnávat mezi sebou)</p>
                         <div class="d-flex justify-content-center mt-3 mb-4">
-                            <button routerLink='../create' type="button" class="au-btn au-btn--skoda m-auto">Vytvořit
+                            <button routerLink='../create' type="button" class="btn btn-primary m-auto">Vytvořit
                                 anketu</button>
                         </div>
                     </div>
                     <div class="col-6">
                         <h3 class="text-dark text-center">Vlastní odpovědi</h3>
-                        <img src="../../assets/images/survey.svg" alt="" style="padding: 50px;">
+                        <img src="../../assets/images/survey.svg" alt="" style="padding: 50px; width: 100%;">
                         <p class="text-center" style="min-height: 52px;">Každá otázka má vlastní odpovědi</p>
                         <div class="d-flex justify-content-center mt-3 mb-4">
-                            <button routerLink='../create2' type="button" class="au-btn au-btn--skoda m-auto">Vytvořit
+                            <button routerLink='../create2' type="button" class="btn btn-primary m-auto">Vytvořit
                                 anketu</button>
                         </div>
                     </div>

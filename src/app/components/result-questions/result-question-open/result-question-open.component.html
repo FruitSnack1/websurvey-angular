@@ -1,14 +1,13 @@
-<div class="au-card au-card--no-pad m-b-40 w-100" style="max-height: 598px;">
-    <div class="au-card-title">
-        <div class="bg-overlay bg-overlay--skoda"></div>
-        <h3> {{question.question.cs}}</h3>
+<div class="card shadow w-100">
+    <div class="card-header bg-primary">
+        <h5 class="text-white m-0"> {{question.question.cs}}</h5>
     </div>
     <div class="au-card-inner p-3" style="max-height: 480px; overflow: auto;">
-        <div class="">
+        <div class="table-responsive">
             <table class="table">
                 <tbody>
                     <tr *ngFor='let result of questionResults; let i=index'>
-                        <th style="padding-left: 0;">{{result}}</th>
+                        <td style="padding-left: 0;">{{result}}</td>
                     </tr>
                 </tbody>
             </table>
