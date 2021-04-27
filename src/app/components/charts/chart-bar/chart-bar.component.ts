@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import * as Chart from "chart.js";
 
 @Component({
   selector: "[app-chart-bar]",
@@ -8,38 +9,52 @@ import { Component, Input, OnInit } from "@angular/core";
 export class ChartBarComponent implements OnInit {
   @Input() data;
   @Input() labels;
-  public barChartOptions = {
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-            stepSize: 1,
-          },
-        },
-      ],
-    },
-    scaleShowVerticalLines: false,
-    responsive: true,
-    lineOnHover: {
-      enabled: false,
-    },
-  };
-  public barChartLabels;
-  public barChartType = "bar";
-  public barChartLegend = false;
-  public barChartData;
+  @Input() id;
+  chart;
 
-  ngOnInit() {
-    this.barChartLabels = this.labels;
-    this.barChartData = [
-      {
-        data: this.data,
-        labels: this.barChartLabels,
-        backgroundColor: "#4ba82e",
-        hoverBackgroundColor: "#4ba82e",
-        borderWidth: 0,
+  ngAfterViewInit() {
+    let ctx: any = document.getElementById(this.id);
+    this.chart = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: this.labels,
+        datasets: [
+          {
+            data: this.data,
+            backgroundColor: "#4ba82e",
+            hoverBackgroundColor: "#419128",
+            borderWidth: 0,
+            label: "",
+          },
+        ],
       },
-    ];
+      options: {
+        legend: {
+          display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+                stepSize: 1,
+              },
+            },
+          ],
+        },
+        responsive: true,
+      },
+    });
+  }
+
+  ngOnInit() {}
+
+  ngOnChanges(changes) {
+    if (this.chart) this.update();
+  }
+
+  update() {
+    this.chart.data.datasets[0].data = this.data;
+    this.chart.update();
   }
 }

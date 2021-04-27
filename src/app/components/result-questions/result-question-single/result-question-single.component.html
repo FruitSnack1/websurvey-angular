@@ -1,12 +1,13 @@
 <div class="card shadow w-100">
     <div class="card-header bg-primary">
-        <h5 class="text-white font-weight-bold"> {{question.question.cs}}</h5>
+        <h5 class="text-white font-weight-bold m-0"> {{question.question.cs}}</h5>
     </div>
 
     <div class="card-body p-5">
         <div class="row">
 
-            <div class='w-100 h-100' app-chart-bar [labels]='barChartLabels' [data]='questionResults'></div>
+            <div class='w-100 h-100' app-chart-bar [labels]='barChartLabels' [data]='questionResults' [id]='index'>
+            </div>
 
             <ng-template [ngIf]='question.other_answer'>
                 <h4 class="mb-3 mt-1">Ostatní odpovědi</h4>

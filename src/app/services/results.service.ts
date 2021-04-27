@@ -20,7 +20,7 @@ export class ResultsService {
   }
 
   deleteSurveyResults(id: string) {
-    return this.httpClient.delete(`${this.url}/delete/${id}`, {
+    return this.httpClient.delete(`${this.url}/${id}`, {
       withCredentials: true,
     });
   }

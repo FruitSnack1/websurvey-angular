@@ -95,6 +95,8 @@
     <div class="row" *ngIf='results'>
         <div class="col-12">
             <h3 class="title-1 text-gray-800 mb-4 d-inline font-weight-bold">Výsledky</h3>
+            <button (click)='deleteResults()' class="btn btn-danger mb-4 float-right ml-4">Odstranit
+                výsledky</button>
             <button (click)='downloadExcelFile()' class="btn btn-primary mb-4 float-right">Stáhnout výsledky v
                 Excelu</button>
         </div>
