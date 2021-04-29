@@ -25,6 +25,7 @@ export class AnketaDetailComponent implements OnInit {
   anketa_qr: string;
   surveyUrl: string;
   id;
+  interval;
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id");
@@ -34,9 +35,13 @@ export class AnketaDetailComponent implements OnInit {
       this.surveyUrl = `${window.location.protocol}//${window.location.host}/play/${this.anketa._id}`;
     });
     this.fetchData();
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.fetchData();
     }, 5000);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.interval);
   }
 
   fetchData() {

@@ -39,13 +39,18 @@ export class AnketyComponent implements OnInit {
   anketaId: string;
   deleteModal: boolean = false;
   createModal: boolean = false;
+  interval;
   constructor(private anketyService: AnketyService, private router: Router) {}
 
   ngOnInit() {
     this.getAnkety();
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.getAnkety();
     }, 5000);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.interval);
   }
 
   playAnketa(id: string) {
