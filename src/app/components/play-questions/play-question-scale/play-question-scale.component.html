@@ -6,10 +6,11 @@
         <img src="{{questionImg}}" alt="" class="question-img">
     </div>
     <div class="d-flex justify-content-between">
-        <span class="text-dark" *ngFor='let item of [].constructor(question.scale_end); let i = index'>{{i+1}}</span>
+        <span class="text-dark"
+            *ngFor='let item of [].constructor(question.scale_end+(question.scale_start+1)%2); let i = index'>{{i+question.scale_start}}</span>
     </div>
-    <input [(ngModel)]='scaleAnswer' class='form-range w-100 play-range' name="" id="" type='range' min="1"
-        max={{question.scale_end}} step='1' value="{{question.scale_end/2}}">
+    <input [(ngModel)]='scaleAnswer' class='form-range w-100 play-range' name="" id="" type='range'
+        min="{{question.scale_start}}" max={{question.scale_end}} step='1' value="{{question.scale_end/2}}">
     <button (click)='answer()' class="btn btn-primary mb-5 mt-auto align-self-end btn-round btn-lg">Pokračovat</button>
 
 </div>

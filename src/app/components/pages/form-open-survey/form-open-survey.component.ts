@@ -76,6 +76,7 @@ export class FormOpenSurveyComponent implements OnInit {
       limit: 1,
       img: "",
       scale_end: 5,
+      scale_start: 1,
     });
 
     this.questionForms.push(question);

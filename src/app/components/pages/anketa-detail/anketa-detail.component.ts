@@ -24,31 +24,40 @@ export class AnketaDetailComponent implements OnInit {
   results: any;
   anketa_qr: string;
   surveyUrl: string;
+  id;
+  interval;
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get("id");
-    this.anketyService.getAnketa(id).subscribe((data) => {
+    this.id = this.route.snapshot.paramMap.get("id");
+    this.anketyService.getAnketa(this.id).subscribe((data) => {
       this.anketa = data;
       this.anketa_qr = `${environment.API_URL}/qrcodes/${this.anketa._id}.png`;
       this.surveyUrl = `${window.location.protocol}//${window.location.host}/play/${this.anketa._id}`;
     });
-
-    this.resultsService.getResults(id).subscribe((data) => {
-      this.results = data;
-      this.setBarChart();
-      this.setRadarChart();
-    });
-    setInterval(() => {
-      this.resultsService.getResults(id).subscribe((data) => {
-        this.results = data;
-        // this.setBarChart();
-        // this.setRadarChart();
-      });
+    this.fetchData();
+    this.interval = setInterval(() => {
+      this.fetchData();
     }, 5000);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.interval);
+  }
+
+  fetchData() {
+    this.resultsService.getResults(this.id).subscribe((data) => {
+      if (this.results != data) this.results = data;
+    });
   }
 
   map_range(value, low1, high1, low2, high2) {
     return low2 + ((high2 - low2) * (value - low1)) / (high1 - low1);
+  }
+
+  deleteResults() {
+    this.resultsService
+      .deleteSurveyResults(this.anketa._id)
+      .subscribe((data) => this.fetchData());
   }
 
   setBarChart() {

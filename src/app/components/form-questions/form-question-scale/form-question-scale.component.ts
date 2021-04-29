@@ -40,6 +40,12 @@ export class FormQuestionScaleComponent implements OnInit {
     this.questionMove.emit({ up, i: this.index });
   }
 
+  changeStart() {
+    if (this.questionForm.value.scale_start == 1)
+      this.questionForm.get("scale_start").setValue(0);
+    else this.questionForm.get("scale_start").setValue(1);
+  }
+
   get imageSrc() {
     if (this.imagePreviews[this.index]) return this.imagePreviews[this.index];
     if (this.questionForm.value.img)

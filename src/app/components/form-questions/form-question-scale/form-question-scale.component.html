@@ -23,6 +23,11 @@
                             </label>
                             <input formControlName='description' class="form-control" type="text" />
                         </div>
+                        <div class="form-check mb-3">
+                            <input (click)='changeStart()' [checked]='!questionForm.value.scale_start'
+                                class="form-check-input " type="checkbox" />
+                            <label for="" class="form-check-label">Škála začíná od nuly</label>
+                        </div>
                         <div class="form-group">
                             <label class="form-control-label" for="name">Velikost škály
                             </label>
