@@ -26,11 +26,13 @@ export class AnketaDetailComponent implements OnInit {
   surveyUrl: string;
   id;
   interval;
+  enabled;
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id");
     this.anketyService.getAnketa(this.id).subscribe((data) => {
       this.anketa = data;
+      this.enabled = this.anketa.enabled ? false : true;
       this.anketa_qr = `${environment.API_URL}/qrcodes/${this.anketa._id}.png`;
       this.surveyUrl = `${window.location.protocol}//${window.location.host}/play/${this.anketa._id}`;
     });
@@ -179,5 +181,10 @@ export class AnketaDetailComponent implements OnInit {
 
   downloadExcelFile() {
     window.location.href = `${environment.API_URL}/api/results/${this.anketa._id}/excel`;
+  }
+
+  enableSurvey() {
+    this.enabled = !this.enabled;
+    this.anketyService.enableSurvey(this.id, this.enabled).subscribe(() => {});
   }
 }

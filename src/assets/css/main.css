@@ -796,15 +796,15 @@ textarea {
 }
 
 .play-range::-webkit-slider-thumb {
-  background: gray !important;
+  background: #4ba82e !important;
 }
 
 .play-range::-moz-range-thumb {
-  background: gray !important;
+  background: #4ba82e !important;
 }
 
 .play-range::-ms-thumb {
-  background: gray !important;
+  background: #4ba82e !important;
 }
 
 .btn-round {

@@ -35,4 +35,14 @@ export class AnketyService {
       withCredentials: true,
     });
   }
+
+  enableSurvey(id, enabled) {
+    return this.httpClient.put(
+      `${this.url}/${id}/enabled`,
+      { enabled },
+      {
+        withCredentials: true,
+      }
+    );
+  }
 }
