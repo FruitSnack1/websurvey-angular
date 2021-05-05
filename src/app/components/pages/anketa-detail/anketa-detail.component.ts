@@ -32,7 +32,8 @@ export class AnketaDetailComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get("id");
     this.anketyService.getAnketa(this.id).subscribe((data) => {
       this.anketa = data;
-      this.enabled = this.anketa.enabled ? false : true;
+      if (!this.anketa.enabled) this.enabled = true;
+      else this.enabled = this.anketa.enabled;
       this.anketa_qr = `${environment.API_URL}/qrcodes/${this.anketa._id}.png`;
       this.surveyUrl = `${window.location.protocol}//${window.location.host}/play/${this.anketa._id}`;
     });

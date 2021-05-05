@@ -1,3 +1,14 @@
 <div class="w-100 h-100">
-    <canvas id='{{this.id}}'></canvas>
+    <!-- <canvas id='{{this.id}}'></canvas> -->
+    <div *ngFor='let l of labels; let i = index' class="p-3 mb-2 text-white position-relative bg-secondary rounded">
+        <small>{{l}}</small>
+        <div class="position-absolute h-100  top-0 start-0  bg-primary rounded" style="transition: width .8s;"
+            [ngStyle]="{'width.%':width(i)}">
+
+        </div>
+        <div class="position-absolute h-100 w-100 top-0 start-0  p-3">
+            <small>{{l}}</small>
+            <span class="float-right text-light">{{percent(width(i))}}</span>
+        </div>
+    </div>
 </div>

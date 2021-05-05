@@ -63,6 +63,7 @@ export class ResultQuestionOpenComponent implements OnInit {
 
   get questionResults() {
     let arr = [];
+    if (!this.results) return [];
     for (let result of this.results) {
       if (result.answers[this.index].answer[0])
         arr.push(result.answers[this.index].answer[0]);

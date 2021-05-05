@@ -19,20 +19,17 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="border-top-0">Název</th>
-                            <th class="text-right border-top-0">Datum</th>
+                            <th class=" border-top-0 pl-0">Datum</th>
                             <th class="text-right border-top-0">Počet otázek</th>
-                            <th class="text-right border-top-0">Vyplněné</th>
-                            <th class="border-top-0"></th>
+                            <th class="text-right border-top-0 pr-0">Vyplněné</th>
                         </tr>
                     </thead>
                     <!-- <tbody *ngFor='let anketa of ankety' skipLocationChange [routerLink]='anketa._id'> -->
                     <tbody [ngClass]="{'new-anketa': isAdded}">
                         <tr class="tr-shadow ">
-                            <td class="border-bottom-0">{{anketa.name.cs}}</td>
-                            <td class="border-bottom-0 text-right">{{anketa.created | date:'d.M.yyyy'}}</td>
+                            <td class="border-bottom-0 pl-0">{{anketa.created | date:'d.M.yyyy'}}</td>
                             <td class="border-bottom-0 text-right">{{anketa.questions.length}}</td>
-                            <td class="border-bottom-0 text-right">{{anketa.result_count}}</td>
+                            <td class="border-bottom-0 text-right pr-0">{{anketa.result_count}}</td>
 
                         </tr>
 
