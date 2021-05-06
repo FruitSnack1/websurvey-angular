@@ -55,15 +55,19 @@ export class PlayComponent implements OnInit {
     if (this.router.url.includes("preview")) {
       this.preview = true;
     }
-    this.playService.getAneta(id).subscribe((data) => {
-      this.anketa = data;
-      if (this.anketa.user_data) this.stage = -1;
-      console.log(this.anketa);
-      this.result.anketa_id = this.anketa._id;
-      const userLang = navigator.language;
-      if (this.anketa.languages.includes(userLang)) this.lang = userLang;
-      else this.lang = "en";
-      if (this.anketa.type === 2) this.lang = "cs";
+    this.playService.getAneta(id).subscribe((data: any) => {
+      if (!data.enabled) {
+        this.anketa = false;
+        this.stage = -2;
+      } else {
+        this.anketa = data;
+        if (this.anketa.user_data) this.stage = -1;
+        this.result.anketa_id = this.anketa._id;
+        const userLang = navigator.language;
+        if (this.anketa.languages.includes(userLang)) this.lang = userLang;
+        else this.lang = "en";
+        if (this.anketa.type === 2) this.lang = "cs";
+      }
     });
     this.innerHeight = window.innerHeight;
   }

@@ -20,7 +20,7 @@
                                     <form (ngSubmit)='loginUser()'>
                                         <div class="form-group">
                                             <label>Uživatel</label>
-                                            <select [(ngModel)]='user.id' name="username" class="form-control">
+                                            <select [(ngModel)]='user.id' name="username" class="form-select">
                                                 <option selected disabled>Vyberte uživatele</option>
                                                 <option *ngFor='let user of users' value="{{user._id}}">
                                                     {{user.username}}</option>

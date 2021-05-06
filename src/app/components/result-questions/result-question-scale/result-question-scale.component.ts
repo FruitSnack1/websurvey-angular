@@ -14,19 +14,19 @@ export class ResultQuestionScaleComponent implements OnInit {
   public barChartLabels = [];
 
   ngOnInit() {
-    for (let i = 1; i <= this.question.scale_end; i++) {
+    for (let i = this.question.scale_start; i <= this.question.scale_end; i++) {
       this.barChartLabels.push(i);
     }
   }
 
   get questionResults() {
     let arr = [];
-    for (let i = 1; i <= this.question.scale_end; i++) {
+    for (let i = this.question.scale_start; i <= this.question.scale_end; i++) {
       arr.push(0);
     }
     for (let result of this.results) {
       if (result.answers[this.index])
-        arr[result.answers[this.index].answer - 1]++;
+        arr[result.answers[this.index].answer - this.question.scale_start]++;
     }
     return arr;
   }

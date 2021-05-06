@@ -1,6 +1,7 @@
 <div>
     <div class="row mb-4">
         <div class="col-lg-9 m-b-40">
+
             <div class="card shadow h-100">
                 <div class="card-header bg-primary">
                     <h5 class="m-0 font-weight-bold text-white">{{this.anketa?.name.cs}} </h5>
@@ -22,13 +23,28 @@
             </div>
         </div>
 
-        <div class="col-lg-3 d-flex align-items-stretch m-b-40">
+        <div class="col-lg-3 d-flex align-items-start m-b-40">
             <div class="row">
                 <div class="col-12 mb-4">
                     <div class="card border-left-primary shadow w-100 h-100">
                         <div class="card-body ">
                             <div class="text-xs text-uppercase font-weight-bold">Počet vyplněných </div>
                             <div class="h5 font-weight-bold">{{this.results?.length}} </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <div class="card  shadow w-100 h-100">
+                        <div class="card-body ">
+                            <div class="form-check  form-switch " style="padding-left: 2.5rem;">
+                                <input [checked]='enabled' (change)='enableSurvey()' class="form-check-input"
+                                    type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label text-dark" for="flexCheckDefault">
+                                    {{enabled?'Anketa spuštěna':'Anketa zastavena'}}
+                                </label>
+                                <br>
+                            </div>
+                            <small>{{enabled?'Anketu lze vyplňovat':'Anketu nelze vyplňovat'}}</small>
                         </div>
                     </div>
                 </div>
@@ -66,6 +82,7 @@
                         <button (click)='copySurveyUrl()' class="btn btn-primary btn-copy-link" type="button">Zkopírovat
                             adresu</button>
                     </div>
+                    <small *ngIf='!enabled'>Odkaz je aktuálně neaktivní, pro aktivaci spusťte anketu</small>
                 </div>
             </div>
         </div>
