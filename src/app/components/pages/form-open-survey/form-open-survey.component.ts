@@ -31,6 +31,7 @@ export class FormOpenSurveyComponent implements OnInit {
   editId;
   resultsExists = false;
   imagePreviews = [];
+  questionModal = false;
 
   ngOnInit() {
     this.surveyForm = this.fb.group({
@@ -80,6 +81,7 @@ export class FormOpenSurveyComponent implements OnInit {
     });
 
     this.questionForms.push(question);
+    this.questionModal = false;
   }
 
   fetchSurvey(id) {
