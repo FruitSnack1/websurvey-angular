@@ -165,14 +165,14 @@ export class PlayComponent implements OnInit {
 
   postResult() {
     if (this.preview) {
-      setTimeout(() => {
-        this.router.navigateByUrl("/");
-      }, 2000);
+      // setTimeout(() => {
+      //   this.router.navigateByUrl("/");
+      // }, 2000);
     } else {
       this.resultsService.postResults(this.result).subscribe((data) => {});
-      setTimeout(() => {
-        this.router.navigateByUrl("/");
-      }, 2000);
+      // setTimeout(() => {
+      //   this.router.navigateByUrl("/");
+      // }, 2000);
     }
   }
 }
