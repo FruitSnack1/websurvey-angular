@@ -16,7 +16,6 @@ import { NotFoundComponent } from "./components/pages/not-found/not-found.compon
 
 const routes: Routes = [
   { path: "", component: MenuComponent },
-  { path: "**", component: NotFoundComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
   { path: "play/:id", component: PlayComponent },
@@ -70,6 +69,7 @@ const routes: Routes = [
       },
     ],
   },
+  { path: "**", component: NotFoundComponent },
 ];
 
 @NgModule({
