@@ -12,9 +12,11 @@ import { MenuComponent } from "./components/menu/menu.component";
 import { FormOpenSurveyComponent } from "./components/pages/form-open-survey/form-open-survey.component";
 import { AuthGuard } from "./auth/auth.guard";
 import { SettingsComponent } from "./components/pages/settings/settings.component";
+import { NotFoundComponent } from "./components/pages/not-found/not-found.component";
 
 const routes: Routes = [
   { path: "", component: MenuComponent },
+  { path: "**", component: NotFoundComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
   { path: "play/:id", component: PlayComponent },
