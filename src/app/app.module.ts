@@ -36,6 +36,7 @@ import { FormQuestionScaleComponent } from './components/form-questions/form-que
 import { PlayQuestionScaleComponent } from './components/play-questions/play-question-scale/play-question-scale.component';
 import { ResultQuestionScaleComponent } from './components/result-questions/result-question-scale/result-question-scale.component';
 import { ChartBarComponent } from './components/charts/chart-bar/chart-bar.component';
+import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { ChartBarComponent } from './components/charts/chart-bar/chart-bar.compo
     PlayQuestionScaleComponent,
     ResultQuestionScaleComponent,
     ChartBarComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

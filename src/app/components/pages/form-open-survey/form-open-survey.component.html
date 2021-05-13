@@ -60,20 +60,8 @@
             </app-form-question-scale>
         </ng-container>
     </div>
-    <div class="row mb-4">
-        <div class="col">
-            <div class="card shadow">
-                <div class="card-body">
-                    <button (click)='addQuestion("single")' class="btn btn-secondary mr-3" type="button"><i
-                            class="zmdi zmdi-plus"></i>Přidat volbu</button>
-                    <button (click)='addQuestion("open")' class="btn btn-secondary mr-3" type="button"><i
-                            class="zmdi zmdi-plus"></i>Přidat text</button>
-                    <button (click)='addQuestion("scale")' class="btn btn-secondary" type="button"><i
-                            class="zmdi zmdi-plus"></i>Přidat škálu</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <button (click)='questionModal = true' class="btn btn-secondary btn-block mb-4" type="button">Přidat otázku</button>
     <button *ngIf='!editMode' class="btn btn-primary btn-block" type="submit">Vytvořit anketu</button>
     <button *ngIf='editMode' class="btn btn-primary btn-block" type="submit">Upravit anketu</button>
 </form>
@@ -102,6 +90,56 @@
                                 výsledky</button>
                         </div>
                     </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div [ngClass]="{'show' : questionModal}" class="modal fade " tabindex="-1" role="dialog"
+    aria-labelledby="mediumModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark font-weight-bold" id="mediumModalLabel">Přidat otázku</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span (click)='questionModal = false' aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div (click)='addQuestion("single")' class="card shadow add-question">
+                            <div class="card-body">
+                                <i class="fas fa-list-ul mr-3 mb-2"></i>
+                                <h5 class="d-inline font-weight-bold">Výběr z možností</h5>
+                                <br>
+                                <span>Výběr z jedné nebo více odpovědí</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <div (click)='addQuestion("open")' class="card shadow add-question">
+                            <div class="card-body">
+                                <i class="fas fa-comment mr-3 mb-2"></i>
+                                <h5 class="d-inline font-weight-bold">Otevřená otázka</h5>
+                                <br>
+                                <span>Textová odpověď</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div (click)='addQuestion("scale")' class="card shadow add-question">
+                            <div class="card-body">
+                                <i class="fas fa-sliders-h mr-3 mb-2"></i>
+                                <h5 class="d-inline font-weight-bold">Škála</h5>
+                                <br>
+                                <span>Změřte názor pomocí číselné stupnice</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

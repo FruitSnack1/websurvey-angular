@@ -810,3 +810,15 @@ textarea {
 .btn-round {
   border-radius: 50px !important;
 }
+
+.add-question {
+  cursor: pointer;
+}
+
+.add-question:hover i {
+  color: #4ba82e;
+}
+
+.add-question:hover h5 {
+  color: #4ba82e;
+}
