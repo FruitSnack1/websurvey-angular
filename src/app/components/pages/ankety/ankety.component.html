@@ -60,7 +60,8 @@
                     </thead>
                     <tbody>
                         <tr *ngFor='let anketa of ankety'>
-                            <td class="border-bottom-0">{{anketa.name.cs}}</td>
+                            <td (click)='showAnketaDetail(anketa._id)' class="border-bottom-0" style="cursor: pointer;">
+                                {{anketa.name.cs}}</td>
                             <td class="text-center border-bottom-0">{{anketa.created | date:'dd.MM.yyyy'}}</td>
                             <td class="text-right border-bottom-0">{{anketa.questions.length}}</td>
                             <td class="text-right border-bottom-0">{{anketa.result_count}}</td>
