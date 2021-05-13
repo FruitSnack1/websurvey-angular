@@ -40,6 +40,7 @@ export class AnketyComponent implements OnInit {
   deleteModal: boolean = false;
   createModal: boolean = false;
   interval;
+  grid = true;
   constructor(private anketyService: AnketyService, private router: Router) {}
 
   ngOnInit() {

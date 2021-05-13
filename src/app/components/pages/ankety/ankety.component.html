@@ -1,11 +1,17 @@
 <div class="row">
     <div class="col-12">
-        <button type="button" name="button" class="btn btn-block btn-primary mb-2 " (click)='toggleCreateModal()'><i
+        <button type="button" name="button" class="btn btn-primary mb-2 " (click)='toggleCreateModal()'><i
                 class="zmdi zmdi-plus"></i>Přidat novou anketu</button>
+        <div class="btn-group mb-2 float-right">
+            <button (click)='grid = true' class="btn btn-outline-secondary"><i [class.text-primary]='grid'
+                    class="fas fa-th-large "></i></button>
+            <button (click)='grid = false' class="btn btn-outline-secondary"><i [class.text-primary]='!grid'
+                    class="fas fa-bars"></i></button>
+        </div>
     </div>
 </div>
 <hr class="mb-4">
-<div class="row m-b-40">
+<div *ngIf='grid' class="row">
     <div class="col-lg-6 mb-4" *ngFor='let anketa of ankety'>
         <div class="card shadow">
             <div class="card-header ">
@@ -27,7 +33,7 @@
                     <!-- <tbody *ngFor='let anketa of ankety' skipLocationChange [routerLink]='anketa._id'> -->
                     <tbody [ngClass]="{'new-anketa': isAdded}">
                         <tr class="tr-shadow ">
-                            <td class="border-bottom-0 pl-0">{{anketa.created | date:'d.M.yyyy'}}</td>
+                            <td class="border-bottom-0 pl-0">{{anketa.created | date:'dd.MM.yyyy'}}</td>
                             <td class="border-bottom-0 text-right">{{anketa.questions.length}}</td>
                             <td class="border-bottom-0 text-right pr-0">{{anketa.result_count}}</td>
 
@@ -39,6 +45,39 @@
         </div>
     </div>
 </div>
+
+<div *ngIf='!grid' class="row">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-body">
+                <table class="table m-0">
+                    <thead>
+                        <th class="border-top-0">Název</th>
+                        <th class="border-top-0 text-center">Datum</th>
+                        <th class="border-top-0 text-right">Počet otázek</th>
+                        <th class="border-top-0 text-right">Vyplněné</th>
+                        <th class="border-top-0 text-center">Akce</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let anketa of ankety'>
+                            <td class="border-bottom-0">{{anketa.name.cs}}</td>
+                            <td class="text-center border-bottom-0">{{anketa.created | date:'dd.MM.yyyy'}}</td>
+                            <td class="text-right border-bottom-0">{{anketa.questions.length}}</td>
+                            <td class="text-right border-bottom-0">{{anketa.result_count}}</td>
+                            <td class="text-center border-bottom-0">
+                                <i (click)='playAnketa(anketa._id)' class="fas fa-play  text-primary mt-1"></i>
+                                <i (click)='editAnketa(anketa._id, anketa.type)' class="fas fa-edit ml-3  mt-1"></i>
+                                <i (click)='setAnketa(anketa._id)' class="fas fa-trash   ml-3 text-danger mt-1"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div [ngClass]="{'show' : deleteModal}" class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
     aria-labelledby="mediumModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
