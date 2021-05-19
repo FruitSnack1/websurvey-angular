@@ -110,33 +110,38 @@
         </div>
     </div>
     <div class="row" *ngIf='results'>
-        <div class="col-12">
-            <h3 class="title-1 text-gray-800 mb-4 d-inline font-weight-bold">Výsledky</h3>
+        <div class="col-12 mb-2">
+            <!-- <h3 class="title-1 text-gray-800 mb-4 d-inline font-weight-bold">Výsledky</h3> -->
+            <div class="btn-group btn-group-lg mb-2 d-inline">
+                <button (click)='users=false' [class.text-primary]='!users'
+                    class=" btn btn-outline-secondary shadow-none"><i class="fas fa-users mr-1"></i>Výsledky</button>
+                <button (click)='users=true' [class.text-primary]='users'
+                    class="btn btn-outline-secondary shadow-none"><i class="fas fa-user mr-1"></i>Respondenti</button>
+            </div>
             <button (click)='deleteResults()' class="btn btn-danger mb-4 float-right ml-4">Odstranit
                 výsledky</button>
             <button (click)='downloadExcelFile()' class="btn btn-primary mb-4 float-right">Stáhnout výsledky v
                 Excelu</button>
         </div>
-        <!-- <ng-template [ngIf]='anketa?.type===1'>
-            <app-result-question-single [question]=anketa.questions[i] [results]=results [index]=i
-                *ngFor='let question of anketa?.questions;let i = index' class="col-lg-6"></app-result-question-single>
-        </ng-template>
-        <ng-template [ngIf]='anketa?.type===2'>
-            <app-result-question-open [question]=anketa.questions[i] [results]=results [index]=i
-                *ngFor='let question of anketa?.questions;let i = index' class="col-lg-6"></app-result-question-open>
-        </ng-template> -->
 
-        <ng-container *ngFor='let question of anketa?.questions; let i = index'>
-            <app-result-question-single *ngIf='question.type == "single"' [question]=anketa.questions[i]
-                [results]=results [index]=i class="col-lg-6 d-flex align-items-stretch mb-4">
-            </app-result-question-single>
-            <app-result-question-open *ngIf='question.type == "open"' [question]=anketa.questions[i] [results]=results
-                [index]=i class="col-lg-6 d-flex align-items-stretch mb-4">
-            </app-result-question-open>
-            <app-result-question-scale *ngIf='question.type == "scale"' [question]=anketa.questions[i] [results]=results
-                [index]=i class="col-lg-6 d-flex align-items-stretch mb-4">
-            </app-result-question-scale>
+
+        <ng-container *ngIf='!users'>
+            <ng-container *ngFor='let question of anketa?.questions; let i = index'>
+                <app-result-question-single *ngIf='question.type == "single"' [question]=anketa.questions[i]
+                    [results]=results [index]=i class="col-lg-6 d-flex align-items-stretch mb-4">
+                </app-result-question-single>
+                <app-result-question-open *ngIf='question.type == "open"' [question]=anketa.questions[i]
+                    [results]=results [index]=i class="col-lg-6 d-flex align-items-stretch mb-4">
+                </app-result-question-open>
+                <app-result-question-scale *ngIf='question.type == "scale"' [question]=anketa.questions[i]
+                    [results]=results [index]=i class="col-lg-6 d-flex align-items-stretch mb-4">
+                </app-result-question-scale>
+            </ng-container>
         </ng-container>
+
+        <app-result-users *ngIf='users' [results]='results' [survey]='anketa' class="row"></app-result-users>
+
+
     </div>
 </div>
 <script src="node_modules/chart.js/src/chart.js"></script>
