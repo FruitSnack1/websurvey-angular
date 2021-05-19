@@ -13,11 +13,11 @@ export class ResultUsersComponent implements OnInit {
   ngOnInit(): void {}
 
   question(id) {
-    return this.survey.questions.find((e) => e._id == id).question.cs;
+    return this.survey.questions.find((e) => e._id == id)?.question?.cs;
   }
 
   type(id) {
-    const type = this.survey.questions.find((e) => e._id == id).type;
+    const type = this.survey.questions.find((e) => e._id == id)?.type;
     if (type == "open") return "Otevřená otázka";
     if (type == "scale") return "Škála";
     return "Výběr z možností";
