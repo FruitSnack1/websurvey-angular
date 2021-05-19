@@ -68,7 +68,11 @@ export class ChartBarComponent implements OnInit {
     return (this.data[i] / this.sum) * 100;
   }
 
+  count(i) {
+    return this.data[i];
+  }
+
   percent(width) {
-    return `${Math.floor(width * 10) / 10}%`;
+    return `${Math.floor(width)}%`;
   }
 }

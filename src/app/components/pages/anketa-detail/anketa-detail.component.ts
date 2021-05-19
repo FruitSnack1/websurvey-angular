@@ -27,6 +27,7 @@ export class AnketaDetailComponent implements OnInit {
   id;
   interval;
   enabled;
+  users = false;
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id");

@@ -37,6 +37,7 @@ import { PlayQuestionScaleComponent } from './components/play-questions/play-que
 import { ResultQuestionScaleComponent } from './components/result-questions/result-question-scale/result-question-scale.component';
 import { ChartBarComponent } from './components/charts/chart-bar/chart-bar.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
+import { ResultUsersComponent } from './components/result-questions/result-users/result-users.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
     ResultQuestionScaleComponent,
     ChartBarComponent,
     NotFoundComponent,
+    ResultUsersComponent,
   ],
   imports: [
     BrowserModule,
