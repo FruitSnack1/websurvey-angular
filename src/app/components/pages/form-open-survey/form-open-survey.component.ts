@@ -43,6 +43,8 @@ export class FormOpenSurveyComponent implements OnInit {
       }),
       random_order: false,
       user_data: false,
+      fill_reset: false,
+      fullscreen: false,
       type: 2,
       questions: this.fb.array([]),
       user_data_fields: this.fb.array([]),
@@ -91,6 +93,8 @@ export class FormOpenSurveyComponent implements OnInit {
       this.editSurvey = data;
       this.surveyForm.get("random_order").setValue(survey.random_order);
       this.surveyForm.get("user_data").setValue(survey.user_data);
+      this.surveyForm.get("fill_reset").setValue(survey.fill_reset);
+      this.surveyForm.get("fullscreen").setValue(survey.fullscreen);
       this.surveyForm.get("name").get("cs").setValue(survey.name.cs);
       this.surveyForm
         .get("description")

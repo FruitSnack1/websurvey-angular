@@ -13,6 +13,8 @@
 
                 <div *ngIf='stage == 0' class="" id="begin">
                     <h1 class="mt-5 text-dark font-weight-bold">{{anketa?.name[lang]}} </h1>
+                    <i (click)='openFullscreen()' *ngIf='anketa.fullscreen && !this.fullscreen'
+                        class="fas fa-expand"></i>
                     <p>{{anketa?.description[lang]}} </p>
                     <button *ngIf='anketa' class="btn btn-primary mb-5 mr-5  play-btn-start btn-round btn-lg"
                         (click)='nextStage()'>{{languages.beginBtn[lang]}}</button>
@@ -44,7 +46,7 @@
 
                 <div *ngIf='stage == 2' class="p-4 h-100 d-flex flex-column justify-content-center hide" id="finish">
                     <h1 class="text-center text-dark font-weight-bold">{{languages.endText[lang]}}</h1>
-                    <!-- <i class="fas fa-circle-notch survey-loading" style="color: #4ba82e;"></i> -->
+                    <i *ngIf='anketa.fill_reset' class="fas fa-circle-notch survey-loading" style="color: #4ba82e;"></i>
                 </div>
             </div>
         </div>

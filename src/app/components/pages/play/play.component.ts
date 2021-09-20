@@ -13,6 +13,8 @@ import { LoginComponent } from "../login/login.component";
 })
 export class PlayComponent implements OnInit {
   anketa;
+  elem;
+  fullscreen = false;
   progress_bar = 0;
   questionTime;
   textarea_value = "";
@@ -50,6 +52,7 @@ export class PlayComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.elem = document.documentElement;
     if (this.cookieService.get("pin")) this.stage = 0;
     const id = this.route.snapshot.paramMap.get("id");
     if (this.router.url.includes("preview")) {
@@ -75,6 +78,22 @@ export class PlayComponent implements OnInit {
   onRegister(data) {
     this.result.user_data = data;
     this.stage++;
+  }
+
+  openFullscreen() {
+    this.fullscreen = true;
+    if (this.elem.requestFullscreen) {
+      this.elem.requestFullscreen();
+    } else if (this.elem.mozRequestFullScreen) {
+      /* Firefox */
+      this.elem.mozRequestFullScreen();
+    } else if (this.elem.webkitRequestFullscreen) {
+      /* Chrome, Safari and Opera */
+      this.elem.webkitRequestFullscreen();
+    } else if (this.elem.msRequestFullscreen) {
+      /* IE/Edge */
+      this.elem.msRequestFullscreen();
+    }
   }
 
   onQuestionAnswerd(answer) {
@@ -169,7 +188,17 @@ export class PlayComponent implements OnInit {
       //   this.router.navigateByUrl("/");
       // }, 2000);
     } else {
-      this.resultsService.postResults(this.result).subscribe((data) => {});
+      this.resultsService.postResults(this.result).subscribe((data) => {
+        if (this.anketa.fill_reset) {
+          setTimeout(() => {
+            this.stage = 0;
+            this.progress_bar = 0;
+            this.questionNumber = 0;
+            this.textarea_value = "";
+            this.result.answers = [];
+          }, 3000);
+        }
+      });
       // setTimeout(() => {
       //   this.router.navigateByUrl("/");
       // }, 2000);

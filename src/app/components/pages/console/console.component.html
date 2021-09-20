@@ -1,0 +1,15 @@
+<div class="container mt-4">
+    <div *ngFor='let anketa of ankety; let i = index'
+        class="p-3 mb-2 text-white position-relative bg-secondary rounded">
+        <small>{{anketa.name.cs}}</small>
+        <div class="position-absolute h-100  top-0 start-0  bg-primary rounded" style="transition: width 5s; width: 0;"
+            [ngStyle]="{'width.%': width(anketa)}">
+
+        </div>
+        <div class="position-absolute h-100 w-100 top-0 start-0  p-3">
+            <small>{{anketa.name.cs}}</small>
+            <!-- <span class="text-light ml-3">3</span> -->
+            <span class="text-light float-right">{{anketa.result_count}} <i class="fas fa-users"></i> </span>
+        </div>
+    </div>
+</div>

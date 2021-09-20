@@ -38,6 +38,7 @@ import { ResultQuestionScaleComponent } from './components/result-questions/resu
 import { ChartBarComponent } from './components/charts/chart-bar/chart-bar.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { ResultUsersComponent } from './components/result-questions/result-users/result-users.component';
+import { ConsoleComponent } from './components/pages/console/console.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { ResultUsersComponent } from './components/result-questions/result-users
     ChartBarComponent,
     NotFoundComponent,
     ResultUsersComponent,
+    ConsoleComponent,
   ],
   imports: [
     BrowserModule,
