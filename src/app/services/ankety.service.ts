@@ -45,4 +45,12 @@ export class AnketyService {
       }
     );
   }
+
+  duplicateSurvey(id) {
+    return this.httpClient.post(
+      `${this.url}/duplicate/${id}`,
+      {},
+      { withCredentials: true }
+    );
+  }
 }

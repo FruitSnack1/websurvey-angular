@@ -103,4 +103,10 @@ export class AnketyComponent implements OnInit {
   animateElement() {
     this.show = !this.show;
   }
+
+  duplicateAnketa(id) {
+    this.anketyService.duplicateSurvey(id).subscribe((data) => {
+      this.getAnkety();
+    });
+  }
 }

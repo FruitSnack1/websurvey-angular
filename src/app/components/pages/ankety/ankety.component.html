@@ -10,14 +10,14 @@
         </div>
     </div>
 </div>
-<hr class="mb-4">
-<div *ngIf='grid' class="row">
+<div *ngIf='grid' class="row mt-3">
     <div class="col-lg-6 mb-4" *ngFor='let anketa of ankety'>
         <div class="card shadow">
             <div class="card-header ">
                 <h5 class=" m-0 d-inline font-weight-bold">{{anketa.name.cs}}</h5>
-                <i (click)='setAnketa(anketa._id)' class="fas fa-trash float-right text-danger mt-1"></i>
-                <i (click)='editAnketa(anketa._id, anketa.type)' class="fas fa-edit mr-3 float-right mt-1"></i>
+                <i (click)='setAnketa(anketa._id)' class="far fa-trash-alt float-right text-danger mt-1"></i>
+                <i (click)='duplicateAnketa(anketa._id)' class="far fa-clone mr-3 float-right mt-1"></i>
+                <i (click)='editAnketa(anketa._id, anketa.type)' class="far fa-edit mr-3 float-right mt-1"></i>
                 <i (click)='playAnketa(anketa._id)' class="fas fa-play mr-3 float-right text-primary mt-1"></i>
             </div>
             <div class="card-body" (click)='showAnketaDetail(anketa._id)' style="cursor: pointer;">
@@ -46,7 +46,7 @@
     </div>
 </div>
 
-<div *ngIf='!grid' class="row">
+<div *ngIf='!grid' class="row mt-3">
     <div class="col-12">
         <div class="card shadow">
             <div class="card-body">
@@ -67,8 +67,9 @@
                             <td class="text-right border-bottom-0">{{anketa.result_count}}</td>
                             <td class="text-center border-bottom-0">
                                 <i (click)='playAnketa(anketa._id)' class="fas fa-play  text-primary mt-1"></i>
-                                <i (click)='editAnketa(anketa._id, anketa.type)' class="fas fa-edit ml-3  mt-1"></i>
-                                <i (click)='setAnketa(anketa._id)' class="fas fa-trash   ml-3 text-danger mt-1"></i>
+                                <i (click)='editAnketa(anketa._id, anketa.type)' class="far fa-edit ml-3  mt-1"></i>
+                                <i (click)='duplicateAnketa(anketa._id)' class="far fa-clone ml-3  mt-1"></i>
+                                <i (click)='setAnketa(anketa._id)' class="far fa-trash-alt   ml-3 text-danger mt-1"></i>
                             </td>
                         </tr>
                     </tbody>
