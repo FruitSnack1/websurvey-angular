@@ -34,7 +34,7 @@ import {
   ],
 })
 export class AnketyComponent implements OnInit {
-  ankety: object;
+  ankety: [any];
   show: boolean = false;
   anketaId: string;
   deleteModal: boolean = false;
@@ -44,10 +44,17 @@ export class AnketyComponent implements OnInit {
   constructor(private anketyService: AnketyService, private router: Router) {}
 
   ngOnInit() {
+    if (localStorage.getItem("grid"))
+      this.grid = localStorage.getItem("grid") === "true";
     this.getAnkety();
     this.interval = setInterval(() => {
       this.getAnkety();
     }, 5000);
+  }
+
+  enableSurvey(id) {
+    const { enabled } = this.ankety.find((e) => e._id === id);
+    this.anketyService.enableSurvey(id, !enabled).subscribe(() => {});
   }
 
   ngOnDestroy() {
@@ -74,6 +81,11 @@ export class AnketyComponent implements OnInit {
     this.toggleDeleteModal();
   }
 
+  toggleView() {
+    this.grid = !this.grid;
+    localStorage.setItem("grid", `${this.grid}`);
+  }
+
   toggleDeleteModal() {
     this.deleteModal = !this.deleteModal;
   }
@@ -83,7 +95,7 @@ export class AnketyComponent implements OnInit {
   }
 
   getAnkety() {
-    this.anketyService.getAnkety().subscribe((data) => {
+    this.anketyService.getAnkety().subscribe((data: any) => {
       if (this.ankety != data) this.ankety = data;
     });
   }

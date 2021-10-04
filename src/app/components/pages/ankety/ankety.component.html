@@ -3,9 +3,9 @@
         <button type="button" name="button" class="btn btn-primary mb-2 " (click)='toggleCreateModal()'><i
                 class="zmdi zmdi-plus"></i>Přidat novou anketu</button>
         <div class="btn-group mb-2 float-right">
-            <button (click)='grid = true' class="btn btn-outline-secondary shadow-none"><i [class.text-primary]='grid'
+            <button (click)='toggleView()' class="btn btn-outline-secondary shadow-none"><i [class.text-primary]='grid'
                     class="fas fa-th-large "></i></button>
-            <button (click)='grid = false' class="btn btn-outline-secondary shadow-none"><i [class.text-primary]='!grid'
+            <button (click)='toggleView()' class="btn btn-outline-secondary shadow-none"><i [class.text-primary]='!grid'
                     class="fas fa-bars"></i></button>
         </div>
     </div>
@@ -57,6 +57,7 @@
                         <th class="border-top-0 text-right">Počet otázek</th>
                         <th class="border-top-0 text-right">Vyplněné</th>
                         <th class="border-top-0 text-center">Akce</th>
+                        <th class="border-top-0 text-center">Spuštěna</th>
                     </thead>
                     <tbody>
                         <tr *ngFor='let anketa of ankety'>
@@ -70,6 +71,13 @@
                                 <i (click)='editAnketa(anketa._id, anketa.type)' class="far fa-edit ml-3  mt-1"></i>
                                 <i (click)='duplicateAnketa(anketa._id)' class="far fa-clone ml-3  mt-1"></i>
                                 <i (click)='setAnketa(anketa._id)' class="far fa-trash-alt   ml-3 text-danger mt-1"></i>
+                            </td>
+                            <td class="text-center border-bottom-0">
+                                <div class="form-check  form-switch " style="padding-left: 2.5rem;">
+                                    <input [checked]='anketa.enabled' (change)='enableSurvey(anketa._id)'
+                                        class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <br>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
