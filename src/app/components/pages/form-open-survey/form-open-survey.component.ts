@@ -46,6 +46,7 @@ export class FormOpenSurveyComponent implements OnInit {
       fill_reset: false,
       fullscreen: false,
       type: 2,
+      theme: null,
       questions: this.fb.array([]),
       user_data_fields: this.fb.array([]),
     });
