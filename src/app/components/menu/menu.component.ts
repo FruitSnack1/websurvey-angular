@@ -13,7 +13,7 @@ export class MenuComponent implements OnInit {
   constructor(private anketyService: AnketyService, private router: Router) {}
 
   ngOnInit() {
-    this.anketyService.getAnkety().subscribe((data) => {
+    this.anketyService.getIvetAnkety().subscribe((data) => {
       console.log(data);
       this.ankety = data;
     });

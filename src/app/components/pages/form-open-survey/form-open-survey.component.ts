@@ -96,6 +96,7 @@ export class FormOpenSurveyComponent implements OnInit {
       this.surveyForm.get("user_data").setValue(survey.user_data);
       this.surveyForm.get("fill_reset").setValue(survey.fill_reset);
       this.surveyForm.get("fullscreen").setValue(survey.fullscreen);
+      this.surveyForm.get("theme").setValue(survey.theme);
       this.surveyForm.get("name").get("cs").setValue(survey.name.cs);
       this.surveyForm
         .get("description")

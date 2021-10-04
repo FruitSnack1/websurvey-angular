@@ -14,6 +14,10 @@ export class AnketyService {
     return this.httpClient.get(`${this.url}`, { withCredentials: true });
   }
 
+  getIvetAnkety() {
+    return this.httpClient.get(`${this.url}/ivet`, { withCredentials: true });
+  }
+
   deleteAnketa(id: string) {
     return this.httpClient.delete(`${this.url}/${id}`, {
       withCredentials: true,
