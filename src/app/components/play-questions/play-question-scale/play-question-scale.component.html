@@ -6,7 +6,7 @@
         <img src="{{questionImg}}" alt="" class="question-img">
     </div>
     <div class="d-flex justify-content-between">
-        <span class="text-dark"
+        <span class="text-dark text-center" style="width: 30px;margin-left: -8px; margin-right: -8px;"
             *ngFor='let item of [].constructor(question.scale_end+(question.scale_start+1)%2); let i = index'>{{i+question.scale_start}}</span>
     </div>
     <input [(ngModel)]='scaleAnswer' class='form-range w-100 play-range' name="" id="" type='range'
