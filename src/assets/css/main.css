@@ -318,7 +318,7 @@ textarea {
       rgba(13, 107, 212, 0.7),
       rgba(139, 240, 250, 0.7)
     ),
-    url("../images/theme1.png");
+    url("../images/theme1-min.png");
   background-size: cover;
   animation: appear 0.3s ease-in-out both;
   animation-delay: 100ms;
@@ -354,7 +354,7 @@ textarea {
       rgba(255, 84, 0, 0.7),
       rgba(255, 236, 112, 0.7)
     ),
-    url("../images/theme2.png");
+    url("../images/theme2-min.png");
   background-size: cover;
   animation: appear 0.3s ease-in-out both;
   animation-delay: 150ms;
@@ -390,7 +390,7 @@ textarea {
       rgba(127, 0, 207, 0.7),
       rgba(119, 147, 237, 0.7)
     ),
-    url("../images/theme3.png");
+    url("../images/theme3-min.png");
   background-size: cover;
   animation: appear 0.3s ease-in-out both;
   animation-delay: 200ms;
@@ -426,7 +426,7 @@ textarea {
       rgba(126, 0, 83, 0.7),
       rgba(248, 55, 0, 0.7)
     ),
-    url("../images/theme4.png");
+    url("../images/theme4-min.png");
   background-size: cover;
   animation: appear 0.3s ease-in-out both;
   animation-delay: 250ms;
@@ -462,7 +462,7 @@ textarea {
       rgba(0, 88, 48, 0.7),
       rgba(133, 217, 55, 0.7)
     ),
-    url("../images/theme5.png");
+    url("../images/theme5-min.png");
   background-size: cover;
   animation: appear 0.3s ease-in-out both;
   animation-delay: 300ms;
@@ -498,7 +498,7 @@ textarea {
       rgba(74, 77, 84, 0.7),
       rgba(214, 207, 216, 0.7)
     ),
-    url("../images/theme6.png");
+    url("../images/theme6-min.png");
   background-size: cover;
   animation: appear 0.3s ease-in-out both;
   animation-delay: 350ms;
