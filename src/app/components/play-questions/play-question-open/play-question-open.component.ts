@@ -10,12 +10,20 @@ export class PlayQuestionOpenComponent implements OnInit {
   @Input() question;
   @Output() questionAnswerd = new EventEmitter<any>();
   openAnswer;
+  answerSelected = false;
   constructor() {}
 
   ngOnInit() {}
 
   answer() {
-    this.questionAnswerd.emit([this.openAnswer]);
+    if(!this.openAnswer)
+      this.answerSelected = false;
+    else
+      this.questionAnswerd.emit([this.openAnswer]);
+  }
+  
+  textareaChanged(){
+    this.answerSelected = true;
   }
 
   get questionImg() {

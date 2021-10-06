@@ -18,6 +18,10 @@
                             <label for="" class="form-check-label">Přidat odpověď 'Jiné (vlastní odpověď)</label>
                         </div>
                         <div class="form-check">
+                            <input formControlName='required' class="form-check-input" type="checkbox" />
+                            <label for="" class="form-check-label">Povinná otázka</label>
+                        </div>
+                        <div class="form-check">
                             <input [checked]="questionForm.value.limit > 1" (click)='moreAnswers()'
                                 class="form-check-input" type="checkbox" />
                             <label for="" class="form-check-label">Povolit více odpovědí</label>

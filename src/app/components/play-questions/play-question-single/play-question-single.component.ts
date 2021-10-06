@@ -11,6 +11,7 @@ export class PlayQuestionSingleComponent implements OnInit {
   @Output() questionAnswerd = new EventEmitter<any>();
   selected = [];
   other = "";
+  answerSelected = false;
   constructor() {}
 
   ngOnInit() {}
@@ -25,7 +26,6 @@ export class PlayQuestionSingleComponent implements OnInit {
     if (this.other) answer.push(this.other);
     console.log("answer array : ", answer);
     this.questionAnswerd.emit(answer);
-
     this.selected = [];
     this.other = "";
   }
@@ -34,14 +34,20 @@ export class PlayQuestionSingleComponent implements OnInit {
 
   select(index) {
     if (this.question.limit > 1) {
-      if (this.selected.includes(index))
-        return this.selected.splice(this.selected.indexOf(index), 1);
+      if (this.selected.includes(index)){
+        this.selected.splice(this.selected.indexOf(index), 1);
+        this.answerSelected = this.selected.length > 0
+        return
+      }
       if (this.selected.length == this.question.limit) return;
-      else this.selected.push(index);
+      else {
+        this.selected.push(index);
+        this.answerSelected = this.selected.length > 0
+      }
     } else {
       this.selected = [index];
     }
-    console.log(this.selected);
+    // this.answerSelected = this.selected.length > 0
   }
 
   otherChange() {}
