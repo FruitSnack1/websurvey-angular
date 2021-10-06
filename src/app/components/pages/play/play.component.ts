@@ -196,12 +196,17 @@ export class PlayComponent implements OnInit {
             this.questionNumber = 0;
             this.textarea_value = "";
             this.result.answers = [];
-          }, 3000);
+          }, 2000);
+        }else{
+          if(!localStorage.getItem('filled'))
+            localStorage.setItem('filled', '["0"]')
+          let ls = localStorage.getItem('filled')
+          localStorage.setItem('filled', `${ls.substring(0,ls.length-1)},"${this.anketa._id}"]`)
+          setTimeout(() => {
+            this.router.navigateByUrl("/");
+          }, 2000);
         }
       });
-      // setTimeout(() => {
-      //   this.router.navigateByUrl("/");
-      // }, 2000);
     }
   }
 }

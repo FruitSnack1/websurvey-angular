@@ -8,14 +8,18 @@ import { AnketyService } from "../../services/ankety.service";
 })
 export class MenuComponent implements OnInit {
   themeSelector = 0;
-  ankety: any;
+  ankety = [];
   innerHeight;
   constructor(private anketyService: AnketyService, private router: Router) {}
 
   ngOnInit() {
-    this.anketyService.getIvetAnkety().subscribe((data) => {
-      console.log(data);
-      this.ankety = data;
+    if(!localStorage.getItem('filled'))
+      localStorage.setItem('filled', '["0"]')
+    const filled:[string] = JSON.parse(localStorage.getItem('filled'))
+    // console.log(filled)
+    this.anketyService.getIvetAnkety().subscribe((data:[any]) => {
+      this.ankety = data.filter(e => e.theme && !filled.includes(e._id));
+      this.ankety.sort((a,b) =>{ return a.theme.localeCompare(b.theme) });
     });
     this.innerHeight = window.innerHeight;
   }
@@ -31,7 +35,6 @@ export class MenuComponent implements OnInit {
   }
 
   playAnketa(id: string) {
-    console.log(id);
     this.router.navigateByUrl(`/play/${id}`);
   }
 
