@@ -12,12 +12,19 @@
                 </app-play-register>
 
                 <div *ngIf='stage == 0' class="" id="begin">
-                    <h1 class="mt-5 text-dark font-weight-bold">{{anketa?.name[lang]}} </h1>
+                    <h1 class="mt-5 text-dark font-weight-bold">{{anketa?.name['cs']}} </h1>
                     <i (click)='openFullscreen()' *ngIf='anketa?.fullscreen && !this.fullscreen'
                         class="fas fa-expand"></i>
                     <p>{{anketa?.description[lang]}} </p>
-                    <button *ngIf='anketa' class="btn btn-primary mb-5 mr-5  play-btn-start btn-round btn-lg"
+                    <button *ngIf='anketa && !anketa.fullscreen'
+                        class="btn btn-primary mb-5 mr-5  play-btn-start btn-round btn-lg"
                         (click)='nextStage()'>{{languages.beginBtn[lang]}}</button>
+                    <div *ngIf='anketa && anketa.fullscreen'>
+                        <button class="btn btn-primary mb-5 mr-5  play-btn-start btn-round btn-lg" style="bottom: 70px;"
+                            (click)='lang = "cs";nextStage()'>Spustit v češtině</button>
+                        <button class="btn btn-primary mb-5 mr-5  play-btn-start btn-round btn-lg"
+                            (click)='lang = "en"; nextStage()'>Start in english</button>
+                    </div>
                 </div>
 
                 <div *ngIf='stage == -2' class="w-100 h-100 d-flex justify-content-center align-items-center">
@@ -27,14 +34,16 @@
 
                 <div *ngIf='stage == 1' id="play" style="max-width: 1200px; margin: auto;height: 100% ;">
                     <app-play-question-single *ngIf='anketa.questions[questionNumber].type == "single"'
-                        (questionAnswerd)='onQuestionAnswerd($event)' [question]='anketa.questions[questionNumber]'
-                        class="w-100 h-100">
+                        (questionAnswerd)='onQuestionAnswerd($event)' [ivet]='anketa.ivet' [lang]='lang'
+                        [question]='anketa.questions[questionNumber]' class="w-100 h-100">
                     </app-play-question-single>
-                    <app-play-question-open *ngIf='anketa.questions[questionNumber].type == "open"' (questionAnswerd)='
-                        onQuestionAnswerd($event)' [question]='anketa.questions[questionNumber]' class="w-100 h-100">
+                    <app-play-question-open *ngIf='anketa.questions[questionNumber].type == "open"' (questionAnswerd)=' 
+                        onQuestionAnswerd($event)' [lang]='lang' [question]='anketa.questions[questionNumber]'
+                        class="w-100 h-100">
                     </app-play-question-open>
                     <app-play-question-scale *ngIf='anketa.questions[questionNumber].type == "scale"' (questionAnswerd)='
-                        onQuestionAnswerd($event)' [question]='anketa.questions[questionNumber]' class="w-100 h-100">
+                        onQuestionAnswerd($event)' [lang]='lang' [question]='anketa.questions[questionNumber]'
+                        class="w-100 h-100">
                     </app-play-question-scale>
                     <div class="anketa-progress-bar-container">
                         <div [ngClass]='bgClass' class="anketa-progress-bar" id="progress-bar"
@@ -46,7 +55,7 @@
 
                 <div *ngIf='stage == 2' class="p-4 h-100 d-flex flex-column justify-content-center hide" id="finish">
                     <h1 class="text-center text-dark font-weight-bold">{{languages.endText[lang]}}</h1>
-                    <i  class="fas fa-circle-notch survey-loading" style="color: #4ba82e;"></i>
+                    <i class="fas fa-circle-notch survey-loading" style="color: #4ba82e;"></i>
                 </div>
             </div>
         </div>

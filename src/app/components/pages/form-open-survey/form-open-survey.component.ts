@@ -49,6 +49,7 @@ export class FormOpenSurveyComponent implements OnInit {
       theme: null,
       questions: this.fb.array([]),
       user_data_fields: this.fb.array([]),
+      ivet: false,
     });
 
     const id = this.route.snapshot.paramMap.get("id");
@@ -72,6 +73,7 @@ export class FormOpenSurveyComponent implements OnInit {
     const question = this.fb.group({
       question: this.fb.group({
         cs: "",
+        en: "",
       }),
       other_answer: false,
       description: "",
@@ -97,6 +99,7 @@ export class FormOpenSurveyComponent implements OnInit {
       this.surveyForm.get("user_data").setValue(survey.user_data);
       this.surveyForm.get("fill_reset").setValue(survey.fill_reset);
       this.surveyForm.get("fullscreen").setValue(survey.fullscreen);
+      this.surveyForm.get("ivet").setValue(survey.ivet);
       this.surveyForm.get("theme").setValue(survey.theme);
       this.surveyForm.get("name").get("cs").setValue(survey.name.cs);
       this.surveyForm

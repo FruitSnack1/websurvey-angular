@@ -67,9 +67,13 @@ export class PlayComponent implements OnInit {
         if (this.anketa.user_data) this.stage = -1;
         this.result.anketa_id = this.anketa._id;
         const userLang = navigator.language;
-        if (this.anketa.languages.includes(userLang)) this.lang = userLang;
-        else this.lang = "en";
-        if (this.anketa.type === 2) this.lang = "cs";
+        if (userLang != "cs" && userLang != "en") this.lang = "en";
+        else this.lang = userLang;
+        console.log(this.lang);
+        // if (this.anketa.languages.includes(userLang)) this.lang = userLang;
+        // else this.lang = "en";
+        // if (this.anketa.type === 2) this.lang = "cs";
+        // this.lang = "cs";
       }
     });
     this.innerHeight = window.innerHeight;
@@ -197,13 +201,16 @@ export class PlayComponent implements OnInit {
             this.textarea_value = "";
             this.result.answers = [];
           }, 2000);
-        }else{
-          if(!localStorage.getItem('filled'))
-            localStorage.setItem('filled', '["0"]')
-          let ls = localStorage.getItem('filled')
-          localStorage.setItem('filled', `${ls.substring(0,ls.length-1)},"${this.anketa._id}"]`)
+        } else {
+          if (!localStorage.getItem("filled"))
+            localStorage.setItem("filled", '["0"]');
+          let ls = localStorage.getItem("filled");
+          localStorage.setItem(
+            "filled",
+            `${ls.substring(0, ls.length - 1)},"${this.anketa._id}"]`
+          );
           setTimeout(() => {
-            this.router.navigateByUrl("/");
+            this.router.navigateByUrl("/34NpBVU2wjeE4hQstqGUY97sPmTfVu");
           }, 2000);
         }
       });

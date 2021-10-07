@@ -25,16 +25,15 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 p-lg-3 py-2 px-0"  *ngFor='let anketa of ankety'>
-                <div [ngClass]='"bg-"+ anketa.theme + "-img"' class="p-5 rounded"
-                    (click)='playAnketa(anketa._id)'>
+            <div class="col-lg-6 p-lg-3 py-2 px-0" *ngFor='let anketa of ankety'>
+                <div [ngClass]='"bg-"+ anketa.theme + "-img"' class="p-5 rounded" (click)='playAnketa(anketa._id)'>
                     <div class="d-flex align-items-center " style="height: 3rem;">
-                        <h4 class="m-0 text-white" >{{anketa.name.cs}}</h4>
+                        <h4 class="m-0 text-white">{{anketa.name.cs}}</h4>
                     </div>
                 </div>
             </div>
             <h5 *ngIf='ankety?.length == 0' class="text-center">
-                Ty magore, ty jsi fakt vyplnil všechno...
+                Wow, ty jsi fakt vyplnil všechno...
             </h5>
         </div>
     </div>

@@ -8,6 +8,7 @@ import { environment } from "src/environments/environment";
 })
 export class PlayQuestionOpenComponent implements OnInit {
   @Input() question;
+  @Input() lang;
   @Output() questionAnswerd = new EventEmitter<any>();
   openAnswer;
   answerSelected = false;
@@ -16,13 +17,11 @@ export class PlayQuestionOpenComponent implements OnInit {
   ngOnInit() {}
 
   answer() {
-    if(!this.openAnswer)
-      this.answerSelected = false;
-    else
-      this.questionAnswerd.emit([this.openAnswer]);
+    if (!this.openAnswer) this.answerSelected = false;
+    else this.questionAnswerd.emit([this.openAnswer]);
   }
-  
-  textareaChanged(){
+
+  textareaChanged() {
     this.answerSelected = true;
   }
 

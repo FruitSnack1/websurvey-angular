@@ -16,7 +16,7 @@ import { NotFoundComponent } from "./components/pages/not-found/not-found.compon
 import { ConsoleComponent } from "./components/pages/console/console.component";
 
 const routes: Routes = [
-  { path: "", component: MenuComponent },
+  { path: "34NpBVU2wjeE4hQstqGUY97sPmTfVu", component: MenuComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
   { path: "console", component: ConsoleComponent },
