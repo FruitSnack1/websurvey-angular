@@ -20,8 +20,11 @@ export class PlayQuestionOpenComponent implements OnInit {
   }
 
   answer() {
-    if (!this.openAnswer) this.answerSelected = false;
-    else this.questionAnswerd.emit([this.openAnswer]);
+    if (!this.openAnswer && this.question.required) this.answerSelected = false;
+    else {
+      this.questionAnswerd.emit([this.openAnswer]);
+      this.openAnswer = '';
+    }
   }
 
   textareaChanged() {
