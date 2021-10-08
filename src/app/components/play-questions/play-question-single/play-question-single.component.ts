@@ -30,6 +30,7 @@ export class PlayQuestionSingleComponent implements OnInit {
     this.questionAnswerd.emit(answer);
     this.selected = [];
     this.other = "";
+    this.answerSelected = false;
   }
 
   showOtherAnswer() {}
