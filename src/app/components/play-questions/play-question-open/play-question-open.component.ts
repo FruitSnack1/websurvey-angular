@@ -12,9 +12,12 @@ export class PlayQuestionOpenComponent implements OnInit {
   @Output() questionAnswerd = new EventEmitter<any>();
   openAnswer;
   answerSelected = false;
+  placeholder;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.placeholder = this.lang == 'cs' ? 'Vaše odpověď...' : 'Your answer...';
+  }
 
   answer() {
     if (!this.openAnswer) this.answerSelected = false;

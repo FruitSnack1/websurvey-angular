@@ -16,6 +16,7 @@ export class PlayQuestionScaleComponent implements OnInit {
 
   ngOnInit(): void {
     this.scale = Array(5).map((x, i) => i);
+    this.scaleAnswer = (this.question.scale_end - this.question.scale_end%2)  /2 + this.question.scale_start;
   }
 
   answer() {

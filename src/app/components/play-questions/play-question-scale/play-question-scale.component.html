@@ -10,7 +10,7 @@
             *ngFor='let item of [].constructor(question.scale_end+(question.scale_start+1)%2); let i = index'>{{i+question.scale_start}}</span>
     </div>
     <input [(ngModel)]='scaleAnswer' class='form-range w-100 play-range' name="" id="" type='range'
-        min="{{question.scale_start}}" max={{question.scale_end}} step='1' value="{{question.scale_end/2}}">
+        min="{{question.scale_start}}" max={{question.scale_end}} step='1' value="scaleAnswer">
     <button (click)='answer()' class="btn btn-primary mb-5 mt-auto align-self-end btn-round btn-lg">{{lang == 'cs'
         ?'Pokračovat':
         'Continue'}}</button>

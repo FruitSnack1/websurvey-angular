@@ -58,6 +58,12 @@ export class PlayComponent implements OnInit {
     if (this.router.url.includes("preview")) {
       this.preview = true;
     }
+
+    if(!localStorage.getItem('filled'))
+      localStorage.setItem('filled', '["0"]')
+    const filled:[string] = JSON.parse(localStorage.getItem('filled'))
+    if(filled.includes(id)) return console.log('filled')
+
     this.playService.getAneta(id).subscribe((data: any) => {
       if (!data.enabled) {
         this.anketa = false;
