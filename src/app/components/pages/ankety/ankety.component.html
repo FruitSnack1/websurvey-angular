@@ -2,6 +2,8 @@
     <div class="col-12">
         <button type="button" name="button" class="btn btn-primary mb-2 " (click)='toggleCreateModal()'><i
                 class="zmdi zmdi-plus"></i>Přidat novou anketu</button>
+        <button type="button" name="button" class="btn btn-secondary mb-2 ml-3 " (click)='downloadExcelFile()'><i
+                class="zmdi zmdi-plus"></i>Stáhnout výsledky v excelu</button>
         <div class="btn-group mb-2 float-right">
             <button (click)='toggleView()' class="btn btn-outline-secondary shadow-none"><i [class.text-primary]='grid'
                     class="fas fa-th-large "></i></button>

@@ -9,6 +9,7 @@ import {
   transition,
   animate,
 } from "@angular/animations";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-ankety",
@@ -102,6 +103,10 @@ export class AnketyComponent implements OnInit {
 
   showAnketaDetail(id) {
     this.router.navigateByUrl(`/admin/detail/${id}`);
+  }
+
+  downloadExcelFile() {
+    window.location.href = `${environment.API_URL}/api/results/excelAll`;
   }
 
   get animationState() {
