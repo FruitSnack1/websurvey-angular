@@ -106,7 +106,9 @@ export class AnketyComponent implements OnInit {
   }
 
   downloadExcelFile() {
-    window.location.href = `${environment.API_URL}/api/results/excelAll`;
+    window.location.href = `${
+      environment.API_URL
+    }/api/results/excelAll/${localStorage.getItem("id")}`;
   }
 
   get animationState() {

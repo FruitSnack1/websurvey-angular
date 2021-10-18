@@ -25,16 +25,17 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     this.userService.loginUser(this.user).subscribe((data: any) => {
-      const { message, username, accessToken } = data;
-      if(message == 'wrong password'){
-        this.invalid = true
-        setTimeout(()=>{
-          this.invalid = false
-        },3000)
-        return
+      const { message, username, accessToken, id } = data;
+      if (message == "wrong password") {
+        this.invalid = true;
+        setTimeout(() => {
+          this.invalid = false;
+        }, 3000);
+        return;
       }
       localStorage.setItem("username", username);
       localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("id", id);
       this.router.navigateByUrl("/admin");
     });
   }
