@@ -20,4 +20,21 @@ export class LogsComponent implements OnInit {
     })
   }
 
+  actionIcon(action){
+    switch (action){
+      case 'login':
+        return 'fas fa-sign-in-alt text-info mr-1 w-25'
+      case 'create':
+        return 'fas fa-plus text-success mr-1 w-25'
+      case 'update':
+        return 'fas fa-edit text-info mr-1 w-25'
+      case 'delete':
+        return 'far fa-trash-alt text-danger mr-1 w-25'
+      case 'result':
+        return 'fas fa-plus text-info mr-1 w-25'
+
+    }
+    
+  }
+
 }

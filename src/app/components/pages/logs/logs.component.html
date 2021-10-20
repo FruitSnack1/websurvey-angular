@@ -1,6 +1,6 @@
 
 
-<table class="table table-striped table-sm">
+<table class="table  table-sm">
     <thead>
         <tr>
           <th scope="col">id</th>
@@ -9,13 +9,13 @@
           <th scope="col">date</th>
           <th scope="col">user</th>
           <th scope="col">ip</th>
-          <th scope="col">city</th>
+          <th scope="col">location</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor='let log of logs'>
             <td>{{log._id}}</td>
-            <td>{{log.action}}</td>
+            <td><i [ngClass]='actionIcon(log.action)'></i>{{log.action}}</td>
             <td>{{log?.survey}}</td>
             <td>{{log.date | date :'HH:mm:ss dd/MM/yy'}}</td>
             <td>{{log.user?.username}}</td>
