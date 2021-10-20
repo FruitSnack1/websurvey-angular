@@ -12,6 +12,7 @@ export class LogsComponent implements OnInit {
 
   ngOnInit(): void {
     this.logService.getLogs().subscribe((data:[any]) =>{
+      console.log(data)
       data.sort((a, b)=>{
         return <any>new Date(b.date) - <any>new Date(a.date);
       })
