@@ -11,8 +11,10 @@ export class LogsComponent implements OnInit {
   constructor(private logService: LogsService) { }
 
   ngOnInit(): void {
-    this.logService.getLogs().subscribe(data =>{
-      console.log(data)
+    this.logService.getLogs().subscribe((data:[any]) =>{
+      data.sort((a, b)=>{
+        return <any>new Date(b.date) - <any>new Date(a.date);
+      })
       this.logs = data;
     })
   }
