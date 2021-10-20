@@ -39,6 +39,7 @@ import { ChartBarComponent } from './components/charts/chart-bar/chart-bar.compo
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { ResultUsersComponent } from './components/result-questions/result-users/result-users.component';
 import { ConsoleComponent } from './components/pages/console/console.component';
+import { LogsComponent } from './components/pages/logs/logs.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { ConsoleComponent } from './components/pages/console/console.component';
     NotFoundComponent,
     ResultUsersComponent,
     ConsoleComponent,
+    LogsComponent,
   ],
   imports: [
     BrowserModule,

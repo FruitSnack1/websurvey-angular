@@ -14,12 +14,14 @@ import { AuthGuard } from "./auth/auth.guard";
 import { SettingsComponent } from "./components/pages/settings/settings.component";
 import { NotFoundComponent } from "./components/pages/not-found/not-found.component";
 import { ConsoleComponent } from "./components/pages/console/console.component";
+import { LogsComponent } from "./components/pages/logs/logs.component";
 
 const routes: Routes = [
   { path: "34NpBVU2wjeE4hQstqGUY97sPmTfVu", component: MenuComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
   { path: "console", component: ConsoleComponent },
+  { path: "logs", component: LogsComponent },
   { path: "play/:id", component: PlayComponent },
   { path: "preview/:id", component: PlayComponent },
   {

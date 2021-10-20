@@ -1,0 +1,23 @@
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">date</th>
+          <th scope="col">action</th>
+          <th scope="col">user</th>
+          <th scope="col">ip</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let log of logs'>
+            <td>{{log._id}}</td>
+            <td>{{log.date | date :'hh:mm:ss dd/MM/yyyy'}}</td>
+            <td>{{log.action}}</td>
+            <td>{{log.user.username}}</td>
+            <td>{{log.ip}}</td>
+        </tr>
+        
+      </tbody>
+</table>
