@@ -8,7 +8,6 @@ import { environment } from "src/environments/environment";
 })
 export class PlayQuestionScaleComponent implements OnInit {
   @Input() question;
-  @Input() lang;
   @Output() questionAnswerd = new EventEmitter<any>();
   scaleAnswer;
   scale;

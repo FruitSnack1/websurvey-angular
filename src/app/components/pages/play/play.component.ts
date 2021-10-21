@@ -58,12 +58,6 @@ export class PlayComponent implements OnInit {
     if (this.router.url.includes("preview")) {
       this.preview = true;
     }
-
-    if(!localStorage.getItem('filled'))
-      localStorage.setItem('filled', '["0"]')
-    const filled:[string] = JSON.parse(localStorage.getItem('filled'))
-    if(filled.includes(id)) return console.log('filled')
-
     this.playService.getAneta(id).subscribe((data: any) => {
       if (!data.enabled) {
         this.anketa = false;
@@ -72,14 +66,10 @@ export class PlayComponent implements OnInit {
         this.anketa = data;
         if (this.anketa.user_data) this.stage = -1;
         this.result.anketa_id = this.anketa._id;
-        const userLang = navigator.language;
-        if (userLang != "cs" && userLang != "en") this.lang = "en";
-        else this.lang = userLang;
-        console.log(this.lang);
+        // const userLang = navigator.language;
         // if (this.anketa.languages.includes(userLang)) this.lang = userLang;
         // else this.lang = "en";
         // if (this.anketa.type === 2) this.lang = "cs";
-        // this.lang = "cs";
       }
     });
     this.innerHeight = window.innerHeight;
@@ -207,16 +197,13 @@ export class PlayComponent implements OnInit {
             this.textarea_value = "";
             this.result.answers = [];
           }, 2000);
-        } else {
-          if (!localStorage.getItem("filled"))
-            localStorage.setItem("filled", '["0"]');
-          let ls = localStorage.getItem("filled");
-          localStorage.setItem(
-            "filled",
-            `${ls.substring(0, ls.length - 1)},"${this.anketa._id}"]`
-          );
+        }else{
+          if(!localStorage.getItem('filled'))
+            localStorage.setItem('filled', '["0"]')
+          let ls = localStorage.getItem('filled')
+          localStorage.setItem('filled', `${ls.substring(0,ls.length-1)},"${this.anketa._id}"]`)
           setTimeout(() => {
-            this.router.navigateByUrl("/34NpBVU2wjeE4hQstqGUY97sPmTfVu");
+            this.router.navigateByUrl("/");
           }, 2000);
         }
       });

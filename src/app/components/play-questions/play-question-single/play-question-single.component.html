@@ -1,8 +1,7 @@
 <div class="col-12 h-100 w-100 p-0 d-flex flex-column ">
-    <h3 id="question" class="mt-5 text-dark font-weight-bold">{{question.question[lang]}}</h3>
+    <h3 id="question" class="mt-5 text-dark font-weight-bold">{{question.question['cs']}}</h3>
     <p class="mb-3">{{question.description}}</p>
     <!-- <div *ngIf='question.img ' class="col-lg-6 col-sm-12 h-50 d-flex justify-content-center align-items-center">
-
         <img class="rounded mx-auto" [src]='questionImg' id="question-image">
     </div> -->
 
@@ -23,14 +22,12 @@
 
     <div class="mb-3">
         <ng-template [ngIf]='question.limit == 1'>
-            <ng-container *ngFor='let ans of question.answers; let i = index'>
-                <div *ngIf='ivetMode(i)' (click)='select(i%(question.answers.length/2))' class="play-answer-container">
-                    <div class="play-radio-container">
-                        <div *ngIf='selected.includes(i%(question.answers.length/2))' class="play-radio"></div>
-                    </div>
-                    <span class="play-answer text-dark">{{ans}}</span>
+            <div (click)='select(i)' class="play-answer-container" *ngFor='let ans of question.answers; let i = index'>
+                <div class="play-radio-container">
+                    <div *ngIf='selected.includes(i)' class="play-radio"></div>
                 </div>
-            </ng-container>
+                <span class="play-answer text-dark">{{ans}}</span>
+            </div>
         </ng-template>
 
         <ng-template [ngIf]='question.limit > 1'>
@@ -61,7 +58,5 @@
 
     </div>
 
-    <button [disabled]='question.required && !answerSelected' (click)='answer()'
-        class="btn btn-primary mb-5 btn-round btn-lg mt-auto align-self-end">{{lang == 'cs' ?'Pokračovat':
-        'Continue'}}</button>
+    <button [disabled]='question.required && !answerSelected' (click)='answer()' class="btn btn-primary mb-5 btn-round btn-lg mt-auto align-self-end">Pokračovat</button>
 </div>

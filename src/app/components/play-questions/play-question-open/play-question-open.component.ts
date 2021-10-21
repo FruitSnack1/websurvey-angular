@@ -8,26 +8,21 @@ import { environment } from "src/environments/environment";
 })
 export class PlayQuestionOpenComponent implements OnInit {
   @Input() question;
-  @Input() lang;
   @Output() questionAnswerd = new EventEmitter<any>();
   openAnswer;
   answerSelected = false;
-  placeholder;
   constructor() {}
 
-  ngOnInit() {
-    this.placeholder = this.lang == 'cs' ? 'Vaše odpověď...' : 'Your answer...';
-  }
+  ngOnInit() {}
 
   answer() {
-    if (!this.openAnswer && this.question.required) this.answerSelected = false;
-    else {
+    if(!this.openAnswer && this.question.required)
+      this.answerSelected = false;
+    else
       this.questionAnswerd.emit([this.openAnswer]);
-      this.openAnswer = '';
-    }
   }
-
-  textareaChanged() {
+  
+  textareaChanged(){
     this.answerSelected = true;
   }
 

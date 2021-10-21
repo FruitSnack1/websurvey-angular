@@ -1,8 +1,7 @@
 <div class="col-12 h-100 w-100 p-0 d-flex flex-column">
-    <h3 id="question" class="mt-5 text-dark font-weight-bold">{{question.question[lang]}}</h3>
+    <h3 id="question" class="mt-5 text-dark font-weight-bold">{{question.question['cs']}}</h3>
     <p class="mb-3">{{question.description}}</p>
     <!-- <div *ngIf='question.img ' class="col-lg-6 col-sm-12 h-50 d-flex justify-content-center align-items-center">
-
         <img class="rounded mx-auto" [src]='questionImg' id="question-image">
     </div> -->
 
@@ -11,10 +10,8 @@
     <div class="play-img-sm d-flex justify-content-center align-items-center mb-3">
         <img src="{{questionImg}}" alt="" class="question-img">
     </div>
-    <textarea (ngModelChange)='textareaChanged()' [(ngModel)]='openAnswer' class='play-textarea' name="" id="" cols="30"
-        rows="5" [placeholder]="placeholder"></textarea>
-    <button [disabled]='question.required && !answerSelected' (click)='answer()'
-        class="btn btn-primary mb-5 mt-auto align-self-end btn-round btn-lg">{{lang == 'cs' ?'Pokračovat':
-        'Continue'}}</button>
+    <textarea (ngModelChange)='textareaChanged()' [(ngModel)]='openAnswer' class='play-textarea' name="" id="" cols="30" rows="7"
+        placeholder="Vaše odpověď..."></textarea>
+    <button [disabled]='question.required && !answerSelected' (click)='answer()' class="btn btn-primary mb-5 mt-auto align-self-end btn-round btn-lg">Pokračovat</button>
 
 </div>
