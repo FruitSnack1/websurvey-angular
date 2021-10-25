@@ -1,27 +1,28 @@
-
-
+<div class="form-group p-3 m-0 w-25 float-end">
+  <input type="text" class="form-control" placeholder="Search" [(ngModel)]='search' (ngModelChange)='filterLogs()'>
+</div>
 <table class="table  table-sm">
-    <thead>
-        <tr>
-          <th scope="col">id</th>
-          <th scope="col">action</th>
-          <th scope="col">object</th>
-          <th scope="col">date</th>
-          <th scope="col">user</th>
-          <th scope="col">ip</th>
-          <th scope="col">location</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor='let log of logs'>
-            <td>{{log._id}}</td>
-            <td><i [ngClass]='actionIcon(log.action)'></i>{{log.action}}</td>
-            <td>{{log?.survey}}</td>
-            <td>{{log.date | date :'HH:mm:ss dd/MM/yy'}}</td>
-            <td>{{log.user?.username}}</td>
-            <td>{{log.ip}}</td>
-            <td>{{log.city}}</td>
-        </tr>
-        
-      </tbody>
+  <thead>
+    <tr>
+      <th (click)='sort("_id")' scope="col"><i [class]='getIcon("_id")'></i>id</th>
+      <th (click)='sort("action")' scope="col"><i [class]='getIcon("action")'></i>action</th>
+      <th (click)='sort("survey")' scope="col"><i [class]='getIcon("survey")'></i>object</th>
+      <th (click)='sort("date")' scope="col"><i [class]='getIcon("date")'></i>date</th>
+      <th (click)='sort("user")' scope="col"><i [class]='getIcon("user")'></i>user</th>
+      <th (click)='sort("ip")' scope="col"><i [class]='getIcon("ip")'></i>ip</th>
+      <th (click)='sort("city")' scope="col"><i [class]='getIcon("city")'></i>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let log of logs'>
+      <td>{{log._id}}</td>
+      <td><i [ngClass]='actionIcon(log.action)'></i>{{log.action}}</td>
+      <td>{{log?.survey}}</td>
+      <td>{{log.date | date :'HH:mm:ss dd/MM/yy'}}</td>
+      <td>{{log.user?.username}}</td>
+      <td>{{log.ip}}</td>
+      <td>{{log.city}}</td>
+    </tr>
+
+  </tbody>
 </table>
