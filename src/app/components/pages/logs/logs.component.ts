@@ -72,11 +72,11 @@ export class LogsComponent implements OnInit {
 
   filterLogs() {
     this.logs = this.data.filter((e) => {
-      if (e._id.includes(this.search)) return true;
-      if (e.action.includes(this.search)) return true;
-      if (e.city.includes(this.search)) return true;
-      if (e.ip.includes(this.search)) return true;
-      if (e.survey.includes(this.search)) return true;
+      if (e?._id.includes(this.search)) return true;
+      if (e?.action.includes(this.search)) return true;
+      if (e?.city.includes(this.search)) return true;
+      if (e?.ip.includes(this.search)) return true;
+      if (e?.survey.includes(this.search)) return true;
       if (e?.user?.username.includes(this.search)) return true;
       return false;
     });
