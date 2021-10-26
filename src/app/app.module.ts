@@ -40,6 +40,7 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
 import { ResultUsersComponent } from './components/result-questions/result-users/result-users.component';
 import { ConsoleComponent } from './components/pages/console/console.component';
 import { LogsComponent } from './components/pages/logs/logs.component';
+import { IndexComponent } from './components/pages/index/index.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { LogsComponent } from './components/pages/logs/logs.component';
     ResultUsersComponent,
     ConsoleComponent,
     LogsComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,

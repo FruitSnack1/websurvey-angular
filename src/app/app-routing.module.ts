@@ -8,7 +8,6 @@ import { AnketyComponent } from "./components/pages/ankety/ankety.component";
 import { PlayComponent } from "./components/pages/play/play.component";
 import { FormAnketaComponent } from "./components/pages/form-anketa/form-anketa.component";
 import { AnketaDetailComponent } from "./components/pages/anketa-detail/anketa-detail.component";
-import { MenuComponent } from "./components/menu/menu.component";
 import { FormOpenSurveyComponent } from "./components/pages/form-open-survey/form-open-survey.component";
 import { AuthGuard } from "./auth/auth.guard";
 import { SettingsComponent } from "./components/pages/settings/settings.component";
@@ -17,7 +16,7 @@ import { ConsoleComponent } from "./components/pages/console/console.component";
 import { LogsComponent } from "./components/pages/logs/logs.component";
 
 const routes: Routes = [
-  { path: "34NpBVU2wjeE4hQstqGUY97sPmTfVu", component: MenuComponent },
+  { path: "", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
   { path: "console", component: ConsoleComponent },
