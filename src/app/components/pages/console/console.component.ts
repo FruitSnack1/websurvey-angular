@@ -9,13 +9,18 @@ import { AnketyService } from "src/app/services/ankety.service";
 export class ConsoleComponent implements OnInit {
   ankety;
   highest = 0;
+  interval
   constructor(private anketyService: AnketyService) {}
 
   ngOnInit(): void {
     this.getResults();
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.getResults();
     }, 5000);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.interval);
   }
 
   getResults() {
