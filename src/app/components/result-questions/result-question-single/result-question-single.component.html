@@ -7,16 +7,12 @@
             </div>
 
             <ng-template [ngIf]='question.other_answer'>
-                <h4 class="mb-3 mt-1">Ostatní odpovědi</h4>
+                <h6 class="mb-3 mt-1">Ostatní odpovědi</h6>
                 <div class="other-answers-container">
 
-                    <table class="table">
-                        <tbody>
-                            <tr *ngFor='let answer of otherAnswers'>
-                                <td style="padding-left: 0;">{{answer}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div *ngFor='let answer of otherAnswers; let i=index' class="p-2 px-3 mb-2 text-dark position-relative  rounded" style="background-color: #eaecf4;">
+                        {{answer}}
+                    </div>
                 </div>
             </ng-template>
         </div>
