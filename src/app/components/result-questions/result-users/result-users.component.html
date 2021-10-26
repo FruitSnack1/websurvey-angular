@@ -4,12 +4,11 @@
             <h5 class="text-dark font-weight-bold  d-inline">{{result._id}}</h5>
             <span class="float-right">{{result.date | date:'d/M H:mm': '+0200'}}</span>
             <div class="mt-4">
-                <ng-container *ngFor='let answer of result.answers' class="mt-3">
-                    <h6 class="text-dark font-weight-bold m-0">{{question(answer.question_id)}}</h6>
-                    <small>{{type(answer.question_id)}}</small>
-                    <div class="p-2 px-3 mb-3 text-dark position-relative  rounded" style="background-color: #eaecf4;">
-                        {{answer.answer.join(', ')}}
-                    </div>
+                <ng-container *ngFor='let answer of result.answers; let i = index' class="mt-3">
+                    <h6 class="text-dark font-weight-bold m-0">{{survey?.questions[i]?.question?.cs}}</h6>
+                    <small>{{type(i)}}</small>
+                    <div *ngIf='answer.answer.join(",") != ""' class="p-2 px-3 mb-3 text-dark position-relative  rounded" style="background-color: #eaecf4;">{{answer.answer.join(",")}}</div>
+                    <div *ngIf='answer.answer.join(",") == ""' class="p-2 px-3 mb-3 text-dark position-relative  rounded" style="background-color: #eaecf4;">&zwnj;</div>
                 </ng-container>
             </div>
         </div>

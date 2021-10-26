@@ -10,7 +10,7 @@ export class LogsComponent implements OnInit {
   logs: any[];
   data: any[];
   filter = "date";
-  d = -1;
+  d = 1;
   search = "";
   constructor(private logService: LogsService) {}
 
