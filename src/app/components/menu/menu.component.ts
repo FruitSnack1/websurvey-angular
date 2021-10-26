@@ -16,7 +16,6 @@ export class MenuComponent implements OnInit {
     if(!localStorage.getItem('filled'))
       localStorage.setItem('filled', '["0"]')
     const filled:[string] = JSON.parse(localStorage.getItem('filled'))
-    // console.log(filled)
     this.anketyService.getIvetAnkety().subscribe((data:[any]) => {
       this.ankety = data.filter(e => e.theme && !filled.includes(e._id) && e.theme !='null');
       this.ankety.sort((a,b) =>{ return a.theme.localeCompare(b.theme) });

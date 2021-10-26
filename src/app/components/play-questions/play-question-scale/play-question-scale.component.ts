@@ -19,7 +19,6 @@ export class PlayQuestionScaleComponent implements OnInit {
   }
 
   answer() {
-    console.log([this.scaleAnswer]);
     this.questionAnswerd.emit([this.scaleAnswer]);
   }
 

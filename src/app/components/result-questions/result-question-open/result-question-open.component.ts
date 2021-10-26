@@ -35,8 +35,6 @@ export class ResultQuestionOpenComponent implements OnInit {
   public barChartData;
 
   ngOnInit() {
-    console.log(this.results);
-    console.log(this.questionResults);
     this.barChartLabels = this.question.answers;
     this.barChartData = [
       {

@@ -24,7 +24,6 @@ export class PlayQuestionSingleComponent implements OnInit {
       }
     }
     if (this.other) answer.push(this.other);
-    console.log("answer array : ", answer);
     this.answerSelected = false
     this.questionAnswerd.emit(answer);
     this.selected = [];
@@ -49,7 +48,6 @@ export class PlayQuestionSingleComponent implements OnInit {
       this.selected = [index];
       this.answerSelected = true
     }
-    // this.answerSelected = this.selected.length > 0
   }
 
   otherChange() {}

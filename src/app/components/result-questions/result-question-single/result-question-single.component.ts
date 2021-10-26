@@ -60,9 +60,6 @@ export class ResultQuestionSingleComponent implements OnInit {
       },
     ];
 
-    // setInterval(() => {
-    //   this.updateChart();
-    // }, 5000);
   }
 
   get questionResults() {
@@ -95,8 +92,6 @@ export class ResultQuestionSingleComponent implements OnInit {
   }
 
   updateChart() {
-    console.log(this.questionResults);
-    console.log(this.chart);
     this.chart.datasets[0].data = this.questionResults;
   }
 }

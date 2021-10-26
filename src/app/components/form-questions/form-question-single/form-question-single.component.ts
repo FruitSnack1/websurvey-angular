@@ -46,7 +46,6 @@ export class FormQuestionSingleComponent implements OnInit {
   }
 
   moreAnswers() {
-    console.log(this.answers.length);
     if (this.questionForm.value.limit == 1)
       this.questionForm.get("limit").setValue(this.answers.length);
     else this.questionForm.get("limit").setValue(1);

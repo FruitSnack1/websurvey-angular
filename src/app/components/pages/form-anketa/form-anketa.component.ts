@@ -226,7 +226,6 @@ export class FormAnketaComponent implements OnInit {
     } else {
       let anketaFormValue = this.anketaForm.value;
       anketaFormValue.languages = this.languages;
-      console.log(anketaFormValue);
       const formData = new FormData();
       for (let key in this.files) {
         formData.append(key, this.files[key]);

@@ -101,8 +101,6 @@ export class PlayComponent implements OnInit {
   }
 
   onQuestionAnswerd(answer) {
-    console.log(answer);
-
     this.textarea_value = "";
     this.result.answers.push({
       question_id: this.anketa.questions[this.questionNumber]._id,
@@ -128,8 +126,6 @@ export class PlayComponent implements OnInit {
   changeLang() {
     this.langCounter = ++this.langCounter % this.anketa.languages.length;
     this.lang = this.anketa.languages[this.langCounter];
-    console.log(this.langCounter);
-    console.log(this.lang);
   }
 
   nextStage() {
@@ -167,7 +163,6 @@ export class PlayComponent implements OnInit {
       answer,
       time: Date.now() - this.questionTime,
     });
-    console.log(this.result);
     this.questionTime = Date.now();
     if (this.questionNumber == this.anketa.questions.length - 1) {
       this.nextStage();
@@ -188,9 +183,7 @@ export class PlayComponent implements OnInit {
 
   postResult() {
     if (this.preview) {
-      // setTimeout(() => {
-      //   this.router.navigateByUrl("/");
-      // }, 2000);
+      
     } else {
       this.resultsService.postResults(this.result).subscribe((data) => {
         if (this.anketa.fill_reset) {
@@ -206,9 +199,6 @@ export class PlayComponent implements OnInit {
             localStorage.setItem('filled', '["0"]')
           let ls = localStorage.getItem('filled')
           localStorage.setItem('filled', `${ls.substring(0,ls.length-1)},"${this.anketa._id}"]`)
-          // setTimeout(() => {
-          //   this.router.navigateByUrl("/");
-          // }, 2000);
         }
       });
     }

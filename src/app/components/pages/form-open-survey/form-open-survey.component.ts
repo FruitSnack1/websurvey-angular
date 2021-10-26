@@ -93,7 +93,6 @@ export class FormOpenSurveyComponent implements OnInit {
   fetchSurvey(id) {
     this.anketyService.getAnketa(id).subscribe((data) => {
       let survey: any = data;
-      console.log(survey);
       this.editSurvey = data;
       this.surveyForm.get("random_order").setValue(survey.random_order);
       this.surveyForm.get("user_data").setValue(survey.user_data);
@@ -106,7 +105,6 @@ export class FormOpenSurveyComponent implements OnInit {
         .get("description")
         .get("cs")
         .setValue(survey.description.cs);
-      // for (let question of this.editSurvey.questions) {
       for (let i = 0; i < this.editSurvey.questions.length; i++) {
         const question = this.editSurvey.questions[i];
         this.addQuestion(question.type);
@@ -125,19 +123,6 @@ export class FormOpenSurveyComponent implements OnInit {
   onNewFieldEvent(fields) {
     this.surveyForm.setControl("user_data_fields", this.fb.array(fields || []));
   }
-
-  // onQuestionChange(data) {
-  //   if (data.question.type == "single") {
-  //     let answers = this.questionForms
-  //       .at(data.index)
-  //       .get("answers") as FormArray;
-  //     answers.clear();
-  //     for (let answer of data.question.answers) {
-  //       answers.insert(0, this.fb.control(""));
-  //     }
-  //   }
-  //   this.questionForms.at(data.index).patchValue(data.question);
-  // }
 
   onImageChange(data) {
     if (data.image) this.files[`img${data.index}`] = data.image;
@@ -184,7 +169,6 @@ export class FormOpenSurveyComponent implements OnInit {
       this.resultsService
         .deleteSurveyResults(this.editSurvey._id)
         .subscribe((data) => {
-          console.log(data);
         });
     }
     let anketaFormValue = this.surveyForm.value;

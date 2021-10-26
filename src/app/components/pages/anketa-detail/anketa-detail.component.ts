@@ -130,29 +130,12 @@ export class AnketaDetailComponent implements OnInit {
   }
 
   get questionResults() {
-    // if (!this.results || this.anketa.type == 2) return [[]];
-    // let arr = [];
-    // for (let i = 0; i < this.anketa.questions.length; i++) {
-    //   let answers = [0, 0, 0, 0, 0];
-    //   for (let result of this.results) {
-    //     answers[result.answers[i].answer - 1]++;
-    //   }
-    //   arr.push(answers);
-    // }
-    // return arr;
+    
     return [];
   }
 
   get chartResults() {
-    // let arr = [0, 0, 0, 0, 0];
-    // for (let a of this.questionResults) {
-    //   arr[0] += a[0];
-    //   arr[1] += a[1];
-    //   arr[2] += a[2];
-    //   arr[3] += a[3];
-    //   arr[4] += a[4];
-    // }
-    // return arr;
+    
     return [];
   }
 
