@@ -1,15 +1,15 @@
 <div class="w-100 h-100">
     <!-- <canvas id='{{this.id}}'></canvas> -->
-    <div *ngFor='let l of labels; let i = index' class="p-3 mb-2 text-white position-relative bg-secondary rounded">
+    <div *ngFor='let l of labels; let i = index' class="p-2 px-3 mb-2 text-dark position-relative  rounded" style="background-color: #eaecf4;">
         <small>{{l}}</small>
         <div class="position-absolute h-100  top-0 start-0  bg-primary rounded" style="transition: width .8s;"
             [ngStyle]="{'width.%':width(i)}">
 
         </div>
-        <div class="position-absolute h-100 w-100 top-0 start-0  p-3">
+        <div class="position-absolute h-100 w-100 top-0 start-0  p-2 px-3">
             <small>{{l}}</small>
-            <span class="text-light ml-3">{{percent(width(i))}}</span>
-            <span class="text-light float-right">{{count(i)}} <i class="fas fa-users"></i> </span>
+            <span class="text-dark ml-3">{{percent(width(i))}}</span>
+            <span class="text-dark float-right">{{count(i)}} <i class="fas fa-users"></i> </span>
         </div>
     </div>
 </div>

@@ -3,16 +3,14 @@
         <div class="col-lg-9 m-b-40">
 
             <div class="card shadow h-100">
-                <div class="card-header bg-primary">
-                    <h5 class="m-0 font-weight-bold text-white">{{this.anketa?.name.cs}} </h5>
-                </div>
                 <div class="card-body">
+                    <h2 class="m-0 font-weight-bold text-dark">{{this.anketa?.name.cs}} </h2>
                     <div class="row">
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
                                     <tr *ngFor='let question of this.anketa?.questions; let i=index'>
-                                        <td>{{question.question.cs}}</td>
+                                        <td class="pl-0">{{question.question.cs}}</td>
                                     </tr>
 
                                 </tbody>
@@ -65,18 +63,16 @@
         <div class="col-lg-3 d-flex align-items-stretch m-b-40">
             <div class="card shadow w-100">
                 <div class="card-body">
-                    <button (click)='previewSurvey()' class="btn btn-block btn-primary" type="button">Náhled</button>
-                    <button (click)='editSurvey()' class="btn btn-block btn-secondary" type="button">Upravit
-                    </button>
-                    <button (click)='deleteSurvey()' class="btn btn-block btn-danger" type="button">Odstranit
-                    </button>
+                    <button (click)='previewSurvey()' class="btn btn-block btn-light" type="button"><i class="fas fa-play text-primary mr-3"></i>Náhled</button>
+                    <button (click)='editSurvey()' class="btn btn-block btn-light" type="button"><i class="fas fa-edit text-secondary mr-3"></i>Upravit</button>
+                    <button (click)='deleteSurvey()' class="btn btn-block btn-light" type="button"><i class="far fa-trash-alt text-danger mr-3"></i>Odstranit</button>
                 </div>
             </div>
         </div>
         <div class="col-lg-9 d-flex align-items-stretch m-b-40">
             <div class="card shadow w-100 ">
                 <div class="card-body">
-                    <h4 class="mb-3">Váš dotazník najdete na této adrese</h4>
+                    <h4 class="mb-3 text-dark">Váš dotazník najdete na této adrese</h4>
                     <div class="input-group">
                         <input disabled type="text" class="form-control" value="{{surveyUrl}}">
                         <button (click)='copySurveyUrl()' class="btn btn-primary btn-copy-link" type="button">Zkopírovat
@@ -109,39 +105,44 @@
             </div>
         </div>
     </div>
-    <div class="row" *ngIf='results'>
-        <div class="col-12 mb-2">
-            <!-- <h3 class="title-1 text-gray-800 mb-4 d-inline font-weight-bold">Výsledky</h3> -->
-            <div class="btn-group btn-group-lg mb-2 d-inline">
-                <button (click)='users=false' [class.text-primary]='!users'
-                    class=" btn btn-outline-secondary shadow-none"><i class="fas fa-users mr-1"></i>Výsledky</button>
-                <button (click)='users=true' [class.text-primary]='users'
-                    class="btn btn-outline-secondary shadow-none"><i class="fas fa-user mr-1"></i>Respondenti</button>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row" *ngIf='results'>
+                <div class="col-12 mb-2">
+                    <h3 class="font-weight-bold text-dark mb-3">Výsledky</h3>
+                    <!-- <h3 class="title-1 text-gray-800 mb-4 d-inline font-weight-bold">Výsledky</h3> -->
+                    <div class="btn-group  mb-2 d-inline">
+                        <button (click)='users=false' [class.text-primary]='!users'
+                            class=" btn btn-light shadow-none"><i class="fas fa-users mr-1"></i>Výsledky</button>
+                        <button (click)='users=true' [class.text-primary]='users'
+                            class="btn btn-light shadow-none"><i class="fas fa-user mr-1"></i>Respondenti</button>
+                    </div>
+                    <button (click)='deleteResults()' class="btn btn-danger mb-4 float-right ml-4">Odstranit
+                        výsledky</button>
+                    <button (click)='downloadExcelFile()' class="btn btn-light mb-4 float-right">Stáhnout výsledky v
+                        Excelu</button>
+                </div>
+        
+        
+                <ng-container *ngIf='!users'>
+                    <ng-container *ngFor='let question of anketa?.questions; let i = index'>
+                        <app-result-question-single *ngIf='question.type == "single"' [question]=anketa.questions[i]
+                            [results]=results [index]=i class="col-lg-6 d-flex align-items-stretch mb-4">
+                        </app-result-question-single>
+                        <app-result-question-open *ngIf='question.type == "open"' [question]=anketa.questions[i]
+                            [results]=results [index]=i class="col-lg-6 d-flex align-items-stretch mb-4">
+                        </app-result-question-open>
+                        <app-result-question-scale *ngIf='question.type == "scale"' [question]=anketa.questions[i]
+                            [results]=results [index]=i class="col-lg-6 d-flex align-items-stretch mb-4">
+                        </app-result-question-scale>
+                    </ng-container>
+                </ng-container>
+        
+                <app-result-users *ngIf='users' [results]='results' [survey]='anketa' class="row"></app-result-users>
+        
+        
             </div>
-            <button (click)='deleteResults()' class="btn btn-danger mb-4 float-right ml-4">Odstranit
-                výsledky</button>
-            <button (click)='downloadExcelFile()' class="btn btn-primary mb-4 float-right">Stáhnout výsledky v
-                Excelu</button>
         </div>
-
-
-        <ng-container *ngIf='!users'>
-            <ng-container *ngFor='let question of anketa?.questions; let i = index'>
-                <app-result-question-single *ngIf='question.type == "single"' [question]=anketa.questions[i]
-                    [results]=results [index]=i class="col-lg-6 d-flex align-items-stretch mb-4">
-                </app-result-question-single>
-                <app-result-question-open *ngIf='question.type == "open"' [question]=anketa.questions[i]
-                    [results]=results [index]=i class="col-lg-6 d-flex align-items-stretch mb-4">
-                </app-result-question-open>
-                <app-result-question-scale *ngIf='question.type == "scale"' [question]=anketa.questions[i]
-                    [results]=results [index]=i class="col-lg-6 d-flex align-items-stretch mb-4">
-                </app-result-question-scale>
-            </ng-container>
-        </ng-container>
-
-        <app-result-users *ngIf='users' [results]='results' [survey]='anketa' class="row"></app-result-users>
-
-
     </div>
 </div>
 <script src="node_modules/chart.js/src/chart.js"></script>
