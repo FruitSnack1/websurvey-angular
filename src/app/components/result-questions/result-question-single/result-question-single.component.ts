@@ -63,7 +63,11 @@ export class ResultQuestionSingleComponent implements OnInit {
   }
 
   get questionResults() {
-    let arr = [0, 0, 0, 0, 0];
+    // let arr = [0, 0, 0, 0, 0];
+    let arr = [];
+    for(let answer in this.questionAnswers){
+      arr = [...arr,0]
+    }
     let allResults = [];
     for (let result of this.results) {
       if (result.answers[this.index])
