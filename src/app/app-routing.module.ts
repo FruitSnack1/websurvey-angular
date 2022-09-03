@@ -28,7 +28,7 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: "", component: DashboardComponent },
+      { path: "", component: AnketyComponent },
       {
         path: "dashboard",
         component: DashboardComponent,

@@ -20,10 +20,14 @@
                             <div class="card-body" (click)='showAnketaDetail(anketa._id)' style="cursor: pointer;">
                                 <div>
                                     <h5 class=" m-0 d-inline font-weight-bold text-dark">{{anketa.name.cs}}</h5>
-                                    <i (click)='setAnketa(anketa._id)' class="far fa-trash-alt float-right text-danger mt-1"></i>
-                                    <i (click)='duplicateAnketa(anketa._id)' class="far fa-clone mr-3 float-right mt-1"></i>
-                                    <i (click)='editAnketa(anketa._id, anketa.type)' class="far fa-edit mr-3 float-right mt-1"></i>
-                                    <i (click)='playAnketa(anketa._id)' class="fas fa-play mr-3 float-right text-primary mt-1"></i>
+                                    <i (click)='setAnketa(anketa._id)'
+                                        class="far fa-trash-alt float-right text-danger mt-1"></i>
+                                    <i (click)='duplicateAnketa(anketa._id)'
+                                        class="far fa-clone mr-3 float-right mt-1"></i>
+                                    <i (click)='editAnketa(anketa._id, anketa.type)'
+                                        class="far fa-edit mr-3 float-right mt-1"></i>
+                                    <i (click)='playAnketa(anketa._id)'
+                                        class="fas fa-play mr-3 float-right text-primary mt-1"></i>
                                 </div>
                                 <table class="table">
                                     <thead>
@@ -39,9 +43,9 @@
                                             <td class="border-bottom-0 pl-0">{{anketa.created | date:'dd.MM.yyyy'}}</td>
                                             <td class="border-bottom-0 text-right">{{anketa.questions.length}}</td>
                                             <td class="border-bottom-0 text-right pr-0">{{anketa.result_count}}</td>
-                
+
                                         </tr>
-                
+
                                     </tbody>
                                 </table>
                             </div>
@@ -60,7 +64,8 @@
                     </thead>
                     <tbody>
                         <tr *ngFor='let anketa of ankety'>
-                            <td (click)='showAnketaDetail(anketa._id)' class="border-bottom-0 text-dark font-weight-bold" style="cursor: pointer;">
+                            <td (click)='showAnketaDetail(anketa._id)'
+                                class="border-bottom-0 text-dark font-weight-bold" style="cursor: pointer;">
                                 {{anketa.name.cs}}</td>
                             <td class="text-center border-bottom-0">{{anketa.created | date:'dd.MM.yyyy'}}</td>
                             <td class="text-right border-bottom-0">{{anketa.questions.length}}</td>
@@ -81,7 +86,7 @@
                         </tr>
                     </tbody>
                 </table>
-                
+
             </div>
         </div>
     </div>
@@ -122,7 +127,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-6">
+                    <!-- <div class="col-6">
                         <h3 class="text-dark text-center">Stejné odpovědi</h3>
                         <img src="../../assets/images/survey.svg" alt="" style="padding: 50px; width: 100%;">
                         <p class="text-center">Každá otázka má stejné odpovědi (otázky lze
@@ -131,8 +136,9 @@
                             <button routerLink='../create' type="button" class="btn btn-primary m-auto">Vytvořit
                                 anketu</button>
                         </div>
-                    </div>
-                    <div class="col-6">
+                    </div> -->
+                    <div class="col-3"></div>
+                    <div class="col-6 ">
                         <h3 class="text-dark text-center">Vlastní odpovědi</h3>
                         <img src="../../assets/images/survey.svg" alt="" style="padding: 50px; width: 100%;">
                         <p class="text-center" style="min-height: 52px;">Každá otázka má vlastní odpovědi</p>
